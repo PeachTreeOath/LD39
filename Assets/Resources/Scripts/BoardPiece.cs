@@ -17,22 +17,48 @@ public class BoardPiece : MonoBehaviour {
     [HideInInspector]
     public Board board; // Board this piece belongs to
 
-    //TODO use [Flags] enum?
+    private Vector2[] lerpFromTo = new Vector2[2];
+    private float lerpEndTime = 0;
+    private bool moving = false;
 
+    private static float MOVE_DURATION = 0.15f; //in seconds
+
+    //TODO use [Flags] enum?
     //piece types, used to identify board content pieces, 
+
     //MUST BE powers of 2 so we can mask the bits
     public static int OPEN_SPACE = 0;
     public static int PLAYER = 1;
     public static int BARRIER = 2;
     public static int PICKUP = 4;
 
+    void FixedUpdate() {
+        if (moving) {
+            float t = 1.0f - Mathf.Clamp((lerpEndTime - Time.time)/MOVE_DURATION, 0.0f, 1.0f);
+            transform.localPosition = Vector2.Lerp(lerpFromTo[0], lerpFromTo[1], t);
+            if (t >= 1.0f) {
+                moving = false;
+            }
+        }
+    }
 
-    public void SetPosition(int newX, int newY)
+    public void SetPosition(int newX, int newY) {
+        SetPosition(newX, newY, false);
+    }
+
+    public void SetPosition(int newX, int newY, bool lerp)
     {
         //Don't forget to call SetBoard at least once before using this method!
         x = newX;
         y = newY;
-        transform.localPosition = board.GetLocalPositionFromCoords(x, y);
+        if (lerp) {
+            lerpFromTo[0] = transform.localPosition;
+            lerpFromTo[1] = board.GetLocalPositionFromCoords(x, y);
+            lerpEndTime = Time.time + MOVE_DURATION;
+            moving = true;
+        } else {
+            transform.localPosition = board.GetLocalPositionFromCoords(x, y);
+        }
 
         //update board tracking of this piece
         if (!hasLastPos) {
