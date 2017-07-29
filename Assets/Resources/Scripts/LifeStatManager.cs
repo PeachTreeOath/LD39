@@ -55,6 +55,11 @@ public class LifeStatManager : Singleton<LifeStatManager> {
 
     public void addBooks(int amt) {
         books += amt;
+        int max = StatConstants.instance.booksToLevelEducation;
+        while (books >= max) {
+            books -= max;
+            addEducation(1);
+        }
     }
 
     public void addEducation(int amt) {
