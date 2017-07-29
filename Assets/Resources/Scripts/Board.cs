@@ -76,7 +76,8 @@ public class Board : MonoBehaviour
         piece.gameObject.transform.parent = null;
         UpdatePiece_Remove(piece, curX, curY);
         boardPieces.Remove(piece);
-        piece.GetComponent<SpriteRenderer>().enabled = false;
+        //TODO this needs to interact better with the spawn system...
+        piece.OnRemove();
     }
 
     /// <summary>

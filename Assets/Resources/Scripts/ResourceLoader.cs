@@ -9,6 +9,8 @@ public class ResourceLoader : Singleton<ResourceLoader>
     [HideInInspector]
     public GameObject playerBoardPieceFab;
     [HideInInspector]
+    public GameObject lootBoardPieceFab;
+    [HideInInspector]
     public GameObject dollarBillFab;
     [HideInInspector]
     public GameObject barrierPieceFab;
@@ -43,6 +45,7 @@ public class ResourceLoader : Singleton<ResourceLoader>
     {
         defaultBlockFab = Resources.Load<GameObject>("Prefabs/Blocks/DefaultBlock");
         playerBoardPieceFab = Resources.Load<GameObject>("Prefabs/PlayerBoardPiece");
+        lootBoardPieceFab = Resources.Load<GameObject>("Prefabs/LootBoardPiece");
         dollarBillFab = Resources.Load<GameObject>("Prefabs/DollarBill");
         barrierPieceFab = Resources.Load<GameObject>("Prefabs/BarrierBlock");
         zoneBarrierPieceFab = Resources.Load<GameObject>("Prefabs/ZoneBarrierBlock");

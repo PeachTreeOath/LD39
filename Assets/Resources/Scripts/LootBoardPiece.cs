@@ -48,4 +48,8 @@ public class LootBoardPiece : BoardPiece {
     public override void OnPickup() {
         PermanentStatManager.instance.wealth += value;
     }
+
+    public override void OnRemove() {
+        Destroy(gameObject);
+    }
 }

@@ -22,7 +22,8 @@ public class LifeStatManager : Singleton<LifeStatManager> {
 
     public float GetGoldDropRate()
     {
-        return StatConstants.instance.initialGoldDropRate * StatConstants.instance.goldDropRateScalar * educationLevel + StatConstants.instance.initialGoldDropRate;
+        return 5; // selected by a random die roll
+        //return StatConstants.instance.initialGoldDropRate * StatConstants.instance.goldDropRateScalar * educationLevel + StatConstants.instance.initialGoldDropRate;
     }
 
     void Start()
