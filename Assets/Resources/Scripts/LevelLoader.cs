@@ -31,6 +31,12 @@ public class LevelLoader : MonoBehaviour {
                 //vertical barrier at x=2
                 board.AddPiece(bp, 2, y);
             }
+
+            GameObject waifu  = Instantiate(ResourceLoader.instance.waifuPieceFab);
+            WaifuBoardPiece wbp = waifu.GetComponent<WaifuBoardPiece>();
+            wbp.SetBoard(board);
+            //vertical barrier at x=2
+            board.AddPiece(wbp, 8, 8);
         }
         if (btype == BoardManager.BoardType.CASH) {
             //dollas at 8,8 - 10,10 
