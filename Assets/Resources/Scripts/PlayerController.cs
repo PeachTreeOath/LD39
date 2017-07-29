@@ -12,9 +12,13 @@ public class PlayerController : Singleton<PlayerController>
 
     private List<PlayerBoardPiece> players = new List<PlayerBoardPiece>();
 
+    private LifeStatManager lifeStatManager;
+
     // This is manually called by BoardManager to get ordering correct.
     public void Init()
     {
+        lifeStatManager = GameObject.Find("Managers").GetComponent<LifeStatManager>();
+
         if (BoardManager.instance.relationshipBoardOn)
         {
             PlayerBoardPiece relationshipPlayer = CreatePlayer();
@@ -63,6 +67,7 @@ public class PlayerController : Singleton<PlayerController>
             {
                 player.MoveUp();
             }
+            lifeStatManager.age++;
         }
         if (Input.GetButtonDown("Down"))
         {
@@ -70,6 +75,7 @@ public class PlayerController : Singleton<PlayerController>
             {
                 player.MoveDown();
             }
+            lifeStatManager.age++;
         }
         if (Input.GetButtonDown("Left"))
         {
@@ -77,6 +83,7 @@ public class PlayerController : Singleton<PlayerController>
             {
                 player.MoveLeft();
             }
+            lifeStatManager.age++;
         }
         if (Input.GetButtonDown("Right"))
         {
@@ -84,6 +91,7 @@ public class PlayerController : Singleton<PlayerController>
             {
                 player.MoveRight();
             }
+            lifeStatManager.age++;
         }
     }
 
