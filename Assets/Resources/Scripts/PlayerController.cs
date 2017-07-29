@@ -12,6 +12,7 @@ public class PlayerController : Singleton<PlayerController>
 
     private List<PlayerBoardPiece> players = new List<PlayerBoardPiece>();
 
+    private List<BoardPiece> turnPickups = new List<BoardPiece>();
     private LifeStatManager lifeStatManager;
 
     // This is manually called by BoardManager to get ordering correct.
@@ -67,7 +68,7 @@ public class PlayerController : Singleton<PlayerController>
             foreach(PlayerBoardPiece player in players)
             {
                 player.MoveUp();
-                player.GetPickups();
+                turnPickups.AddRange(player.GetPickups());
             }
             turnWillAdv = true;
         }
@@ -76,7 +77,7 @@ public class PlayerController : Singleton<PlayerController>
             foreach (PlayerBoardPiece player in players)
             {
                 player.MoveDown();
-                player.GetPickups();
+                turnPickups.AddRange(player.GetPickups());
             }
             turnWillAdv = true;
         }
@@ -85,7 +86,7 @@ public class PlayerController : Singleton<PlayerController>
             foreach (PlayerBoardPiece player in players)
             {
                 player.MoveLeft();
-                player.GetPickups();
+                turnPickups.AddRange(player.GetPickups());
             }
             turnWillAdv = true;
         }
@@ -94,7 +95,7 @@ public class PlayerController : Singleton<PlayerController>
             foreach (PlayerBoardPiece player in players)
             {
                 player.MoveRight();
-                player.GetPickups();
+                turnPickups.AddRange(player.GetPickups());
             }
             turnWillAdv = true;
         }
@@ -102,6 +103,7 @@ public class PlayerController : Singleton<PlayerController>
         if (turnWillAdv) {
             AdvanceTurn();
         }
+        turnPickups.Clear();
     }
 
     private PlayerBoardPiece CreatePlayer()

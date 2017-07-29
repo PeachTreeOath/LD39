@@ -65,6 +65,18 @@ public class Board : MonoBehaviour
     }
 
     /// <summary>
+    /// Remove a piece from this board. Unparents piece but does not destroy it.
+    /// </summary>
+    /// <param name="piece">Piece to add. Must be instantiated already.</param>
+    public void RemovePiece(BoardPiece piece, int curX, int curY)
+    {
+        piece.gameObject.transform.parent = null;
+        UpdatePiece_Remove(piece, curX, curY);
+        boardPieces.Remove(piece);
+        piece.GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+    /// <summary>
     /// Get the pickups, if any, at the given board location.
     /// </summary>
     /// <param name="xPos"></param>
@@ -77,8 +89,9 @@ public class Board : MonoBehaviour
             int tileContent = boardContent[xPos, yPos];
             if (hasSet(tileContent, BoardPiece.PICKUP)) {
                 BoardPiece bp = boardPieces[i];
-                if (bp.isAt(xPos, yPos)) {
+                if (bp.isAt(xPos, yPos) && bp.GetContentType()==BoardPiece.PICKUP) {
                     pickups.Add(boardPieces[i]);
+                    RemovePiece(boardPieces[i], xPos, yPos);
                 }
             }
         }
