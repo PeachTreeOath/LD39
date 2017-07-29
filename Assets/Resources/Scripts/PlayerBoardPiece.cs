@@ -12,28 +12,28 @@ public class PlayerBoardPiece : BoardPiece
     {
         if (CheckValidMove(x, y + 1))
         {
-            SetPosition(x, y + 1);
+            SetPosition(x, y + 1, true);
         }
     }
     public void MoveDown()
     {
         if (CheckValidMove(x, y - 1))
         {
-            SetPosition(x, y - 1);
+            SetPosition(x, y - 1, true);
         }
     }
     public void MoveLeft()
     {
         if (CheckValidMove(x - 1, y))
         {
-            SetPosition(x - 1, y);
+            SetPosition(x - 1, y, true);
         }
     }
     public void MoveRight()
     {
         if (CheckValidMove(x + 1, y))
         {
-            SetPosition(x + 1, y);
+            SetPosition(x + 1, y, true);
         }
     }
     private bool CheckValidMove(int x, int y)
