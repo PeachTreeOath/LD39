@@ -24,4 +24,9 @@ public class StatConstants : Singleton<StatConstants> {
         }
     }
 
+    public string RelationshipStatusString(bool isMarried)
+    {
+        return isMarried ? "Married" : "Single";
+    }
+
 }
