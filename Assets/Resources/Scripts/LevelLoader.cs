@@ -17,6 +17,11 @@ public class LevelLoader : MonoBehaviour {
     /// <param name="btype">Type of board</param>
     /// <param name="level">Level being loaded</param>
     public void LoadBoardContent(Board board, BoardManager.BoardType btype, int level) {
-
+        BarrierPiece bpOil = new BarrierPiece();
+        if (btype == BoardManager.BoardType.RELATIONSHIP) {
+            for (int y = 0; y < board.GetBoardSize(); y++) {
+                board.UpdatePiece_Place(bpOil, 2, y); //vertical barrier at x=2
+            }
+        }
     }
 }

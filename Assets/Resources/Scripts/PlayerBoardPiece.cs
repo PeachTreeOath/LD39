@@ -42,7 +42,7 @@ public class PlayerBoardPiece : BoardPiece
     }
 
     public override int GetContentType() {
-        return base.PLAYER;
+        return BoardPiece.PLAYER;
     }
 
 }

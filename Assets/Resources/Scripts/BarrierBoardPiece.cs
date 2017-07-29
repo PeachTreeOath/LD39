@@ -5,6 +5,6 @@ using UnityEngine;
 public class BarrierPiece : BoardPiece {
 
     public override int GetContentType() {
-        return base.BARRIER;
+        return BoardPiece.BARRIER;
     }
 }

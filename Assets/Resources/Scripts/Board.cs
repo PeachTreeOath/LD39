@@ -47,6 +47,10 @@ public class Board : MonoBehaviour
         boardPieces.Add(newPiece);
     }
 
+    public int GetBoardSize() {
+        return (int)boardSize;
+    }
+
 
     // Return local position given x,y coords. X starts from left, Y starts from bottom. 0-indexed.
     public Vector2 GetLocalPositionFromCoords(int x, int y)
@@ -61,6 +65,10 @@ public class Board : MonoBehaviour
     {
         if (x < 0 || x >= boardSize || y < 0 || y >= boardSize)
         {
+            return false;
+        }
+        int tileContent = boardContent[x, y];
+        if (hasSet(tileContent, BoardPiece.BARRIER)) {
             return false;
         }
         return true;
@@ -111,5 +119,15 @@ public class Board : MonoBehaviour
     private int mask_remove(int valToRemove) {
         int mask = ~valToRemove;
         return mask;
+    }
+
+    /// <summary>
+    /// Test if packedVal contains testVal via bitwise test
+    /// </summary>
+    /// <param name="packedVal">questionable input</param>
+    /// <param name="testVal">testing if in input</param>
+    /// <returns>true if packedVal contains testVal</returns>
+    private bool hasSet(int packedVal, int testVal) {
+        return (packedVal & testVal) > 0;
     }
 }

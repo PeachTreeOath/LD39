@@ -19,10 +19,10 @@ public class BoardPiece : MonoBehaviour {
 
     //piece types, used to identify board content pieces, 
     //MUST BE powers of 2 so we can mask the bits
-    public int OPEN_SPACE = 0;
-    public int PLAYER = 1;
-    public int BARRIER = 2;
-    public int PICKUP = 4;
+    public static int OPEN_SPACE = 0;
+    public static int PLAYER = 1;
+    public static int BARRIER = 2;
+    public static int PICKUP = 4;
 
 
     public void SetPosition(int newX, int newY)
