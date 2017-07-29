@@ -21,11 +21,8 @@ public class ZoneBarrierBoardPiece : BoardPiece {
         gameObject.GetComponent<SpriteRenderer>().sprite = spriteForKey[newKey];
     }
 
-    public void unlock(int key) {
-        if (key == zoneKey) {
-            board.RemovePiece(this, x, y);
-            Destroy(this.gameObject);
-        }
+    public bool unlocks(int key) {
+        return (key == zoneKey);
     }
 
     public override int GetContentType() {

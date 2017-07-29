@@ -142,6 +142,7 @@ public class Board : MonoBehaviour
     /// </summary>
     /// <param name="zoneKey"></param>
     public void useKey(ZoneKeyBoardPiece zoneKey) {
+        List<BoardPiece> piecesToRemove = new List<BoardPiece>();
         int keyId = zoneKey.getKey();
         for (int i = 0; i < boardPieces.Count; i++) {
             //Debug.Log("index " + i + " (" + boardPieces[i].x + ", " + boardPieces[i].y + ")");
@@ -150,8 +151,17 @@ public class Board : MonoBehaviour
             int yPos = piece.y;
             int tileContent = boardContent[xPos, yPos];
             if (piece.isAt(xPos, yPos) && piece.GetContentType() == BoardPiece.ZONE_BARRIER) {
-                ((ZoneBarrierBoardPiece)boardPieces[i]).unlock(keyId);
+                ZoneBarrierBoardPiece zbb = (ZoneBarrierBoardPiece)boardPieces[i];
+                if (zbb.unlocks(keyId)) {
+                    piecesToRemove.Add(zbb);
+                }
+        
             }
+        }
+
+        foreach (BoardPiece bp in piecesToRemove) {
+            RemovePiece(bp, bp.x, bp.y);
+            Destroy(bp.gameObject);
         }
     }
 
@@ -163,7 +173,7 @@ public class Board : MonoBehaviour
     /// <param name="y"></param>
     /// <returns>true if the tile contains something other than the player or a barrier</returns>
     public bool hasTileContent(int x, int y) {
-        int contentId = ~(BoardPiece.BARRIER | BoardPiece.PLAYER);
+        int contentId = ~(BoardPiece.ZONE_BARRIER | BoardPiece.BARRIER | BoardPiece.PLAYER);
         int tileContent = boardContent[x, y];
         return hasSet(tileContent, contentId);
     }
