@@ -124,8 +124,8 @@ public class PlayerController : Singleton<PlayerController>
                 LifeStatManager.instance.addBooks(((EduBookBoardPiece)bp).bookValue);
                 AudioManager.instance.PlaySound("BookPickup");
             } else if (bpType == typeof(WaifuBoardPiece)) {
-                Debug.Log("Waifu smash");
-                LogManager.instance.Log("Waifu smash!");
+                LogManager.instance.Log("She said yes!");
+                AudioManager.instance.PlaySound("Marriage");
                 WaifuPortraitSwapper.instance.TurnOnPortrait((WaifuBoardPiece)bp);
             } else if (bpType == typeof(ZoneKeyBoardPiece)) {
                 Debug.Log("Keys to the city, baby");
