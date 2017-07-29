@@ -110,6 +110,8 @@ public class PlayerController : Singleton<PlayerController>
 
     private void processPickups(List<BoardPiece> pickups) {
         foreach(BoardPiece bp in pickups) {
+            bp.OnPickup();
+
             System.Type bpType = bp.GetType();
             if (bpType == typeof(PotionBoardPiece)) {
                 Debug.Log("Potion picked up");

@@ -17,6 +17,8 @@ public class BoardPiece : MonoBehaviour {
     [HideInInspector]
     public Board board; // Board this piece belongs to
 
+    //TODO use [Flags] enum?
+
     //piece types, used to identify board content pieces, 
     //MUST BE powers of 2 so we can mask the bits
     public static int OPEN_SPACE = 0;
@@ -83,5 +85,9 @@ public class BoardPiece : MonoBehaviour {
     /// <returns></returns>
     public bool isAt(int testX, int testY) {
         return testX == x && testY == y;
+    }
+
+    public virtual void OnPickup() {
+
     }
 }
