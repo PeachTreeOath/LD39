@@ -52,4 +52,12 @@ public class LifeStatManager : Singleton<LifeStatManager> {
         generationField.text = "" + PermanentStatManager.instance.generation;
         
     }
+
+    public void addBooks(int amt) {
+        books += amt;
+    }
+
+    public void addEducation(int amt) {
+        educationLevel += amt;
+    }
 }

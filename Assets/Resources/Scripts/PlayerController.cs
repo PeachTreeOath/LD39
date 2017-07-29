@@ -119,6 +119,7 @@ public class PlayerController : Singleton<PlayerController>
                 Debug.Log("Cash me outside");
             } else if (bpType == typeof(EduBookBoardPiece)) {
                 Debug.Log("Book pickup");
+                LifeStatManager.instance.addBooks(((EduBookBoardPiece)bp).bookValue);
             } else if (bpType == typeof(WaifuBoardPiece)) {
                 Debug.Log("Waifu smash");
             }
