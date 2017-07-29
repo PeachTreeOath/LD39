@@ -161,6 +161,7 @@ MonoBehaviour:
   dollarBillFab: {fileID: 0}
   barrierPieceFab: {fileID: 0}
   zoneBarrierPieceFab: {fileID: 0}
+  zoneKeyPieceFab: {fileID: 0}
   potionPieceFab: {fileID: 0}
   waifuPieceFab: {fileID: 0}
   eduBookFab: {fileID: 0}
