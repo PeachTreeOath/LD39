@@ -4,7 +4,7 @@ using System;
 
 public class Potion : TurnBehaviour {
 
-    private int turnsPassed = 8;
+    private int turnsPassed = 0;
     private SpriteRenderer spriteRenderer;
 
     public int[] turnsPerLevel;
