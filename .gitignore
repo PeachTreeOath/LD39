@@ -79,3 +79,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+Assets/Resources/Audio/BookPickup.flp
+Assets/Resources/Audio/BookPickup.flp.meta
+Assets/Resources/Audio/Failure.flp
+Assets/Resources/Audio/Failure.flp.meta
