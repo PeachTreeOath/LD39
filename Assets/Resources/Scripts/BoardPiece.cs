@@ -23,7 +23,9 @@ public class BoardPiece : MonoBehaviour {
 
     private static float MOVE_DURATION = 0.15f; //in seconds
 
+    //TODO use [Flags] enum?
     //piece types, used to identify board content pieces, 
+
     //MUST BE powers of 2 so we can mask the bits
     public static int OPEN_SPACE = 0;
     public static int PLAYER = 1;
@@ -109,5 +111,9 @@ public class BoardPiece : MonoBehaviour {
     /// <returns></returns>
     public bool isAt(int testX, int testY) {
         return testX == x && testY == y;
+    }
+
+    public virtual void OnPickup() {
+
     }
 }
