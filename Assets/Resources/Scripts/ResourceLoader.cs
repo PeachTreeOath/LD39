@@ -6,9 +6,9 @@ public class ResourceLoader : Singleton<ResourceLoader>
 {
     [HideInInspector]
     public GameObject defaultBlockFab;
-
     [HideInInspector]
     public GameObject playerBoardPieceFab;
+    [HideInInspector]
     public GameObject dollarBillFab;
 
     protected override void Awake()
