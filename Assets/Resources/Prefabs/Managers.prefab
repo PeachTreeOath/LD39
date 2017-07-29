@@ -52,10 +52,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20d2491702ce2ed4f9e05628da24a325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  relationshipBoardOn: 0
-  cashBoardOn: 0
-  educationBoardOn: 0
-  healthBoardOn: 0
+  relationshipBoardOn: 1
+  cashBoardOn: 1
+  educationBoardOn: 1
+  healthBoardOn: 1
+  boardSize: 10
 --- !u!114 &114966648603352932
 MonoBehaviour:
   m_ObjectHideFlags: 1
