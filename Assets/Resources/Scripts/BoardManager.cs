@@ -50,6 +50,7 @@ public class BoardManager : Singleton<BoardManager>
             cashBoard = CreateBoard(boardSize, ResourceLoader.instance.defaultBlockFab, BoardType.CASH, 1);
             cashBoard.name = "Cash Board";
             cashBoard.transform.position = new Vector2(-2.5f, -2.5f);
+            cashBoard.gameObject.AddComponent<LootBoardManager>();
         }
         if (educationBoardOn)
         {

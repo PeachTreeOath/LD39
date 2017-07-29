@@ -38,17 +38,7 @@ public class LevelLoader : MonoBehaviour {
             //vertical barrier at x=2
             board.AddPiece(wbp, 8, 8);
         }
-        if (btype == BoardManager.BoardType.CASH) {
-            //dollas at 8,8 - 10,10 
-            for (int x = 8; x < 10; x++) {
-                for (int y = 8; y < 10; y++) {
-                    GameObject tMoney = Instantiate(ResourceLoader.instance.dollarBillFab);
-                    LootBoardPiece tm = tMoney.GetComponent<LootBoardPiece>();
-                    tm.SetBoard(board);
-                    board.AddPiece(tm, x, y);
-                }
-            }
-        }
+
         if (btype == BoardManager.BoardType.HEALTH) {
             //health pots wherever
             for (int x = 0; x < 10; x += 3) {
@@ -61,12 +51,14 @@ public class LevelLoader : MonoBehaviour {
             }
         }
         if (btype == BoardManager.BoardType.EDUCATION) {
-            for (int y = 2; y < board.GetBoardSize()-2; y++) {
-                GameObject mlady = Instantiate(ResourceLoader.instance.eduBookFab);
-                EduBookBoardPiece ml = mlady.GetComponent<EduBookBoardPiece>();
-                ml.SetBoard(board);
-                //vertical barrier at x=6
-                board.AddPiece(ml, 6, y);
+            for (int x = 6; x <= 8; x++) {
+                for (int y = 2; y < board.GetBoardSize() - 2; y++) {
+                    GameObject mlady = Instantiate(ResourceLoader.instance.eduBookFab);
+                    EduBookBoardPiece ml = mlady.GetComponent<EduBookBoardPiece>();
+                    ml.SetBoard(board);
+                    //vertical barrier at x=6,7
+                    board.AddPiece(ml, x, y);
+                }
             }
         }
     }
