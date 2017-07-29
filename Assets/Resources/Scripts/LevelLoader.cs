@@ -75,15 +75,27 @@ public class LevelLoader : MonoBehaviour {
         //top row
         for (int y = start; y < end; y++) {
             for (int x = start; x < board.GetBoardSize() - start; x++) {
-                squares.Add(new Vector2(x, y));
-                squares.Add(new Vector2(y, x));
+                Vector2 va = new Vector2(x, y);
+                if (!squares.Contains(va)) {
+                    squares.Add(va);
+                }
+                Vector2 vb = new Vector2(y, x);
+                if (!squares.Contains(vb)) {
+                    squares.Add(vb);
+                }
             }
         }
         //bot row
         for (int y = board.GetBoardSize() - end; y < board.GetBoardSize() - start; y++) {
             for (int x = start; x < board.GetBoardSize() - start; x++) {
-                squares.Add(new Vector2(x, y));
-                squares.Add(new Vector2(y, x));
+                Vector2 va = new Vector2(x, y);
+                if (!squares.Contains(va)) {
+                    squares.Add(va);
+                }
+                Vector2 vb = new Vector2(y, x);
+                if (!squares.Contains(vb)) {
+                    squares.Add(vb);
+                }
             }
         }
 
