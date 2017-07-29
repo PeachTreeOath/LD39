@@ -100,10 +100,27 @@ public class PlayerController : Singleton<PlayerController>
             turnWillAdv = true;
         }
 
+        processPickups(turnPickups);
+
         if (turnWillAdv) {
             AdvanceTurn();
         }
         turnPickups.Clear();
+    }
+
+    private void processPickups(List<BoardPiece> pickups) {
+        foreach(BoardPiece bp in pickups) {
+            System.Type bpType = bp.GetType();
+            if (bpType == typeof(PotionBoardPiece)) {
+                Debug.Log("Potion picked up");
+            } else if (bpType == typeof(LootBoardPiece)) {
+                Debug.Log("Cash me outside");
+            //} else if (bpType == typeof(BookBoardPiece)) {
+                //Debug.Log("Book pickup");
+            //} else if (bpType == typeof(WaifuBoardPiece)) {
+                //Debug.Log("Waifu smash");
+            }
+        }
     }
 
     private PlayerBoardPiece CreatePlayer()

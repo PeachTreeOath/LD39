@@ -43,7 +43,6 @@ public class PlayerBoardPiece : BoardPiece
 
     public List<BoardPiece> GetPickups() {
         if (isOverPickup()){
-            Debug.Log("Cash me outside");
             return getPickups();
         }
         return new List<BoardPiece>();
