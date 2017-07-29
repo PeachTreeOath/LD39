@@ -27,6 +27,7 @@ public class BoardPiece : MonoBehaviour {
 
     public void SetPosition(int newX, int newY)
     {
+        //Don't forget to call SetBoard at least once before using this method!
         x = newX;
         y = newY;
         transform.localPosition = board.GetLocalPositionFromCoords(x, y);

@@ -25,6 +25,7 @@ public class Board : MonoBehaviour
     public void CreateEmptyBoard(int boardSize, GameObject blockPrefab)
     {
         this.boardSize = boardSize;
+
         tileSize = blockPrefab.GetComponent<SpriteRenderer>().size.x;
         startingXPos = boardSize * -tileSize / 2 + tileSize / 2;
         startingYPos = boardSize * -tileSize / 2 + tileSize / 2;
@@ -36,15 +37,31 @@ public class Board : MonoBehaviour
             for (int j = 0; j < boardSize; j++)
             {
                 GameObject block = Instantiate(blockPrefab);
-                block.transform.SetParent(transform);
-                block.transform.localPosition = GetLocalPositionFromCoords(j, i);
+                BoardPiece bp = block.GetComponent<BoardPiece>();
+                if (bp == null) {
+                    Debug.LogError("Your prefab or gameobject '" + block.name + "' doesn't have a BoardPiece component - Adding default");
+                    bp = block.AddComponent<BoardPiece>();
+                }
+                if (bp.board == null) {
+                    bp.SetBoard(this);
+                }
+                AddPiece(bp, j, i);
             }
         }
     }
 
-    public void AddPiece(BoardPiece newPiece)
+    /// <summary>
+    /// Add a piece to this board at the given board location
+    /// </summary>
+    /// <param name="newPiece">Piece to add. Must be instantiated already.</param>
+    /// <param name="boardX">board X coord where the piece will be positioned</param>
+    /// <param name="boardY">board Y coord where the piece will be positioned</param>
+    public void AddPiece(BoardPiece newPiece, int boardX, int boardY)
     {
+        newPiece.gameObject.transform.SetParent(transform);
+        newPiece.gameObject.transform.localPosition = GetLocalPositionFromCoords(boardX, boardY);
         boardPieces.Add(newPiece);
+        newPiece.SetPosition(boardX, boardY);
     }
 
     public int GetBoardSize() {

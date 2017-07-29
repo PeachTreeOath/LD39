@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BarrierPiece : BoardPiece {
+public class BarrierBoardPiece : BoardPiece {
 
     public override int GetContentType() {
         return BoardPiece.BARRIER;

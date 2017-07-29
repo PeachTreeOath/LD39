@@ -17,10 +17,18 @@ public class LevelLoader : MonoBehaviour {
     /// <param name="btype">Type of board</param>
     /// <param name="level">Level being loaded</param>
     public void LoadBoardContent(Board board, BoardManager.BoardType btype, int level) {
-        BarrierPiece bpOil = new BarrierPiece();
+        if (board == null) {
+            Debug.LogError("Invalid board state");
+            return;
+        }
+
         if (btype == BoardManager.BoardType.RELATIONSHIP) {
             for (int y = 0; y < board.GetBoardSize(); y++) {
-                board.UpdatePiece_Place(bpOil, 2, y); //vertical barrier at x=2
+                GameObject bpOil = Instantiate(ResourceLoader.instance.barrierPieceFab);
+                BarrierBoardPiece bp = bpOil.GetComponent<BarrierBoardPiece>();
+                bp.SetBoard(board);
+                //vertical barrier at x=2
+                board.AddPiece(bp, 2, y);
             }
         }
     }
