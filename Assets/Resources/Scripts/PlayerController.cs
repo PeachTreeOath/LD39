@@ -115,13 +115,17 @@ public class PlayerController : Singleton<PlayerController>
             System.Type bpType = bp.GetType();
             if (bpType == typeof(PotionBoardPiece)) {
                 Debug.Log("Potion picked up");
+                LogManager.instance.Log("Potion picked up.");
             } else if (bpType == typeof(LootBoardPiece)) {
                 Debug.Log("Cash me outside");
+                LogManager.instance.Log("Cash me outside.");
             } else if (bpType == typeof(EduBookBoardPiece)) {
                 Debug.Log("Book pickup");
+                LogManager.instance.Log("Book picked up.");
                 LifeStatManager.instance.addBooks(((EduBookBoardPiece)bp).bookValue);
             } else if (bpType == typeof(WaifuBoardPiece)) {
                 Debug.Log("Waifu smash");
+                LogManager.instance.Log("Waifu smash!");
             }
         }
     }
