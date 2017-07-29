@@ -67,7 +67,7 @@ public class PlayerController : Singleton<PlayerController>
             {
                 player.MoveUp();
             }
-            lifeStatManager.age++;
+            AdvanceTurn();
         }
         if (Input.GetButtonDown("Down"))
         {
@@ -75,7 +75,7 @@ public class PlayerController : Singleton<PlayerController>
             {
                 player.MoveDown();
             }
-            lifeStatManager.age++;
+            AdvanceTurn();
         }
         if (Input.GetButtonDown("Left"))
         {
@@ -83,7 +83,7 @@ public class PlayerController : Singleton<PlayerController>
             {
                 player.MoveLeft();
             }
-            lifeStatManager.age++;
+            AdvanceTurn();
         }
         if (Input.GetButtonDown("Right"))
         {
@@ -91,7 +91,7 @@ public class PlayerController : Singleton<PlayerController>
             {
                 player.MoveRight();
             }
-            lifeStatManager.age++;
+            AdvanceTurn();
         }
     }
 
@@ -103,10 +103,15 @@ public class PlayerController : Singleton<PlayerController>
 
     void AdvanceTurn()
     {
+        //Invoke listeners that implement TurnBehaviour
         TurnBehaviour[] turnBehaviours = Object.FindObjectsOfType<TurnBehaviour>();
         foreach (TurnBehaviour behaviour in turnBehaviours)
         {
             behaviour.OnAdvanceTurn();
         }
+
+        //Handle any local logic
+        lifeStatManager.age++;
+
     }
 }

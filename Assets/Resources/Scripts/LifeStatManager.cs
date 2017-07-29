@@ -37,6 +37,7 @@ public class LifeStatManager : MonoBehaviour {
 
         //InitiallizeFields
         maxAge = StatConstants.instance.initialMaxAge;
+        age = StatConstants.instance.initialAge;
     }
 
     void Update()

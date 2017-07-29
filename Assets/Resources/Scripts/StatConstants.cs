@@ -8,6 +8,7 @@ public class StatConstants : Singleton<StatConstants> {
 
     public int booksToLevelEducation;
     public int initialMaxAge;
+    public int initialAge;
     public float initialGoldDropRate;
     public float goldDropRateScalar; //multiplies by education level to determine increased gold drop rate
 
