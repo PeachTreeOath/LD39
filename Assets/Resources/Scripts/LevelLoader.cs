@@ -50,6 +50,8 @@ public class LevelLoader : MonoBehaviour {
                     PotionBoardPiece bigH = horse.GetComponent<PotionBoardPiece>();
                     bigH.SetBoard(board);
                     board.AddPiece(bigH, x, y);
+                    addZoneBarrier(board, 0, 0, 1);
+                    addZoneBarrier(board, 1, 1, 2);
                 }
             }
         }
