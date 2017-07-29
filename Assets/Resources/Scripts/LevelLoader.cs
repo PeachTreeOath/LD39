@@ -38,19 +38,6 @@ public class LevelLoader : MonoBehaviour {
             //vertical barrier at x=2
             board.AddPiece(wbp, 8, 8);
         }
-        if (btype == BoardManager.BoardType.CASH) {
-            //dollas at 8,8 - 10,10 
-            for (int x = 8; x < 10; x++) {
-                for (int y = 8; y < 10; y++) {
-                    GameObject tMoney = Instantiate(ResourceLoader.instance.dollarBillFab);
-                    LootBoardPiece tm = tMoney.GetComponent<LootBoardPiece>();
-                    tm.SetBoard(board);
-                    board.AddPiece(tm, x, y);
-                    addZoneBarrier(board, 0, 0, 1);
-                    addZoneBarrier(board, 1, 1, 3);
-                }
-            }
-        }
         if (btype == BoardManager.BoardType.HEALTH) {
             //health pots wherever
             for (int x = 0; x < 10; x += 3) {
