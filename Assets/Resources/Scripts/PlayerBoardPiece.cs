@@ -41,6 +41,13 @@ public class PlayerBoardPiece : BoardPiece
         return board.IsSquareMovable(x, y);
     }
 
+    public void GetPickups() {
+        if (isOverPickup()){
+            //TODO pickup
+            Debug.Log("Cash me outside");
+        }
+    }
+
     public override int GetContentType() {
         return BoardPiece.PLAYER;
     }

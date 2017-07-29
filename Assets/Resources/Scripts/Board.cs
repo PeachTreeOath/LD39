@@ -77,7 +77,7 @@ public class Board : MonoBehaviour
         return new Vector2(currXPos, currYPos);
     }
 
-    // Checks if player can move to this spot. TODO: Modify this to add in obstacle checks.
+    // Checks if player can move to this spot.
     public bool IsSquareMovable(int x, int y)
     {
         if (x < 0 || x >= boardSize || y < 0 || y >= boardSize)
@@ -89,6 +89,19 @@ public class Board : MonoBehaviour
             return false;
         }
         return true;
+    }
+
+    /// <summary>
+    /// Check if the given tile has content (i.e. not empty).
+    /// Excludes player and hard barriers in check.
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
+    /// <returns>true if the tile contains something other than the player or a barrier</returns>
+    public bool hasTileContent(int x, int y) {
+        int contentId = ~(BoardPiece.BARRIER | BoardPiece.PLAYER);
+        int tileContent = boardContent[x, y];
+        return hasSet(tileContent, contentId);
     }
 
     /// <summary>

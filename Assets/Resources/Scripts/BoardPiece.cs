@@ -50,6 +50,14 @@ public class BoardPiece : MonoBehaviour {
     }
 
     /// <summary>
+    /// Returns true if this piece is currently positioned on the board over another thing
+    /// </summary>
+    /// <returns></returns>
+    public bool isOverPickup() {
+        return board.hasTileContent(x, y);
+    }
+
+    /// <summary>
     /// Override to provide the main type of content this piece contains.
     /// Default is none.
     /// </summary>

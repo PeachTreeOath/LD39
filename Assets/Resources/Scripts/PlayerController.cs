@@ -61,36 +61,45 @@ public class PlayerController : Singleton<PlayerController>
     // Update is called once per frame
     void Update()
     {
+        bool turnWillAdv = false;
         if (Input.GetButtonDown("Up"))
         {
             foreach(PlayerBoardPiece player in players)
             {
                 player.MoveUp();
+                player.GetPickups();
             }
-            AdvanceTurn();
+            turnWillAdv = true;
         }
         if (Input.GetButtonDown("Down"))
         {
             foreach (PlayerBoardPiece player in players)
             {
                 player.MoveDown();
+                player.GetPickups();
             }
-            AdvanceTurn();
+            turnWillAdv = true;
         }
         if (Input.GetButtonDown("Left"))
         {
             foreach (PlayerBoardPiece player in players)
             {
                 player.MoveLeft();
+                player.GetPickups();
             }
-            AdvanceTurn();
+            turnWillAdv = true;
         }
         if (Input.GetButtonDown("Right"))
         {
             foreach (PlayerBoardPiece player in players)
             {
                 player.MoveRight();
+                player.GetPickups();
             }
+            turnWillAdv = true;
+        }
+
+        if (turnWillAdv) {
             AdvanceTurn();
         }
     }

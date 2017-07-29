@@ -22,6 +22,7 @@ public class LevelLoader : MonoBehaviour {
             return;
         }
 
+        //This is test code only
         if (btype == BoardManager.BoardType.RELATIONSHIP) {
             for (int y = 0; y < board.GetBoardSize(); y++) {
                 GameObject bpOil = Instantiate(ResourceLoader.instance.barrierPieceFab);
@@ -29,6 +30,17 @@ public class LevelLoader : MonoBehaviour {
                 bp.SetBoard(board);
                 //vertical barrier at x=2
                 board.AddPiece(bp, 2, y);
+            }
+        }
+        if (btype == BoardManager.BoardType.CASH) {
+            //dollas at 8,8 - 10,10 
+            for (int x = 8; x < 10; x++) {
+                for (int y = 8; y < 10; y++) {
+                    GameObject tMoney = Instantiate(ResourceLoader.instance.dollarBillFab);
+                    LootBoardPiece tm = tMoney.GetComponent<LootBoardPiece>();
+                    tm.SetBoard(board);
+                    board.AddPiece(tm, x, y);
+                }
             }
         }
     }
