@@ -54,5 +54,14 @@ public class LevelLoader : MonoBehaviour {
                 }
             }
         }
+        if (btype == BoardManager.BoardType.EDUCATION) {
+            for (int y = 2; y < board.GetBoardSize()-2; y++) {
+                GameObject mlady = Instantiate(ResourceLoader.instance.eduBookFab);
+                EduBookBoardPiece ml = mlady.GetComponent<EduBookBoardPiece>();
+                ml.SetBoard(board);
+                //vertical barrier at x=6
+                board.AddPiece(ml, 6, y);
+            }
+        }
     }
 }
