@@ -7,6 +7,9 @@ public class ResourceLoader : Singleton<ResourceLoader>
     [HideInInspector]
     public GameObject defaultBlockFab;
 
+    [HideInInspector]
+    public GameObject playerBoardPieceFab;
+
     protected override void Awake()
     {
         base.Awake();
@@ -17,5 +20,7 @@ public class ResourceLoader : Singleton<ResourceLoader>
     private void LoadResources()
     {
         defaultBlockFab = Resources.Load<GameObject>("Prefabs/Blocks/DefaultBlock");
+
+        playerBoardPieceFab = Resources.Load<GameObject>("Prefabs/PlayerBoardPiece");
     }
 }
