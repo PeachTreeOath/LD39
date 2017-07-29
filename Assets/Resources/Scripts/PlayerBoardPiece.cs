@@ -41,4 +41,8 @@ public class PlayerBoardPiece : BoardPiece
         return board.IsSquareMovable(x, y);
     }
 
+    public override int GetContentType() {
+        return base.PLAYER;
+    }
+
 }

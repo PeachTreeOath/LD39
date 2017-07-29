@@ -26,31 +26,40 @@ public class BoardManager : Singleton<BoardManager>
     [HideInInspector]
     public float tileSize;
 
+    [SerializeField]
+    private LevelLoader levelLoader;
+
+    public enum BoardType { RELATIONSHIP, CASH, EDUCATION, HEALTH };
+
     void Start()
     {
+        if (levelLoader == null) {
+            Debug.LogError("You didn't add a level loader component to the BoardManager. Hope you enjoy blank levels!");
+        }
+
         tileSize = ResourceLoader.instance.defaultBlockFab.GetComponent<SpriteRenderer>().size.x;
 
         if (relationshipBoardOn)
         {
-            relationshipBoard = CreateBoard(boardSize, ResourceLoader.instance.defaultBlockFab);
+            relationshipBoard = CreateBoard(boardSize, ResourceLoader.instance.defaultBlockFab, BoardType.RELATIONSHIP, 1);
             relationshipBoard.name = "Relationship Board";
             relationshipBoard.transform.position = new Vector2(-2.5f, 2.5f);
         }
         if (cashBoardOn)
         {
-            cashBoard = CreateBoard(boardSize, ResourceLoader.instance.defaultBlockFab);
+            cashBoard = CreateBoard(boardSize, ResourceLoader.instance.defaultBlockFab, BoardType.CASH, 1);
             cashBoard.name = "Cash Board";
             cashBoard.transform.position = new Vector2(-2.5f, -2.5f);
         }
         if (educationBoardOn)
         {
-            educationBoard = CreateBoard(boardSize, ResourceLoader.instance.defaultBlockFab);
+            educationBoard = CreateBoard(boardSize, ResourceLoader.instance.defaultBlockFab, BoardType.EDUCATION, 1);
             educationBoard.name = "Education Board";
             educationBoard.transform.position = new Vector2(2.5f, -2.5f);
         }
         if (healthBoardOn)
         {
-            healthBoard = CreateBoard(boardSize, ResourceLoader.instance.defaultBlockFab);
+            healthBoard = CreateBoard(boardSize, ResourceLoader.instance.defaultBlockFab, BoardType.HEALTH, 1);
             healthBoard.name = "Health Board";
             healthBoard.transform.position = new Vector2(2.5f, 2.5f);
         }
@@ -59,11 +68,22 @@ public class BoardManager : Singleton<BoardManager>
         PlayerController.instance.Init();
     }
 
-    public Board CreateBoard(int boardSize, GameObject blockPrefab)
+    /// <summary>
+    /// Create a Board
+    /// </summary>
+    /// <param name="boardSize">Number of tiles (board is square)</param>
+    /// <param name="blockPrefab">Prefab for each tile</param>
+    /// <param name="bt">Type of board (passed to level loader)</param>
+    /// <param name="level">Level Id to load (passed to level loader)</param>
+    /// <returns>the board</returns>
+    public Board CreateBoard(int boardSize, GameObject blockPrefab, BoardType bt, int level)
     {
         GameObject newObj = new GameObject();
         Board newBoard = newObj.AddComponent<Board>();
-        newBoard.CreateBoard(boardSize, blockPrefab);
+        newBoard.CreateEmptyBoard(boardSize, blockPrefab);
+        if (levelLoader != null) {
+            levelLoader.LoadBoardContent(newBoard, bt, level); //TODO add in other params for generation as needed
+        }
         return newBoard;
     }
 }
