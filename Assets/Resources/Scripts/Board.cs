@@ -137,6 +137,24 @@ public class Board : MonoBehaviour
     }
 
     /// <summary>
+    /// Test the key against all board pieces, unlocking the ones that accept the key.
+    /// </summary>
+    /// <param name="zoneKey"></param>
+    public void useKey(ZoneKeyBoardPiece zoneKey) {
+        int keyId = zoneKey.getKey();
+        for (int i = 0; i < boardPieces.Count; i++) {
+            //Debug.Log("index " + i + " (" + boardPieces[i].x + ", " + boardPieces[i].y + ")");
+            BoardPiece piece = boardPieces[i];
+            int xPos = piece.x;
+            int yPos = piece.y;
+            int tileContent = boardContent[xPos, yPos];
+            if (piece.isAt(xPos, yPos) && piece.GetContentType() == BoardPiece.ZONE_BARRIER) {
+                ((ZoneBarrierBoardPiece)boardPieces[i]).unlock(keyId);
+            }
+        }
+    }
+
+    /// <summary>
     /// Check if the given tile has content (i.e. not empty).
     /// Excludes player and hard barriers in check.
     /// </summary>

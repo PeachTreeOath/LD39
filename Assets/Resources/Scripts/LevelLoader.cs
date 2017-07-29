@@ -37,6 +37,10 @@ public class LevelLoader : MonoBehaviour {
             wbp.SetBoard(board);
             //vertical barrier at x=2
             board.AddPiece(wbp, 8, 8);
+
+            addKey(board, 0, 3, 3);
+            addKey(board, 1, 4, 5);
+            addKey(board, 2, 5, 8);
         }
         if (btype == BoardManager.BoardType.CASH) {
             //dollas at 8,8 - 10,10 
@@ -102,6 +106,14 @@ public class LevelLoader : MonoBehaviour {
             vvv.setKey(zoneKey);
             board.AddPiece(vvv, (int)v.x, (int)v.y);
         }
+    }
+
+    private void addKey(Board board, int key, int x, int y) {
+        GameObject keyObj = Instantiate(ResourceLoader.instance.zoneKeyPieceFab);
+        ZoneKeyBoardPiece zk = keyObj.GetComponent<ZoneKeyBoardPiece>();
+        zk.SetBoard(board);
+        zk.setKey(key);
+        board.AddPiece(zk, x, y);
     }
 
 

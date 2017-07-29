@@ -15,6 +15,8 @@ public class ResourceLoader : Singleton<ResourceLoader>
     [HideInInspector]
     public GameObject zoneBarrierPieceFab;
     [HideInInspector]
+    public GameObject zoneKeyPieceFab;
+    [HideInInspector]
     public GameObject potionPieceFab;
     [HideInInspector]
     public GameObject waifuPieceFab;
@@ -44,6 +46,7 @@ public class ResourceLoader : Singleton<ResourceLoader>
         dollarBillFab = Resources.Load<GameObject>("Prefabs/DollarBill");
         barrierPieceFab = Resources.Load<GameObject>("Prefabs/BarrierBlock");
         zoneBarrierPieceFab = Resources.Load<GameObject>("Prefabs/ZoneBarrierBlock");
+        zoneKeyPieceFab = Resources.Load<GameObject>("Prefabs/ZoneKeyBlock");
         potionPieceFab = Resources.Load<GameObject>("Prefabs/Potion");
         waifuPieceFab = Resources.Load<GameObject>("Prefabs/WaifuBlock");
         eduBookFab = Resources.Load<GameObject>("Prefabs/EduBookBlock");
