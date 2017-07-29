@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23fa010b86c535c4fab4e9de456d3238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLines: 20
+  maxLines: 30
 --- !u!114 &114966648603352932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -136,11 +136,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultBlockFab: {fileID: 0}
   playerBoardPieceFab: {fileID: 0}
+  lootBoardPieceFab: {fileID: 0}
   dollarBillFab: {fileID: 0}
   barrierPieceFab: {fileID: 0}
+  zoneBarrierPieceFab: {fileID: 0}
+  zoneKeyPieceFab: {fileID: 0}
   potionPieceFab: {fileID: 0}
   waifuPieceFab: {fileID: 0}
   eduBookFab: {fileID: 0}
   portraitKidSprite: {fileID: 0}
   portraitManSprite: {fileID: 0}
   portraitOldManSprite: {fileID: 0}
+  portraitFemaleASprite: {fileID: 0}
