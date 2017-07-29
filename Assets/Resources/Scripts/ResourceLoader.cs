@@ -12,6 +12,8 @@ public class ResourceLoader : Singleton<ResourceLoader>
     public GameObject dollarBillFab;
     [HideInInspector]
     public GameObject barrierPieceFab;
+    [HideInInspector]
+    public GameObject potionPieceFab;
 
     [HideInInspector]
     public Sprite portraitKidSprite;
@@ -33,6 +35,7 @@ public class ResourceLoader : Singleton<ResourceLoader>
         playerBoardPieceFab = Resources.Load<GameObject>("Prefabs/PlayerBoardPiece");
         dollarBillFab = Resources.Load<GameObject>("Prefabs/DollarBill");
         barrierPieceFab = Resources.Load<GameObject>("Prefabs/BarrierBlock");
+        potionPieceFab = Resources.Load<GameObject>("Prefabs/Potion");
 
         portraitKidSprite = Resources.Load<Sprite>("Textures/tempFaceKid");
         portraitManSprite = Resources.Load<Sprite>("Textures/tempFaceMan");

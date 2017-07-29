@@ -41,11 +41,12 @@ public class PlayerBoardPiece : BoardPiece
         return board.IsSquareMovable(x, y);
     }
 
-    public void GetPickups() {
+    public List<BoardPiece> GetPickups() {
         if (isOverPickup()){
-            //TODO pickup
             Debug.Log("Cash me outside");
+            return getPickups();
         }
+        return new List<BoardPiece>();
     }
 
     public override int GetContentType() {

@@ -58,6 +58,15 @@ public class BoardPiece : MonoBehaviour {
     }
 
     /// <summary>
+    /// Get the pickups under the piece.  This may require searching all board locations so
+    /// call isOverPickup() first to determine if there is anything to pickup.
+    /// </summary>
+    /// <returns>Pieces under current piece location</returns>
+    public List<BoardPiece> getPickups() {
+        return board.getPickups(x, y);
+    }
+
+    /// <summary>
     /// Override to provide the main type of content this piece contains.
     /// Default is none.
     /// </summary>
@@ -66,4 +75,13 @@ public class BoardPiece : MonoBehaviour {
         return OPEN_SPACE;
     }
 
+    /// <summary>
+    /// Return true if this piece is at the given test location
+    /// </summary>
+    /// <param name="testX"></param>
+    /// <param name="testY"></param>
+    /// <returns></returns>
+    public bool isAt(int testX, int testY) {
+        return testX == x && testY == y;
+    }
 }

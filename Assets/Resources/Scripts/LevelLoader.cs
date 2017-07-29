@@ -43,5 +43,16 @@ public class LevelLoader : MonoBehaviour {
                 }
             }
         }
+        if (btype == BoardManager.BoardType.HEALTH) {
+            //health pots wherever
+            for (int x = 0; x < 10; x += 3) {
+                for (int y = x; y < 8; y += 2) { 
+                    GameObject horse = Instantiate(ResourceLoader.instance.potionPieceFab);
+                    PotionBoardPiece bigH = horse.GetComponent<PotionBoardPiece>();
+                    bigH.SetBoard(board);
+                    board.AddPiece(bigH, x, y);
+                }
+            }
+        }
     }
 }

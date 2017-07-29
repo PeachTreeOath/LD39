@@ -64,6 +64,28 @@ public class Board : MonoBehaviour
         newPiece.SetPosition(boardX, boardY);
     }
 
+    /// <summary>
+    /// Get the pickups, if any, at the given board location.
+    /// </summary>
+    /// <param name="xPos"></param>
+    /// <param name="yPos"></param>
+    /// <returns>All pickups at location or an empty list if there are none.</returns>
+    public List<BoardPiece> getPickups(int xPos, int yPos) {
+        List<BoardPiece> pickups = new List<BoardPiece>();
+
+        for (int i = 0; i < boardPieces.Count; i++) {
+            int tileContent = boardContent[xPos, yPos];
+            if (hasSet(tileContent, BoardPiece.PICKUP)) {
+                BoardPiece bp = boardPieces[i];
+                if (bp.isAt(xPos, yPos)) {
+                    pickups.Add(boardPieces[i]);
+                }
+            }
+        }
+
+        return pickups;
+    }
+
     public int GetBoardSize() {
         return (int)boardSize;
     }
