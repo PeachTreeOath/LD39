@@ -8,6 +8,9 @@ using UnityEngine;
 public class Board : MonoBehaviour
 {
 
+    //Debug -- set to true to allow walking through obstacles
+    private bool dbg_bypass_cockblock = false;
+
     [HideInInspector]
     public List<BoardPiece> boardPieces = new List<BoardPiece>();
 
@@ -115,12 +118,19 @@ public class Board : MonoBehaviour
     // Checks if player can move to this spot.
     public bool IsSquareMovable(int x, int y)
     {
+        if (dbg_bypass_cockblock) {
+            return true;
+        }
+
         if (x < 0 || x >= boardSize || y < 0 || y >= boardSize)
         {
             return false;
         }
         int tileContent = boardContent[x, y];
         if (hasSet(tileContent, BoardPiece.BARRIER)) {
+            return false;
+        }
+        if (hasSet(tileContent, BoardPiece.ZONE_BARRIER)) {
             return false;
         }
         return true;

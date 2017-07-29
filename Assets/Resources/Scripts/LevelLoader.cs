@@ -32,7 +32,7 @@ public class LevelLoader : MonoBehaviour {
                 board.AddPiece(bp, 2, y);
             }
 
-            GameObject waifu  = Instantiate(ResourceLoader.instance.waifuPieceFab);
+            GameObject waifu = Instantiate(ResourceLoader.instance.waifuPieceFab);
             WaifuBoardPiece wbp = waifu.GetComponent<WaifuBoardPiece>();
             wbp.SetBoard(board);
             //vertical barrier at x=2
@@ -46,13 +46,15 @@ public class LevelLoader : MonoBehaviour {
                     LootBoardPiece tm = tMoney.GetComponent<LootBoardPiece>();
                     tm.SetBoard(board);
                     board.AddPiece(tm, x, y);
+                    addZoneBarrier(board, 0, 0, 1);
+                    addZoneBarrier(board, 1, 1, 3);
                 }
             }
         }
         if (btype == BoardManager.BoardType.HEALTH) {
             //health pots wherever
             for (int x = 0; x < 10; x += 3) {
-                for (int y = x; y < 8; y += 2) { 
+                for (int y = x; y < 8; y += 2) {
                     GameObject horse = Instantiate(ResourceLoader.instance.potionPieceFab);
                     PotionBoardPiece bigH = horse.GetComponent<PotionBoardPiece>();
                     bigH.SetBoard(board);
@@ -68,8 +70,44 @@ public class LevelLoader : MonoBehaviour {
                     ml.SetBoard(board);
                     //vertical barrier at x=6,7
                     board.AddPiece(ml, x, y);
+                    addZoneBarrier(board, 2, 0, 2);
                 }
             }
         }
     }
+
+    //Make a square. temp code only
+    private void addZoneBarrier(Board board, int zoneKey, int start, int end) {
+        List<Vector2> squares = new List<Vector2>();
+        //top row
+        for (int y = start; y < end; y++) {
+            for (int x = start; x < board.GetBoardSize() - start; x++) {
+                squares.Add(new Vector2(x, y));
+                squares.Add(new Vector2(y, x));
+            }
+        }
+        //bot row
+        for (int y = board.GetBoardSize() - end; y < board.GetBoardSize() - start; y++) {
+            for (int x = start; x < board.GetBoardSize() - start; x++) {
+                squares.Add(new Vector2(x, y));
+                squares.Add(new Vector2(y, x));
+            }
+        }
+
+
+        foreach (Vector2 v in squares) {
+            GameObject vgg = Instantiate(ResourceLoader.instance.zoneBarrierPieceFab);
+            ZoneBarrierBoardPiece vvv = vgg.GetComponent<ZoneBarrierBoardPiece>();
+            vvv.SetBoard(board);
+            vvv.setKey(zoneKey);
+            board.AddPiece(vvv, (int)v.x, (int)v.y);
+        }
+    }
+
+
 }
+
+
+
+
+

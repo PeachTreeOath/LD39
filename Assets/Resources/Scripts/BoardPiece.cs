@@ -30,7 +30,8 @@ public class BoardPiece : MonoBehaviour {
     public static int OPEN_SPACE = 0;
     public static int PLAYER = 1;
     public static int BARRIER = 2;
-    public static int PICKUP = 4;
+    public static int ZONE_BARRIER = 4;
+    public static int PICKUP = 8;
 
     void FixedUpdate() {
         if (moving) {
