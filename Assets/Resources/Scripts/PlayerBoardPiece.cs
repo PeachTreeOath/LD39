@@ -5,20 +5,40 @@ using UnityEngine;
 /// <summary>
 /// The actual player representation on the board.
 /// </summary>
-public class PlayerBoardPiece : BoardPiece {
+public class PlayerBoardPiece : BoardPiece
+{
 
-	public void MoveUp()
+    public void MoveUp()
     {
-        if(CheckValidMove(x-1,y-1))
+        if (CheckValidMove(x, y + 1))
         {
-
+            SetPosition(x, y + 1);
         }
-        SetPosition(x - 1, y - 1);
     }
-
-    private void CheckValidMove(int x, int y)
+    public void MoveDown()
     {
-        return
+        if (CheckValidMove(x, y - 1))
+        {
+            SetPosition(x, y - 1);
+        }
+    }
+    public void MoveLeft()
+    {
+        if (CheckValidMove(x - 1, y))
+        {
+            SetPosition(x - 1, y);
+        }
+    }
+    public void MoveRight()
+    {
+        if (CheckValidMove(x + 1, y))
+        {
+            SetPosition(x + 1, y);
+        }
+    }
+    private bool CheckValidMove(int x, int y)
+    {
+        return board.IsSquareMovable(x, y);
     }
 
 }

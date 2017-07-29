@@ -5,7 +5,8 @@ using UnityEngine;
 /// <summary>
 /// Playing board that tracks objects and positions inside it.
 /// </summary>
-public class Board : MonoBehaviour {
+public class Board : MonoBehaviour
+{
 
     [HideInInspector]
     public List<BoardPiece> boardPieces = new List<BoardPiece>();
@@ -14,10 +15,9 @@ public class Board : MonoBehaviour {
     private float startingYPos;
     private float boardSize;
     private float tileSize;
-    
-    public GameObject CreateBoard(int boardSize, GameObject blockPrefab)
+
+    public void CreateBoard(int boardSize, GameObject blockPrefab)
     {
-        GameObject board = new GameObject();
         this.boardSize = boardSize;
         tileSize = blockPrefab.GetComponent<SpriteRenderer>().size.x;
         startingXPos = boardSize * -tileSize / 2 + tileSize / 2;
@@ -28,12 +28,10 @@ public class Board : MonoBehaviour {
             for (int j = 0; j < boardSize; j++)
             {
                 GameObject block = Instantiate(blockPrefab);
-                block.transform.SetParent(board.transform);
-                block.transform.localPosition = GetLocalPositionFromCoords(j,i);
+                block.transform.SetParent(transform);
+                block.transform.localPosition = GetLocalPositionFromCoords(j, i);
             }
         }
-
-        return board;
     }
 
     public void AddPiece(BoardPiece newPiece)
@@ -52,7 +50,7 @@ public class Board : MonoBehaviour {
     // Checks if player can move to this spot. TODO: Modify this to add in obstacle checks.
     public bool IsSquareMovable(int x, int y)
     {
-        if(x < 0 || x >= boardSize || y < 0 || y >= boardSize)
+        if (x < 0 || x >= boardSize || y < 0 || y >= boardSize)
         {
             return false;
         }

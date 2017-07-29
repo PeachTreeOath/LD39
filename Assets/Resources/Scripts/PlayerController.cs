@@ -5,13 +5,15 @@ using UnityEngine;
 /// <summary>
 /// Creates and manages player board pieces.
 /// </summary>
-public class PlayerController : MonoBehaviour
+public class PlayerController : Singleton<PlayerController>
 {
+
+    public Vector2 startingPosition = new Vector2(4, 4);
 
     private List<PlayerBoardPiece> players = new List<PlayerBoardPiece>();
 
-    // Use this for initialization
-    void Start()
+    // This is manually called by BoardManager to get ordering correct.
+    public void Init()
     {
         if (BoardManager.instance.relationshipBoardOn)
         {
@@ -45,6 +47,11 @@ public class PlayerController : MonoBehaviour
             healthPlayer.SetBoard(BoardManager.instance.healthBoard);
             players.Add(healthPlayer);
         }
+
+        foreach(PlayerBoardPiece player in players)
+        {
+            player.SetPosition((int)startingPosition.x, (int)startingPosition.y);
+        }
     }
 
     // Update is called once per frame
@@ -64,14 +71,14 @@ public class PlayerController : MonoBehaviour
                 player.MoveDown();
             }
         }
-        if (Input.GetButtonDown("Up"))
+        if (Input.GetButtonDown("Left"))
         {
             foreach (PlayerBoardPiece player in players)
             {
                 player.MoveLeft();
             }
         }
-        if (Input.GetButtonDown("Up"))
+        if (Input.GetButtonDown("Right"))
         {
             foreach (PlayerBoardPiece player in players)
             {

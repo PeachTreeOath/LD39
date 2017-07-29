@@ -26,7 +26,6 @@ public class BoardManager : Singleton<BoardManager>
     [HideInInspector]
     public float tileSize;
 
-    // Need to create board before player.
     void Start()
     {
         tileSize = ResourceLoader.instance.defaultBlockFab.GetComponent<SpriteRenderer>().size.x;
@@ -55,11 +54,15 @@ public class BoardManager : Singleton<BoardManager>
             healthBoard.name = "Health Board";
             healthBoard.transform.position = new Vector2(2.5f, 2.5f);
         }
+
+        // Need to create board before player.
+        PlayerController.instance.Init();
     }
 
     public Board CreateBoard(int boardSize, GameObject blockPrefab)
     {
-        Board newBoard = gameObject.AddComponent<Board>();
+        GameObject newObj = new GameObject();
+        Board newBoard = newObj.AddComponent<Board>();
         newBoard.CreateBoard(boardSize, blockPrefab);
         return newBoard;
     }

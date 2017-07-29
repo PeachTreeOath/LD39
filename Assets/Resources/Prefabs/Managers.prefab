@@ -75,6 +75,11 @@ MonoBehaviour:
   educationBoardOn: 1
   healthBoardOn: 1
   boardSize: 10
+  relationshipBoard: {fileID: 0}
+  cashBoard: {fileID: 0}
+  educationBoard: {fileID: 0}
+  healthBoard: {fileID: 0}
+  tileSize: 0
 --- !u!114 &114801278486996658
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -116,3 +121,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultBlockFab: {fileID: 0}
+  playerBoardPieceFab: {fileID: 0}
+  dollarBillFab: {fileID: 0}
