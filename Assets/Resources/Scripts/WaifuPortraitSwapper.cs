@@ -10,12 +10,13 @@ public class WaifuPortraitSwapper : Singleton<WaifuPortraitSwapper>
     void Start()
     {
         spr = GetComponent<SpriteRenderer>();
-        spr.sprite = ResourceLoader.instance.portraitFemaleASprite;
         spr.enabled = false;
     }
 
-    public void TurnOnPortrait()
+    public void TurnOnPortrait(WaifuBoardPiece piece)
     {
+        //TODO: Check piece and tie it to the matching sprite
+        spr.sprite = ResourceLoader.instance.portraitFemaleASprite;
         spr.enabled = true;
     }
 

@@ -126,7 +126,7 @@ public class PlayerController : Singleton<PlayerController>
             } else if (bpType == typeof(WaifuBoardPiece)) {
                 Debug.Log("Waifu smash");
                 LogManager.instance.Log("Waifu smash!");
-                WaifuPortraitSwapper.instance.TurnOnPortrait();
+                WaifuPortraitSwapper.instance.TurnOnPortrait((WaifuBoardPiece)bp);
             } else if (bpType == typeof(ZoneKeyBoardPiece)) {
                 Debug.Log("Keys to the city, baby");
                 LogManager.instance.Log("Keys to the city, baby");
