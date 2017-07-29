@@ -31,6 +31,12 @@ public class LevelLoader : MonoBehaviour {
                 //vertical barrier at x=2
                 board.AddPiece(bp, 2, y);
             }
+
+            GameObject waifu  = Instantiate(ResourceLoader.instance.waifuPieceFab);
+            WaifuBoardPiece wbp = waifu.GetComponent<WaifuBoardPiece>();
+            wbp.SetBoard(board);
+            //vertical barrier at x=2
+            board.AddPiece(wbp, 8, 8);
         }
         if (btype == BoardManager.BoardType.CASH) {
             //dollas at 8,8 - 10,10 
@@ -52,6 +58,15 @@ public class LevelLoader : MonoBehaviour {
                     bigH.SetBoard(board);
                     board.AddPiece(bigH, x, y);
                 }
+            }
+        }
+        if (btype == BoardManager.BoardType.EDUCATION) {
+            for (int y = 2; y < board.GetBoardSize()-2; y++) {
+                GameObject mlady = Instantiate(ResourceLoader.instance.eduBookFab);
+                EduBookBoardPiece ml = mlady.GetComponent<EduBookBoardPiece>();
+                ml.SetBoard(board);
+                //vertical barrier at x=6
+                board.AddPiece(ml, 6, y);
             }
         }
     }
