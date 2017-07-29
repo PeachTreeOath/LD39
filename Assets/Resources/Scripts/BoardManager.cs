@@ -26,6 +26,8 @@ public class BoardManager : Singleton<BoardManager>
     [HideInInspector]
     public float tileSize;
 
+    private List<Board> activeBoards = new List<Board>();
+
     [SerializeField]
     private LevelLoader levelLoader;
 
@@ -44,6 +46,7 @@ public class BoardManager : Singleton<BoardManager>
             relationshipBoard = CreateBoard(boardSize, ResourceLoader.instance.defaultBlockFab, BoardType.RELATIONSHIP, 1);
             relationshipBoard.name = "Relationship Board";
             relationshipBoard.transform.position = new Vector2(-2.5f, 2.5f);
+            activeBoards.Add(relationshipBoard);
         }
         if (cashBoardOn)
         {
@@ -51,22 +54,29 @@ public class BoardManager : Singleton<BoardManager>
             cashBoard.name = "Cash Board";
             cashBoard.transform.position = new Vector2(-2.5f, -2.5f);
             cashBoard.gameObject.AddComponent<LootBoardManager>();
+            activeBoards.Add(cashBoard);
         }
         if (educationBoardOn)
         {
             educationBoard = CreateBoard(boardSize, ResourceLoader.instance.defaultBlockFab, BoardType.EDUCATION, 1);
             educationBoard.name = "Education Board";
             educationBoard.transform.position = new Vector2(2.5f, -2.5f);
+            activeBoards.Add(educationBoard);
         }
         if (healthBoardOn)
         {
             healthBoard = CreateBoard(boardSize, ResourceLoader.instance.defaultBlockFab, BoardType.HEALTH, 1);
             healthBoard.name = "Health Board";
             healthBoard.transform.position = new Vector2(2.5f, 2.5f);
+            activeBoards.Add(healthBoard);
         }
 
         // Need to create board before player.
         PlayerController.instance.Init();
+    }
+
+    public List<Board> getAllBoards() {
+        return activeBoards;
     }
 
     /// <summary>

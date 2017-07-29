@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZoneBarrierBoardPiece : BoardPiece {
+public class ZoneKeyBoardPiece : BoardPiece {
     //A key with the same id will unlock the matching zone
     public int zoneKey = 0;
 
@@ -21,14 +21,17 @@ public class ZoneBarrierBoardPiece : BoardPiece {
         gameObject.GetComponent<SpriteRenderer>().sprite = spriteForKey[newKey];
     }
 
-    public void unlock(int key) {
-        if (key == zoneKey) {
-            board.RemovePiece(this, x, y);
-            Destroy(this.gameObject);
-        }
+    public int getKey() {
+        return zoneKey;
     }
 
     public override int GetContentType() {
-        return BoardPiece.ZONE_BARRIER;
+        return BoardPiece.PICKUP;
+    }
+
+    public override void OnPickup() {
+        foreach (Board bb in BoardManager.instance.getAllBoards()) {
+            bb.useKey(this);
+        }
     }
 }
