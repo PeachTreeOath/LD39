@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LifeStatManager : MonoBehaviour {
+public class LifeStatManager : Singleton<LifeStatManager> {
 
 	public bool isMarried;
     public int educationLevel;

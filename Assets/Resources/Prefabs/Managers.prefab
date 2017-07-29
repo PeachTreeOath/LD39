@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 114410542767506160}
   - component: {fileID: 114966648603352932}
   - component: {fileID: 114805188963238486}
-  - component: {fileID: 114801278486996658}
   - component: {fileID: 114195871500150082}
+  - component: {fileID: 114458622068339646}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -57,6 +57,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   booksToLevelEducation: 3
   initialMaxAge: 50
+  initialAge: 0
   initialGoldDropRate: 1
   goldDropRateScalar: 0.5
 --- !u!114 &114410542767506160
@@ -80,7 +81,7 @@ MonoBehaviour:
   educationBoard: {fileID: 0}
   healthBoard: {fileID: 0}
   tileSize: 0
---- !u!114 &114801278486996658
+--- !u!114 &114458622068339646
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -88,11 +89,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1087000101360306}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc4de6b5671d4f54fb5c9756866f4800, type: 3}
+  m_Script: {fileID: 11500000, guid: 587fb03d10d3e924fb90f46f7f915a05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generation: 1
-  wealth: 0
 --- !u!114 &114805188963238486
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -123,3 +122,6 @@ MonoBehaviour:
   defaultBlockFab: {fileID: 0}
   playerBoardPieceFab: {fileID: 0}
   dollarBillFab: {fileID: 0}
+  portraitKidSprite: {fileID: 0}
+  portraitManSprite: {fileID: 0}
+  portraitOldManSprite: {fileID: 0}

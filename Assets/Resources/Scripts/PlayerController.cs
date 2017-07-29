@@ -103,15 +103,15 @@ public class PlayerController : Singleton<PlayerController>
 
     void AdvanceTurn()
     {
+        //Handle any local logic
+        //Advance stats first so behaviours will get correct data
+        lifeStatManager.age++;
+
         //Invoke listeners that implement TurnBehaviour
-        TurnBehaviour[] turnBehaviours = Object.FindObjectsOfType<TurnBehaviour>();
+        TurnBehaviour[] turnBehaviours = FindObjectsOfType<TurnBehaviour>();
         foreach (TurnBehaviour behaviour in turnBehaviours)
         {
             behaviour.OnAdvanceTurn();
         }
-
-        //Handle any local logic
-        lifeStatManager.age++;
-
     }
 }
