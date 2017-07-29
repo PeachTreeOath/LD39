@@ -115,10 +115,10 @@ public class PlayerController : Singleton<PlayerController>
                 Debug.Log("Potion picked up");
             } else if (bpType == typeof(LootBoardPiece)) {
                 Debug.Log("Cash me outside");
-            //} else if (bpType == typeof(BookBoardPiece)) {
-                //Debug.Log("Book pickup");
-            //} else if (bpType == typeof(WaifuBoardPiece)) {
-                //Debug.Log("Waifu smash");
+            } else if (bpType == typeof(EduBookBoardPiece)) {
+                Debug.Log("Book pickup");
+            } else if (bpType == typeof(WaifuBoardPiece)) {
+                Debug.Log("Waifu smash");
             }
         }
     }

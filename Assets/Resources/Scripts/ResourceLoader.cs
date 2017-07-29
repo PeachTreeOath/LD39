@@ -14,6 +14,10 @@ public class ResourceLoader : Singleton<ResourceLoader>
     public GameObject barrierPieceFab;
     [HideInInspector]
     public GameObject potionPieceFab;
+    [HideInInspector]
+    public GameObject waifuPieceFab;
+    [HideInInspector]
+    public GameObject eduBookBlock;
 
     [HideInInspector]
     public Sprite portraitKidSprite;
@@ -36,6 +40,8 @@ public class ResourceLoader : Singleton<ResourceLoader>
         dollarBillFab = Resources.Load<GameObject>("Prefabs/DollarBill");
         barrierPieceFab = Resources.Load<GameObject>("Prefabs/BarrierBlock");
         potionPieceFab = Resources.Load<GameObject>("Prefabs/Potion");
+        waifuPieceFab = Resources.Load<GameObject>("Prefabs/WaifuBlock");
+        eduBookBlock = Resources.Load<GameObject>("Prefabs/EduBookBlock");
 
         portraitKidSprite = Resources.Load<Sprite>("Textures/tempFaceKid");
         portraitManSprite = Resources.Load<Sprite>("Textures/tempFaceMan");
