@@ -57,7 +57,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   booksToLevelEducation: 3
   initialMaxAge: 50
-  initialAge: 0
+  initialAge: 15
   initialGoldDropRate: 1
   goldDropRateScalar: 0.5
 --- !u!114 &114410542767506160
@@ -81,6 +81,8 @@ MonoBehaviour:
   educationBoard: {fileID: 0}
   healthBoard: {fileID: 0}
   tileSize: 0
+  levelLoader: {fileID: 114837082713562050, guid: 7db7ef126a1d29b49a18ab69cbd8da28,
+    type: 2}
 --- !u!114 &114458622068339646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -122,6 +124,10 @@ MonoBehaviour:
   defaultBlockFab: {fileID: 0}
   playerBoardPieceFab: {fileID: 0}
   dollarBillFab: {fileID: 0}
+  barrierPieceFab: {fileID: 0}
+  potionPieceFab: {fileID: 0}
+  waifuPieceFab: {fileID: 0}
+  eduBookBlock: {fileID: 0}
   portraitKidSprite: {fileID: 0}
   portraitManSprite: {fileID: 0}
   portraitOldManSprite: {fileID: 0}
