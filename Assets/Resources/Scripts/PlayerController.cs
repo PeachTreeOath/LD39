@@ -13,4 +13,11 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    void AdvanceTurn() {
+        TurnBehaviour[] turnBehaviours = Object.FindObjectsOfType<TurnBehaviour>();
+        foreach(TurnBehaviour behaviour in turnBehaviours) {
+            behaviour.OnAdvanceTurn();
+        }
+    }
 }
