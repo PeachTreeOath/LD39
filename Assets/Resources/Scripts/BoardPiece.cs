@@ -117,4 +117,8 @@ public class BoardPiece : MonoBehaviour {
     public virtual void OnPickup() {
 
     }
+
+    public virtual void OnRemove() {
+        GetComponent<SpriteRenderer>().enabled = false;
+    }
 }

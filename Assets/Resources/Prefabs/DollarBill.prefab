@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4429084283101140}
   - component: {fileID: 212377403097663318}
-  - component: {fileID: 114729827675627082}
   m_Layer: 0
   m_Name: DollarBill
   m_TagString: Untagged
@@ -41,20 +40,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114729827675627082
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1468838239076696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 522c77ea3f32d6a4f9f5ea78c6710c2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  x: 0
-  y: 0
-  board: {fileID: 0}
 --- !u!212 &212377403097663318
 SpriteRenderer:
   m_ObjectHideFlags: 1
