@@ -27,6 +27,8 @@ public class ResourceLoader : Singleton<ResourceLoader>
     public Sprite portraitManSprite;
     [HideInInspector]
     public Sprite portraitOldManSprite;
+    [HideInInspector]
+    public Sprite portraitFemaleASprite;
 
     protected override void Awake()
     {
@@ -49,5 +51,6 @@ public class ResourceLoader : Singleton<ResourceLoader>
         portraitKidSprite = Resources.Load<Sprite>("Textures/tempFaceKid");
         portraitManSprite = Resources.Load<Sprite>("Textures/tempFaceMan");
         portraitOldManSprite = Resources.Load<Sprite>("Textures/tempFaceOldMan");
+        portraitFemaleASprite = Resources.Load<Sprite>("Textures/tempGrill");
     }
 }

@@ -72,7 +72,7 @@ public class PlayerController : Singleton<PlayerController>
             }
             turnWillAdv = true;
         }
-        if (Input.GetButtonDown("Down"))
+        else if (Input.GetButtonDown("Down"))
         {
             foreach (PlayerBoardPiece player in players)
             {
@@ -81,7 +81,7 @@ public class PlayerController : Singleton<PlayerController>
             }
             turnWillAdv = true;
         }
-        if (Input.GetButtonDown("Left"))
+        else if (Input.GetButtonDown("Left"))
         {
             foreach (PlayerBoardPiece player in players)
             {
@@ -90,7 +90,7 @@ public class PlayerController : Singleton<PlayerController>
             }
             turnWillAdv = true;
         }
-        if (Input.GetButtonDown("Right"))
+        else if (Input.GetButtonDown("Right"))
         {
             foreach (PlayerBoardPiece player in players)
             {
