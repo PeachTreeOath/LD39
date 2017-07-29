@@ -30,4 +30,9 @@ public class StatConstants : Singleton<StatConstants> {
         return isMarried ? "Married" : "Single";
     }
 
+    public string BooksString(int books)
+    {
+        return books + "/" + booksToLevelEducation;
+    }
+
 }

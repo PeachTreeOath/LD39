@@ -46,7 +46,7 @@ public class LifeStatManager : Singleton<LifeStatManager> {
         relationshipStatusField.text = StatConstants.instance.RelationshipStatusString(isMarried);
         wealthField.text = "$" + PermanentStatManager.instance.wealth;
         educationLevelField.text = StatConstants.instance.EducationString(educationLevel);
-        booksField.text = "" + books;
+        booksField.text = StatConstants.instance.BooksString(books);
         ageField.text = "" + age;
         maxAgeField.text = "" + maxAge;
         generationField.text = "" + PermanentStatManager.instance.generation;

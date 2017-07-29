@@ -149,6 +149,10 @@ public class Board : MonoBehaviour
         return hasSet(tileContent, contentId);
     }
 
+    public bool IsOccupied(int x, int y) {
+        return boardContent[x, y] != 0;
+    }
+
     /// <summary>
     /// Update the contents of the tiles affected by a piece move.
     /// This version is for moving a piece already on the board.
