@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FadeUI : MonoBehaviour {
+public class FadeUI : Singleton<FadeUI> {
+    public float secondsToFade;
+
 
     public void FadeMe()
     {
@@ -14,7 +16,7 @@ public class FadeUI : MonoBehaviour {
         CanvasGroup canvasGroup = GetComponent<CanvasGroup>();
         while(canvasGroup.alpha > 0)
         {
-            canvasGroup.alpha -= Time.deltaTime / 2;
+            canvasGroup.alpha -= Time.deltaTime / secondsToFade;
             yield return null;
         }
         canvasGroup.interactable = false;

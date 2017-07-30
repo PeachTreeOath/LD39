@@ -11,7 +11,9 @@ public class GameEnder : TurnBehaviour {
         {
             PermanentStatManager.instance.generation++;
             PermanentStatManager.instance.currentLevel++;
-            SceneManager.LoadScene("Game");
+            playEndingEffects();
+
+            
         }
         else if (LifeStatManager.instance.age > LifeStatManager.instance.maxAge)
         {
@@ -20,6 +22,13 @@ public class GameEnder : TurnBehaviour {
             PermanentStatManager.instance.currentLevel++;
             SceneManager.LoadScene("Game");
         }
-}
+    }
+
+    private void playEndingEffects()
+    {
+        FadeUI.instance.FadeMe();
+        FadeSprite.instance.FadeMe();
+        SceneManager.LoadScene("Game");
+    }
 
 }
