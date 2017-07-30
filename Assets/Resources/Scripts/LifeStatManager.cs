@@ -39,13 +39,15 @@ public class LifeStatManager : Singleton<LifeStatManager> {
         //InitiallizeFields
         maxAge = StatConstants.instance.initialMaxAge;
         age = StatConstants.instance.initialAge;
+
+        GameObject.Find("StatsPanel").gameObject.SetActive(false);
     }
 
     void Update()
     {
         //Update UI
         //Stats panel currently disabled
-        
+        /*
         relationshipStatusField.text = StatConstants.instance.RelationshipStatusString(isMarried);
         wealthField.text = "$" + PermanentStatManager.instance.wealth;
         educationLevelField.text = StatConstants.instance.EducationString(educationLevel);
@@ -53,7 +55,7 @@ public class LifeStatManager : Singleton<LifeStatManager> {
         ageField.text = "" + age;
         maxAgeField.text = "" + maxAge;
         generationField.text = "" + PermanentStatManager.instance.generation;
-        
+        */
     }
 
     public void addBooks(int amt) {
