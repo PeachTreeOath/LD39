@@ -102,15 +102,15 @@ public class LevelFileIO : MonoBehaviour {
         sw.WriteLine("#BARRIER_PURPLE = 'X'");
         sw.WriteLine("#BARRIER_GREEN = 'C'");
         sw.WriteLine("#STATIC_BARRIER = 'Q'");
-        sw.WriteLine("#PLAYER = 'P'  (not implemented yet)");
+        sw.WriteLine("#PLAYER = 'P'");
         sw.WriteLine("#BOOK = 'B'");
-        sw.WriteLine("#MONEY = 'M'  (note, money is also placed randomly)");
+        sw.WriteLine("#MONEY = 'M'  (include one param [startingValue])");
         sw.WriteLine("#WAIFU = 'W'");
         sw.WriteLine("#HEALTH = 'H'");
         sw.WriteLine("#NOOP (ignored) = '_'");
         sw.WriteLine("#NOOP1  (ignored) = ' '");
         sw.WriteLine("#NOOP2  (tab ignored) = '\t'");
-        sw.WriteLine("#Parameters are applied in a bracket after certain letters: e.g. H[4] or W[1,2]  (not implemented yet)");
+        sw.WriteLine("#Parameters are applied in a bracket after certain letters: e.g. H[4] or W[1,2]");
         sw.WriteLine("#PARAM_START = '['");
         sw.WriteLine("#PARAM_END = ']'");
         sw.WriteLine("#FS_END (column separator) = ','");
@@ -151,14 +151,28 @@ public class LevelFileIO : MonoBehaviour {
     /// <returns></returns>
     public List<Board> loadLevel(string filename) {
         Debug.Log("LoadLevel " + filename);
-        return readLevelFile(filename);
+            StreamReader sr = new StreamReader(filename, Encoding.Default);
+        return readLevelFile(sr);
+    }
+
+    /// <summary>
+    /// Load a set of boards that make up a level from the given file.  Returns 
+    /// the loaded boards.  Boards need to be positioned after return.
+    /// </summary>
+    /// <param name="fileBytes">File text in byte array</param>
+    /// <returns></returns>
+    public List<Board> loadLevel(byte[] fileBytes) {
+        Debug.Log("LoadLevel from bytes");
+        MemoryStream ms = new MemoryStream(fileBytes);
+        StreamReader sr = new StreamReader(ms);
+        return readLevelFile(sr);
     }
 
     //read a bunch of boards 
-    private List<Board> readLevelFile(string filename) {
+    private List<Board> readLevelFile(StreamReader sr) {
         List<Board> levelBoards = new List<Board>();
         try {
-            StreamReader sr = new StreamReader(filename, Encoding.Default);
+            //StreamReader sr = new StreamReader(filename, Encoding.Default);
             using (sr) {
                 bool boardReadComplete = false;
                 string boardTypeStr = "";

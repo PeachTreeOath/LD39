@@ -72,8 +72,13 @@ public class BoardManager : Singleton<BoardManager> {
             activeBoards.Clear();
 
             string levelFile = levelList[(levelId % levelList.Count)];
+            //data path gives us "Assets"
+            ///levels are then at "Resources/Levels/"
+            TextAsset levelAsset = ResourceLoader.instance.getLevelTextAsset(levelFile);
+            //List<Board> boards =
+            //levelLoader.LoadBoardsFromFile(Application.dataPath+"/Resources/Levels/"+levelFile); //FIXME unhardcode
             List<Board> boards =
-                levelLoader.LoadBoardsFromFile("Assets/Resources/Levels/"+levelFile); //FIXME unhardcode
+                levelLoader.LoadBoardsFromBytes(levelAsset.bytes);
 
             float boardDistance = 2f;
             //position boards correclty

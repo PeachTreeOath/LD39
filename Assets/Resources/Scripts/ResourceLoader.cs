@@ -111,6 +111,10 @@ public class ResourceLoader : Singleton<ResourceLoader>
         portraitChip90 = Resources.Load<Sprite>("Textures/chip-portrait/chip-90");
     }
 
+    public TextAsset getLevelTextAsset(string levelName) {
+        return Resources.Load<TextAsset>("Levels/"+levelName);
+    }
+
     private Sprite[] LoadSpriteArray(string format, int count) {
         Sprite[] sprites = new Sprite[count];
         for (int i = 0; i < count;  i++) {

@@ -25,6 +25,18 @@ public class LevelLoader : MonoBehaviour {
     }
 
     /// <summary>
+    /// Load level from bytes (TextAsset bytes)
+    /// </summary>
+    public List<Board> LoadBoardsFromBytes(byte[] filebytes) {
+        LevelFileIO lfio = gameObject.GetComponent<LevelFileIO>();
+        if (lfio == null) {
+            Debug.LogError("You will need a fileIO to load a file");
+            return null;
+        }
+        return lfio.loadLevel(filebytes);
+    }
+
+    /// <summary>
     /// Populate a board with content...somehow
     /// </summary>
     /// <param name="board">The board that will have content loaded into it</param>

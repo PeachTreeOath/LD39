@@ -147,21 +147,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 114365719835449318, guid: b7da24728b6b95d449d62d67eee11ff6,
-        type: 2}
-      propertyPath: filename
-      value: ChroLevel7
-      objectReference: {fileID: 0}
-    - target: {fileID: 114365719835449318, guid: b7da24728b6b95d449d62d67eee11ff6,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114365719835449318, guid: b7da24728b6b95d449d62d67eee11ff6,
-        type: 2}
-      propertyPath: checkThisToCreateFile
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b7da24728b6b95d449d62d67eee11ff6, type: 2}
   m_IsPrefabParent: 0

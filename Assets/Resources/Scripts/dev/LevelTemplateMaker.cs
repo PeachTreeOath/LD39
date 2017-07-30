@@ -7,7 +7,7 @@ using UnityEngine;
 public class LevelTemplateMaker : MonoBehaviour {
 
     public string filename = "";
-    public string fileExt = ".lvl";
+    public string fileExt = ".lvl.txt"; //Unity requires .txt for TextAsset
     private string filePath = "Assets/Resources/Levels/";
     public bool checkThisToCreateFile = false;
 

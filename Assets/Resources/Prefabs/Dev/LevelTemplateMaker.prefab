@@ -53,8 +53,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc008bee95f3e4545975f72c8fd51a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  filename: yoloxx
-  fileExt: .lvl
+  filename: ChroLevel7
+  fileExt: .lvl.txt
   checkThisToCreateFile: 0
 --- !u!114 &114371757576775324
 MonoBehaviour:
