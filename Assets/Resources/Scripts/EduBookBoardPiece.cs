@@ -6,4 +6,7 @@ public class EduBookBoardPiece :  BuyablePiece {
 
     public int bookValue = 1;
 
+    public void Start() {
+        price = 100;
+    }
 }
