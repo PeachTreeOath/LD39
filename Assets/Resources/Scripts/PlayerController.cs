@@ -136,6 +136,7 @@ public class PlayerController : Singleton<PlayerController>
             {
                 LogManager.instance.Log("She said yes!");
                 AudioManager.instance.PlaySound("Marriage");
+                LifeStatManager.instance.isMarried = true;
                // WaifuPortraitSwapper.instance.TurnOnPortrait((WaifuBoardPiece)bp);
             }
             else if (bpType == typeof(ZoneKeyBoardPiece))
