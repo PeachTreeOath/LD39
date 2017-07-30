@@ -16,47 +16,54 @@ public class PlayerController : Singleton<PlayerController>
     private LifeStatManager lifeStatManager;
 
     // This is manually called by BoardManager to get ordering correct.
-    public void Init()
+    public void Init(List<PlayerBoardPiece> allPlayers)
     {
         lifeStatManager = GameObject.Find("Managers").GetComponent<LifeStatManager>();
 
-        if (BoardManager.instance.relationshipBoardOn)
-        {
-            PlayerBoardPiece relationshipPlayer = CreatePlayer();
-            relationshipPlayer.name = "Relationship Player";
-            relationshipPlayer.transform.position = new Vector2(-2.5f, 2.5f);
-            relationshipPlayer.SetBoard(BoardManager.instance.relationshipBoard);
-            players.Add(relationshipPlayer);
-        }
-        if (BoardManager.instance.cashBoardOn)
-        {
-            PlayerBoardPiece cashPlayer = CreatePlayer();
-            cashPlayer.name = "Cash Player";
-            cashPlayer.transform.position = new Vector2(-2.5f, -2.5f);
-            cashPlayer.SetBoard(BoardManager.instance.cashBoard);
-            players.Add(cashPlayer);
-        }
-        if (BoardManager.instance.educationBoardOn)
-        {
-            PlayerBoardPiece educationPlayer = CreatePlayer();
-            educationPlayer.name = "Education Player";
-            educationPlayer.transform.position = new Vector2(2.5f, -2.5f);
-            educationPlayer.SetBoard(BoardManager.instance.educationBoard);
-            players.Add(educationPlayer);
-        }
-        if (BoardManager.instance.healthBoardOn)
-        {
-            PlayerBoardPiece healthPlayer = CreatePlayer();
-            healthPlayer.name = "Health Player";
-            healthPlayer.transform.position = new Vector2(2.5f, 2.5f);
-            healthPlayer.SetBoard(BoardManager.instance.healthBoard);
-            players.Add(healthPlayer);
+        players.Clear();
+        players.AddRange(allPlayers);
+
+        if (players.Count == 0) {
+            Debug.LogError("No players loaded...are you sure they were in the level data?");
         }
 
-        foreach (PlayerBoardPiece player in players)
-        {
-            player.SetPosition((int)startingPosition.x, (int)startingPosition.y);
-        }
+       // if (BoardManager.instance.relationshipBoardOn)
+       // {
+       //     PlayerBoardPiece relationshipPlayer = CreatePlayer();
+       //     relationshipPlayer.name = "Relationship Player";
+       //     relationshipPlayer.transform.position = new Vector2(-2.5f, 2.5f);
+       //     relationshipPlayer.SetBoard(BoardManager.instance.relationshipBoard);
+       //     players.Add(relationshipPlayer);
+       // }
+       // if (BoardManager.instance.cashBoardOn)
+       // {
+       //     PlayerBoardPiece cashPlayer = CreatePlayer();
+       //     cashPlayer.name = "Cash Player";
+       //     cashPlayer.transform.position = new Vector2(-2.5f, -2.5f);
+       //     cashPlayer.SetBoard(BoardManager.instance.cashBoard);
+       //     players.Add(cashPlayer);
+       // }
+       // if (BoardManager.instance.educationBoardOn)
+       // {
+       //     PlayerBoardPiece educationPlayer = CreatePlayer();
+       //     educationPlayer.name = "Education Player";
+       //     educationPlayer.transform.position = new Vector2(2.5f, -2.5f);
+       //     educationPlayer.SetBoard(BoardManager.instance.educationBoard);
+       //     players.Add(educationPlayer);
+       // }
+       // if (BoardManager.instance.healthBoardOn)
+       // {
+       //     PlayerBoardPiece healthPlayer = CreatePlayer();
+       //     healthPlayer.name = "Health Player";
+       //     healthPlayer.transform.position = new Vector2(2.5f, 2.5f);
+       //     healthPlayer.SetBoard(BoardManager.instance.healthBoard);
+       //     players.Add(healthPlayer);
+       // }
+
+       // foreach (PlayerBoardPiece player in players)
+       // {
+       //     player.SetPosition((int)startingPosition.x, (int)startingPosition.y);
+       // }
     }
 
     // Update is called once per frame

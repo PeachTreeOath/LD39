@@ -50,8 +50,15 @@ public class BoardManager : Singleton<BoardManager> {
         tileSize = ResourceLoader.instance.defaultBlockFab.GetComponent<SpriteRenderer>().size.x;
         loadlevel(PermanentStatManager.instance.currentLevel);
 
+        List<PlayerBoardPiece> playas = new List<PlayerBoardPiece>();
+        foreach (Board board in activeBoards) {
+            PlayerBoardPiece pbp = board.GetPlayerBoardPiece();
+            if (pbp != null) {
+                playas.Add(pbp);
+            }
+        }
         // Need to create board before player.
-        PlayerController.instance.Init();
+        PlayerController.instance.Init(playas);
     }
 
     public List<Board> getAllBoards() {
