@@ -68,30 +68,31 @@ public class BoardManager : Singleton<BoardManager> {
             List<Board> boards =
                 levelLoader.LoadBoardsFromFile("Assets/Resources/Levels/"+levelFile); //FIXME unhardcode
 
+            float boardDistance = 2.2f;
             //position boards correclty
             foreach (Board brd in boards) {
                 switch (brd.myBoardType) {
                     case BoardType.RELATIONSHIP:
                         brd.name = "Relationship Board";
-                        brd.transform.position = new Vector2(-2.5f, 2.5f);
+                        brd.transform.position = new Vector2(-boardDistance, boardDistance);
                         relationshipBoard = brd;
                         activeBoards.Add(brd);
                         break;
                     case BoardType.CASH:
                         brd.name = "Cash Board";
-                        brd.transform.position = new Vector2(-2.5f, -2.5f);
+                        brd.transform.position = new Vector2(-boardDistance, -boardDistance);
                         cashBoard = brd;
                         brd.gameObject.AddComponent<LootBoardManager>();
                         break;
                     case BoardType.EDUCATION:
                         brd.name = "Education Board";
-                        brd.transform.position = new Vector2(2.5f, -2.5f);
+                        brd.transform.position = new Vector2(boardDistance, -boardDistance);
                         educationBoard = brd;
                         activeBoards.Add(brd);
                         break;
                     case BoardType.HEALTH:
                         brd.name = "Health Board";
-                        brd.transform.position = new Vector2(2.5f, 2.5f);
+                        brd.transform.position = new Vector2(boardDistance, boardDistance);
                         healthBoard = brd;
                         activeBoards.Add(brd);
                         break;

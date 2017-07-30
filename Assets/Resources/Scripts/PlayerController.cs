@@ -136,7 +136,7 @@ public class PlayerController : Singleton<PlayerController>
             {
                 LogManager.instance.Log("She said yes!");
                 AudioManager.instance.PlaySound("Marriage");
-                WaifuPortraitSwapper.instance.TurnOnPortrait((WaifuBoardPiece)bp);
+               // WaifuPortraitSwapper.instance.TurnOnPortrait((WaifuBoardPiece)bp);
             }
             else if (bpType == typeof(ZoneKeyBoardPiece))
             {
