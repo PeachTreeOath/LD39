@@ -10,6 +10,8 @@ public class TooltipManager : Singleton<TooltipManager> {
     void Start()
     {
         //Populate dictionaries here?
+        // wealthTooltips["testKey"] = "testEntry";
+        // string retrieve = wealthTooltips["testKey"];
     }
 }
 
