@@ -19,6 +19,7 @@ public class LifeStatManager : Singleton<LifeStatManager> {
     private Text booksField;
     private Text ageField;
     private Text maxAgeField;
+    private Text newAgeField;
     private Text generationField;
     private RectTransform wealthBar;
     private RectTransform bookBar;
@@ -80,7 +81,7 @@ public class LifeStatManager : Singleton<LifeStatManager> {
         ageField = GameObject.Find("AgeValue").GetComponent<Text>();
         maxAgeField = GameObject.Find("MaxAgeValue").GetComponent<Text>();
         generationField = GameObject.Find("GenerationValue").GetComponent<Text>();
-
+        newAgeField = GameObject.Find("NewAgeValue").GetComponent<Text>();
         //InitiallizeFields
         maxAge = StatConstants.instance.initialMaxAge;
         age = StatConstants.instance.initialAge;
@@ -106,6 +107,7 @@ public class LifeStatManager : Singleton<LifeStatManager> {
         //booksField.text = StatConstants.instance.BooksString(books);
         ageField.text = "" + age;
         maxAgeField.text = "" + maxAge;
+        newAgeField.text = "Age " + age + " / " + maxAge;
         generationField.text = "" + PermanentStatManager.instance.generation;
         
     }
