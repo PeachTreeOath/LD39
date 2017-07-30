@@ -19,9 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4611550989838048}
-  - component: {fileID: 114835587620122922}
-  - component: {fileID: 114709737978388268}
-  - component: {fileID: 114159041024537802}
+  - component: {fileID: 114880969492375308}
+  - component: {fileID: 114365719835449318}
+  - component: {fileID: 114371757576775324}
   m_Layer: 0
   m_Name: LevelTemplateMaker
   m_TagString: Untagged
@@ -42,7 +42,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114159041024537802
+--- !u!114 &114365719835449318
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1728139796451890}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc008bee95f3e4545975f72c8fd51a8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filename: yoloxx
+  fileExt: .lvl
+  checkThisToCreateFile: 0
+--- !u!114 &114371757576775324
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -53,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa794c472bd1bbb4c91083a07f184ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114709737978388268
+--- !u!114 &114880969492375308
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -64,17 +78,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cba645b30de31f41b0587de5fef8b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114835587620122922
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1728139796451890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc008bee95f3e4545975f72c8fd51a8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  filename: yolo
-  fileExt: .lvl
-  checkThisToCreateFile: 0

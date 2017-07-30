@@ -147,40 +147,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114814718522685514, guid: b7da24728b6b95d449d62d67eee11ff6, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b7da24728b6b95d449d62d67eee11ff6, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &13100983 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1728139796451890, guid: b7da24728b6b95d449d62d67eee11ff6,
+--- !u!114 &13100984 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114371757576775324, guid: b7da24728b6b95d449d62d67eee11ff6,
     type: 2}
   m_PrefabInternal: {fileID: 13100982}
---- !u!114 &13100984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 13100983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc008bee95f3e4545975f72c8fd51a8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  filename: yolo
-  fileExt: .lvl
-  checkThisToCreateFile: 0
---- !u!114 &13100985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 13100983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cba645b30de31f41b0587de5fef8b4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Script: {fileID: 11500000, guid: aa794c472bd1bbb4c91083a07f184ea5, type: 3}
 --- !u!1001 &340669434
 Prefab:
   m_ObjectHideFlags: 0
@@ -262,6 +237,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 114410542767506160, guid: 030f38be99fa7314ba44dae89325567d,
+        type: 2}
+      propertyPath: levelLoader
+      value: 
+      objectReference: {fileID: 13100984}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 030f38be99fa7314ba44dae89325567d, type: 2}
   m_IsPrefabParent: 0

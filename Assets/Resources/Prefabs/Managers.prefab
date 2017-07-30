@@ -105,8 +105,7 @@ MonoBehaviour:
   educationBoard: {fileID: 0}
   healthBoard: {fileID: 0}
   tileSize: 0
-  levelLoader: {fileID: 114837082713562050, guid: 7db7ef126a1d29b49a18ab69cbd8da28,
-    type: 2}
+  levelLoader: {fileID: 0}
 --- !u!114 &114458622068339646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -198,3 +197,8 @@ MonoBehaviour:
   portraitManSprite: {fileID: 0}
   portraitOldManSprite: {fileID: 0}
   portraitFemaleASprite: {fileID: 0}
+  girlBodySprite: {fileID: 0}
+  girlDressSprites: []
+  girlHairSprites: []
+  girlEyesSprite: {fileID: 0}
+  girlShadowSprite: {fileID: 0}
