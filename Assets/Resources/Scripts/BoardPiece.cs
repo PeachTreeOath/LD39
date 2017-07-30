@@ -144,7 +144,11 @@ public class BoardPiece : MonoBehaviour
 
     public virtual void OnRemove()
     {
-        GetComponent<SpriteRenderer>().enabled = false;
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            GetComponent<SpriteRenderer>().enabled = false;
+        }
     }
 
     public SpriteRenderer GetFogSprite()
