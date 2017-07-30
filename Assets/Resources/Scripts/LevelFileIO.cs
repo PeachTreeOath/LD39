@@ -354,9 +354,11 @@ public class LevelFileIO : MonoBehaviour {
     }
 
     //check if idx of str is the start of a parameter
+    //Note, str is typically a char followed by a param so we 
+    //check idx+1 for the start of the parameter
     private bool peekParam(string str, int idx) {
-        if (idx < str.Length) {
-            return str[idx] == PARAM_START;
+        if (idx + 1< str.Length) {
+            return str[idx+1] == PARAM_START;
         }
         return false;
     }
@@ -367,6 +369,7 @@ public class LevelFileIO : MonoBehaviour {
     //Returns a list of integers where
     //THE FIRST NUM is the str idx at the end of the params (e.g. right before where next read begins)
     private List<int> readTileParams(string str, int idx) {
+        idx = idx + 1;  //hack cuz the count was starting before every param
         List<int> results = new List<int>();
         try {
             int endidx = idx;
@@ -459,6 +462,14 @@ public class LevelFileIO : MonoBehaviour {
         GameObject bGo = Instantiate(ResourceLoader.instance.lootBoardPieceFab);
         LootBoardPiece pc = bGo.GetComponent<LootBoardPiece>();
         pc.SetBoard(curBoard);
+        if (prams != null) {
+            //expecting 1 num = value of drop
+            if (prams.Count >= 1) {
+                int dropVal = prams[0];
+                Debug.Log("money value is " + dropVal);
+                pc.value = dropVal;
+            }
+        }
         curBoard.AddPiece(pc, colCount, rowNum);
         return pc;
     }

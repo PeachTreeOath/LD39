@@ -270,7 +270,7 @@ Prefab:
     - target: {fileID: 114410542767506160, guid: 030f38be99fa7314ba44dae89325567d,
         type: 2}
       propertyPath: levelList.Array.data[0]
-      value: ChroLevel4.lvl
+      value: ChroLevel1.lvl
       objectReference: {fileID: 0}
     - target: {fileID: 114410542767506160, guid: 030f38be99fa7314ba44dae89325567d,
         type: 2}
