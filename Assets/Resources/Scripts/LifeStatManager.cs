@@ -64,6 +64,21 @@ public class LifeStatManager : Singleton<LifeStatManager> {
     }
 
     public void addEducation(int amt) {
-        educationLevel += amt;
+        int oldEducationLevel = educationLevel;
+        int newEducationLevel = educationLevel + amt;
+
+        if(newEducationLevel > oldEducationLevel) {
+            for(int keyId = oldEducationLevel; keyId < newEducationLevel; keyId++) {
+                UnlockZone(keyId);
+            }
+        }
+
+        educationLevel = newEducationLevel;        
+    }
+
+    protected void UnlockZone(int keyId) {
+        foreach (Board bb in BoardManager.instance.getAllBoards()) {
+            bb.useKey(keyId);
+        }
     }
 }

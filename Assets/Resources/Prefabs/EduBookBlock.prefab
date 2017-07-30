@@ -55,6 +55,7 @@ MonoBehaviour:
   x: 0
   y: 0
   board: {fileID: 0}
+  bookValue: 1
 --- !u!212 &212377403097663318
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class BuyablePiece : BoardPiece {
 
@@ -36,8 +37,9 @@ public class BuyablePiece : BoardPiece {
         GameObject instance = Instantiate(ResourceLoader.instance.priceTagFab);
         instance.transform.SetParent(transform);
         instance.transform.localPosition = Vector2.zero;
-
+        
         priceTag = instance.GetComponent<PriceTag>();
+        priceTag.GetComponentInChildren<Text>().rectTransform.localPosition = new Vector2(0, 0.25f);
     }
 
     public override void OnPickup() {

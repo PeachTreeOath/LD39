@@ -53,7 +53,7 @@ public class PlayerController : Singleton<PlayerController>
             players.Add(healthPlayer);
         }
 
-        foreach(PlayerBoardPiece player in players)
+        foreach (PlayerBoardPiece player in players)
         {
             player.SetPosition((int)startingPosition.x, (int)startingPosition.y);
         }
@@ -65,7 +65,7 @@ public class PlayerController : Singleton<PlayerController>
         bool turnWillAdv = false;
         if (Input.GetButtonDown("Up"))
         {
-            foreach(PlayerBoardPiece player in players)
+            foreach (PlayerBoardPiece player in players)
             {
                 player.MoveUp();
                 turnPickups.AddRange(player.GetPickups());
@@ -102,32 +102,44 @@ public class PlayerController : Singleton<PlayerController>
 
         processPickups(turnPickups);
 
-        if (turnWillAdv) {
+        if (turnWillAdv)
+        {
             AdvanceTurn();
         }
         turnPickups.Clear();
     }
 
-    private void processPickups(List<BoardPiece> pickups) {
-        foreach(BoardPiece bp in pickups) {
+    private void processPickups(List<BoardPiece> pickups)
+    {
+        foreach (BoardPiece bp in pickups)
+        {
             bp.OnPickup();
 
             System.Type bpType = bp.GetType();
-            if (bpType == typeof(PotionBoardPiece)) {
+            if (bpType == typeof(PotionBoardPiece))
+            {
                 LogManager.instance.Log("Potion picked up.");
                 AudioManager.instance.PlaySound("PotionPickup");
-            } else if (bpType == typeof(LootBoardPiece)) {
+            }
+            else if (bpType == typeof(LootBoardPiece))
+            {
                 LogManager.instance.Log("Cash me outside.");
                 AudioManager.instance.PlaySound("MoneyPickup");
-            } else if (bpType == typeof(EduBookBoardPiece)) {
+            }
+            else if (bpType == typeof(EduBookBoardPiece))
+            {
                 LogManager.instance.Log("Book picked up.");
                 LifeStatManager.instance.addBooks(((EduBookBoardPiece)bp).bookValue);
                 AudioManager.instance.PlaySound("BookPickup");
-            } else if (bpType == typeof(WaifuBoardPiece)) {
-                Debug.Log("Waifu smash");
-                LogManager.instance.Log("Waifu smash!");
+            }
+            else if (bpType == typeof(WaifuBoardPiece))
+            {
+                LogManager.instance.Log("She said yes!");
+                AudioManager.instance.PlaySound("Marriage");
                 WaifuPortraitSwapper.instance.TurnOnPortrait((WaifuBoardPiece)bp);
-            } else if (bpType == typeof(ZoneKeyBoardPiece)) {
+            }
+            else if (bpType == typeof(ZoneKeyBoardPiece))
+            {
                 Debug.Log("Keys to the city, baby");
                 LogManager.instance.Log("Keys to the city, baby");
             }
@@ -139,7 +151,7 @@ public class PlayerController : Singleton<PlayerController>
         PlayerBoardPiece newPlayer = Instantiate(ResourceLoader.instance.playerBoardPieceFab).GetComponent<PlayerBoardPiece>();
         return newPlayer;
     }
-
+    TurnBehaviour[] turnBehaviours;
     void AdvanceTurn()
     {
         //Handle any local logic
@@ -147,7 +159,10 @@ public class PlayerController : Singleton<PlayerController>
         lifeStatManager.age++;
 
         //Invoke listeners that implement TurnBehaviour
-        TurnBehaviour[] turnBehaviours = FindObjectsOfType<TurnBehaviour>();
+        if (turnBehaviours == null)
+        {
+            turnBehaviours = FindObjectsOfType<TurnBehaviour>();
+        }
         foreach (TurnBehaviour behaviour in turnBehaviours)
         {
             behaviour.OnAdvanceTurn();
