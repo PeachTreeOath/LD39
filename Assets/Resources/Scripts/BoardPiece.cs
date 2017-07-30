@@ -32,6 +32,7 @@ public class BoardPiece : MonoBehaviour
     public static int BARRIER = 2;
     public static int ZONE_BARRIER = 4;
     public static int PICKUP = 8;
+    public static int FOG = 16;
 
     private SpriteRenderer fogSprite;
     void Start()
