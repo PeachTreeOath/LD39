@@ -7,7 +7,7 @@ public class LootBoardPiece : BoardPiece {
     [SerializeField]
     private int size = 0;
 
-    public int value = 10;
+    public int value = 25;
     public float dollarSpacing = 0.03f;
 
     public int stackSize {

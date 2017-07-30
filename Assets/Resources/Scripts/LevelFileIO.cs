@@ -476,14 +476,18 @@ public class LevelFileIO : MonoBehaviour {
         GameObject bGo = Instantiate(ResourceLoader.instance.lootBoardPieceFab);
         LootBoardPiece pc = bGo.GetComponent<LootBoardPiece>();
         pc.SetBoard(curBoard);
-        if (prams != null) {
+        if (prams != null)
+        {
             //expecting 1 num = value of drop
-            if (prams.Count >= 1) {
+            if (prams.Count >= 1)
+            {
                 int dropVal = prams[0];
                 Debug.Log("money value is " + dropVal);
                 pc.value = dropVal;
             }
         }
+        else
+            pc.value = 25;
         curBoard.AddPiece(pc, colCount, rowNum);
         return pc;
     }
