@@ -36,7 +36,9 @@ public class BoardPiece : MonoBehaviour
     private SpriteRenderer fogSprite;
     void Start()
     {
-        fogSprite = transform.Find("Fog").GetComponent<SpriteRenderer>();
+        Transform fogTransform = transform.Find("Fog");
+        if (fogTransform != null)
+            fogSprite = fogTransform.GetComponent<SpriteRenderer>();
     }
 
     void FixedUpdate()
