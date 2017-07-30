@@ -10,6 +10,10 @@ public class PotionBoardPiece : BoardPiece {
         potion = GetComponent<Potion>();
     }
 
+    public Potion getPotion() {
+        return potion;
+    }
+
     public override int GetContentType() {
         return BoardPiece.PICKUP;
     }
