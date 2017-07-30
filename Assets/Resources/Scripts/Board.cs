@@ -197,6 +197,11 @@ public class Board : MonoBehaviour
         UpdatePiece_Place(piece, newX, newY);
     }
 
+    public void UpdatePieceReplace(BoardPiece piece, int x, int y) {
+        boardContent[x, y] = 0;
+        UpdatePiece_Place(piece, x, y);
+    }
+
     /// <summary>
     /// Update the contents of the tiles affected by a piece move.
     /// This version is for moving a piece off the board.
