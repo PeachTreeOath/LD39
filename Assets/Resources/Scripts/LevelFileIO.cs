@@ -228,7 +228,7 @@ public class LevelFileIO : MonoBehaviour {
                 continue;
             } else if (line.StartsWith(END_BOARD.Trim())) {
                 //end of this board
-                Debug.Log("Read " + rowCount + " board lines");
+                //Debug.Log("Read " + rowCount + " board lines");
                 break;
             } else {
                 string[] parts = line.Trim().Split(',');

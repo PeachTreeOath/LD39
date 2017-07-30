@@ -10,6 +10,7 @@ public class GameEnder : TurnBehaviour {
         if (LifeStatManager.instance.age > LifeStatManager.instance.maxAge)
         {
             PermanentStatManager.instance.generation++;
+            PermanentStatManager.instance.currentLevel++;
             SceneManager.LoadScene("Game");
         }
     }

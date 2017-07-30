@@ -30,6 +30,12 @@ public class BoardManager : Singleton<BoardManager> {
     [SerializeField]
     private LevelLoader levelLoader;
 
+    [SerializeField]
+    [Tooltip("List of filenames (without path) for each level. Index corresponds to level id")]
+    private List<string> levelList = new List<string>();
+
+    //Set current starting level in PermanetStatManager
+
     public enum BoardType { RELATIONSHIP, CASH, EDUCATION, HEALTH };
     public enum BoardPos { TOP_LEFT, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_RIGHT };
 
@@ -37,34 +43,12 @@ public class BoardManager : Singleton<BoardManager> {
         if (levelLoader == null) {
             Debug.LogError("You didn't add a level loader component to the BoardManager. Hope you enjoy blank levels!");
         }
+        if (levelList == null || levelList.Count == 0) {
+            Debug.LogError("No levels provided in the levelList");
+        }
 
         tileSize = ResourceLoader.instance.defaultBlockFab.GetComponent<SpriteRenderer>().size.x;
-        loadlevel(1);
-        //if (relationshipBoardOn) {
-        //    relationshipBoard = CreateBoard(boardSize, ResourceLoader.instance.defaultBlockFab, BoardType.RELATIONSHIP, 1);
-        //    relationshipBoard.name = "Relationship Board";
-        //    relationshipBoard.transform.position = new Vector2(-2.5f, 2.5f);
-        //    activeBoards.Add(relationshipBoard);
-        //}
-        //if (cashBoardOn) {
-        //    cashBoard = CreateBoard(boardSize, ResourceLoader.instance.defaultBlockFab, BoardType.CASH, 1);
-        //    cashBoard.name = "Cash Board";
-        //    cashBoard.transform.position = new Vector2(-2.5f, -2.5f);
-        //    cashBoard.gameObject.AddComponent<LootBoardManager>();
-        //    activeBoards.Add(cashBoard);
-        //}
-        //if (educationBoardOn) {
-        //    educationBoard = CreateBoard(boardSize, ResourceLoader.instance.defaultBlockFab, BoardType.EDUCATION, 1);
-        //    educationBoard.name = "Education Board";
-        //    educationBoard.transform.position = new Vector2(2.5f, -2.5f);
-        //    activeBoards.Add(educationBoard);
-        //}
-        //if (healthBoardOn) {
-        //    healthBoard = CreateBoard(boardSize, ResourceLoader.instance.defaultBlockFab, BoardType.HEALTH, 1);
-        //    healthBoard.name = "Health Board";
-        //    healthBoard.transform.position = new Vector2(2.5f, 2.5f);
-        //    activeBoards.Add(healthBoard);
-        //}
+        loadlevel(PermanentStatManager.instance.currentLevel);
 
         // Need to create board before player.
         PlayerController.instance.Init();
@@ -80,8 +64,9 @@ public class BoardManager : Singleton<BoardManager> {
         if (levelLoader != null) {
             activeBoards.Clear();
 
+            string levelFile = levelList[(levelId % levelList.Count)];
             List<Board> boards =
-                levelLoader.LoadBoardsFromFile("Assets/Resources/Levels/yolo.lvl"); //FIXME unhardcode
+                levelLoader.LoadBoardsFromFile("Assets/Resources/Levels/"+levelFile); //FIXME unhardcode
 
             //position boards correclty
             foreach (Board brd in boards) {

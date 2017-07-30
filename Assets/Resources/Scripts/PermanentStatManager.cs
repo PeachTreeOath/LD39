@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PermanentStatManager : Singleton<PermanentStatManager>
 {
+    public int currentLevel = 0;
     public int startingWealth;
 
     private int _wealth = 0; // :-(
