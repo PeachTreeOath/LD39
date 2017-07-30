@@ -2,9 +2,12 @@
 	//Correctly transition between two textures - Dave's greatest work
 	Properties{
 		//Put Time.time into _StartTime for when to begin the transition
+		//Game time offset should be set with Time.time when the shader is loaded
+		//  to account for a difference in shader time vs game time
 		//E.g.: rend.material.SetFloat("_StartTime", Time.time);
 		//_MainTex is the start texture (filled automatically for sprites)
-		_StartTime("Start Time", Float) = 0
+		_StartTime("Start Time", Float) = 60
+		_GameTimeOffset("Game Time Offset", Float) = 0
 		_Duration("Duration", Range(0,10)) = 1
 		_MainTex("Start Texture", 2D) = "white" {}
 		_EndTex("End Texture", 2D) = "black" {}
@@ -16,6 +19,7 @@
 				const float4 zero = float4(0, 0, 0, 1);
 
 				float _StartTime;
+				float _GameTimeOffset;
 				float _Duration;
 				sampler2D _MainTex;
 				sampler2D _EndTex;
@@ -35,7 +39,7 @@
 			 }
 
 			 fixed4 frag(v2f i) : SV_Target{
-				 float t = _Time[1] - _StartTime;
+				 float t = _GameTimeOffset + _Time[1] - _StartTime;
 				 t = clamp(t / _Duration, 0, 1);
 				 float4 textColA = tex2D(_MainTex, i.uv);
 				 float4 textColB = tex2D(_EndTex, i.uv);

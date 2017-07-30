@@ -15,6 +15,8 @@ public class PortraitSwapper : TurnBehaviour {
     void Start() {
         spr = GetComponent<SpriteRenderer>();
         rend = gameObject.GetComponent<Renderer>();
+        rend.material.SetFloat("_GameTimeOffset", Time.time);
+        rend.material.SetFloat("_StartTime", Time.time + 120); //don't start yet
         if (rend == null) {
             Debug.LogError("Couldn't load sprite renderer - Lerp won't work");
         }
@@ -25,6 +27,7 @@ public class PortraitSwapper : TurnBehaviour {
         if (transitionRunning) {
             if (Time.time > endLerpTime) {
                 //lerp complete, swap in new sprite
+                Debug.Log("Lerp done");
                 spr.sprite = nextSprite;
                 transitionRunning = false;
                 rend.material.SetFloat("_StartTime", Time.time + 120);
@@ -43,6 +46,10 @@ public class PortraitSwapper : TurnBehaviour {
             if (transitionRunning && this.nextSprite != null) {
                 //premature abort for in progress transitions
                 spr.sprite = this.nextSprite;
+                rend.material.SetTexture("_EndTex", null);
+            }
+            if (rend.material.GetTexture("_MainTex") == null) {
+                rend.material.SetTexture("_MainTex", spr.sprite.texture);
             }
             this.nextSprite = nextSprite;
             rend.material.SetFloat("_StartTime", Time.time);
@@ -60,19 +67,19 @@ public class PortraitSwapper : TurnBehaviour {
         } else if (LifeStatManager.instance.age >= 80) {
             setNextSprite(ResourceLoader.instance.portraitChip80);
         } else if (LifeStatManager.instance.age >= 70) {
-            setNextSprite( ResourceLoader.instance.portraitChip70);
+            setNextSprite(ResourceLoader.instance.portraitChip70);
         } else if (LifeStatManager.instance.age >= 60) {
-            setNextSprite( ResourceLoader.instance.portraitChip60);
+            setNextSprite(ResourceLoader.instance.portraitChip60);
         } else if (LifeStatManager.instance.age >= 50) {
-            setNextSprite( ResourceLoader.instance.portraitChip50);
+            setNextSprite(ResourceLoader.instance.portraitChip50);
         } else if (LifeStatManager.instance.age >= 40) {
-            setNextSprite( ResourceLoader.instance.portraitChip40);
+            setNextSprite(ResourceLoader.instance.portraitChip40);
         } else if (LifeStatManager.instance.age >= 30) {
-            setNextSprite( ResourceLoader.instance.portraitChip30);
+            setNextSprite(ResourceLoader.instance.portraitChip30);
         } else if (LifeStatManager.instance.age >= 20) {
-            setNextSprite( ResourceLoader.instance.portraitChip20);
+            setNextSprite(ResourceLoader.instance.portraitChip20);
         } else if (LifeStatManager.instance.age >= 10) {
-            setNextSprite( ResourceLoader.instance.portraitChip10);
+            setNextSprite(ResourceLoader.instance.portraitChip10);
         }
     }
 
