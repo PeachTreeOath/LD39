@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   booksToLevelEducation: 3
-  initialMaxAge: 50
+  initialMaxAge: 30
   initialAge: 0
   initialGoldDropRate: 1
   goldDropRateScalar: 0.5
@@ -107,8 +107,13 @@ MonoBehaviour:
   tileSize: 0
   levelLoader: {fileID: 0}
   levelList:
-  - yolo.lvl
-  - yolo2.lvl
+  - ChroLevel1.lvl
+  - ChroLevel2.lvl
+  - ChroLevel3.lvl
+  - ChroLevel4.lvl
+  - ChroLevel5.lvl
+  - ChroLevel6.lvl
+  - ChroLevel7.lvl
 --- !u!114 &114458622068339646
 MonoBehaviour:
   m_ObjectHideFlags: 1
