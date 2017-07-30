@@ -28,10 +28,11 @@ public class LifeStatManager : Singleton<LifeStatManager> {
 
     void Start()
     {
-        relationshipStatusField = GameObject.Find("RelationshipStatusValue").GetComponent<Text>();
-        wealthField = GameObject.Find("WealthValue").GetComponent<Text>();
-        educationLevelField = GameObject.Find("EducationLevelValue").GetComponent<Text>();
-        booksField = GameObject.Find("BooksValue").GetComponent<Text>();
+        //Where is the relationship bar??
+        //relationshipStatusField = GameObject.Find("RelationshipStatusValue").GetComponent<Text>();
+        wealthField = GameObject.Find("CashValue").GetComponent<Text>();
+        educationLevelField = GameObject.Find("KnowledgeValue").GetComponent<Text>();
+        //booksField = GameObject.Find("BooksValue").GetComponent<Text>();
         ageField = GameObject.Find("AgeValue").GetComponent<Text>();
         maxAgeField = GameObject.Find("MaxAgeValue").GetComponent<Text>();
         generationField = GameObject.Find("GenerationValue").GetComponent<Text>();
@@ -47,15 +48,15 @@ public class LifeStatManager : Singleton<LifeStatManager> {
     {
         //Update UI
         //Stats panel currently disabled
-        /*
-        relationshipStatusField.text = StatConstants.instance.RelationshipStatusString(isMarried);
+        
+        //relationshipStatusField.text = StatConstants.instance.RelationshipStatusString(isMarried);
         wealthField.text = "$" + PermanentStatManager.instance.wealth;
         educationLevelField.text = StatConstants.instance.EducationString(educationLevel);
-        booksField.text = StatConstants.instance.BooksString(books);
+        //booksField.text = StatConstants.instance.BooksString(books);
         ageField.text = "" + age;
         maxAgeField.text = "" + maxAge;
         generationField.text = "" + PermanentStatManager.instance.generation;
-        */
+        
     }
 
     public void addBooks(int amt) {
