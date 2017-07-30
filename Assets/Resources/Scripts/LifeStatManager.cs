@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class LifeStatManager : Singleton<LifeStatManager> {
 
 	public bool isMarried;
-    public int educationLevel;
-    public int books;
+    public int educationLevel; //cur education tier
+    public int books; //num books in this edu level
+    public int totalBooks; //lifetime num books
     public int age;
     public int maxAge;
 
@@ -19,6 +20,14 @@ public class LifeStatManager : Singleton<LifeStatManager> {
     private Text ageField;
     private Text maxAgeField;
     private Text generationField;
+    private RectTransform wealthBar;
+    private RectTransform bookBar;
+
+    private float barHeight;
+    private float maxBarWidth;
+    private float maxCashVal = 3000; //arbitrary but effects bar increment
+    private int maxBookLevel = 12; //?
+
 
     public float GetGoldDropRate()
     {
@@ -31,7 +40,13 @@ public class LifeStatManager : Singleton<LifeStatManager> {
         //Where is the relationship bar??
         //relationshipStatusField = GameObject.Find("RelationshipStatusValue").GetComponent<Text>();
         wealthField = GameObject.Find("CashValue").GetComponent<Text>();
+        wealthBar = GameObject.Find("WealthBar").GetComponent<RectTransform>();
+        barHeight = wealthBar.rect.height;
+        maxBarWidth = wealthBar.rect.width; 
+        wealthBar.sizeDelta = new Vector2(1, barHeight);
         educationLevelField = GameObject.Find("KnowledgeValue").GetComponent<Text>();
+        bookBar = GameObject.Find("KnowledgeBar").GetComponent<RectTransform>();
+        bookBar.sizeDelta = new Vector2(1, barHeight);
         //booksField = GameObject.Find("BooksValue").GetComponent<Text>();
         ageField = GameObject.Find("AgeValue").GetComponent<Text>();
         maxAgeField = GameObject.Find("MaxAgeValue").GetComponent<Text>();
@@ -50,8 +65,11 @@ public class LifeStatManager : Singleton<LifeStatManager> {
         //Stats panel currently disabled
         
         //relationshipStatusField.text = StatConstants.instance.RelationshipStatusString(isMarried);
-        wealthField.text = "$" + PermanentStatManager.instance.wealth;
+        float curWealth = PermanentStatManager.instance.wealth;
+        wealthField.text = "$" + curWealth;
+        wealthBar.sizeDelta = new Vector2(maxBarWidth * curWealth / maxCashVal, barHeight);
         educationLevelField.text = StatConstants.instance.EducationString(educationLevel);
+        bookBar.sizeDelta = new Vector2(maxBarWidth * totalBooks / maxBookLevel, barHeight);
         //booksField.text = StatConstants.instance.BooksString(books);
         ageField.text = "" + age;
         maxAgeField.text = "" + maxAge;
@@ -61,6 +79,7 @@ public class LifeStatManager : Singleton<LifeStatManager> {
 
     public void addBooks(int amt) {
         books += amt;
+        totalBooks += amt;
         int max = StatConstants.instance.booksToLevelEducation;
         while (books >= max) {
             books -= max;
