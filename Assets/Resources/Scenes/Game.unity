@@ -265,17 +265,17 @@ Prefab:
     - target: {fileID: 114410542767506160, guid: 030f38be99fa7314ba44dae89325567d,
         type: 2}
       propertyPath: levelList.Array.data[1]
-      value: ChroLevel2.lvl
+      value: ChroLevel5.lvl
       objectReference: {fileID: 0}
     - target: {fileID: 114410542767506160, guid: 030f38be99fa7314ba44dae89325567d,
         type: 2}
       propertyPath: levelList.Array.data[0]
-      value: ChroLevel1.lvl
+      value: ChroLevel4.lvl
       objectReference: {fileID: 0}
     - target: {fileID: 114410542767506160, guid: 030f38be99fa7314ba44dae89325567d,
         type: 2}
       propertyPath: levelList.Array.data[2]
-      value: ChroLevel3.lvl
+      value: ChroLevel6.lvl
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 030f38be99fa7314ba44dae89325567d, type: 2}
