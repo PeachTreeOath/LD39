@@ -52,7 +52,10 @@ public class BoardManager : Singleton<BoardManager> {
 
         List<PlayerBoardPiece> playas = new List<PlayerBoardPiece>();
         foreach (Board board in activeBoards) {
-            playas.Add(board.GetPlayerBoardPiece());
+            PlayerBoardPiece pbp = board.GetPlayerBoardPiece();
+            if (pbp != null) {
+                playas.Add(pbp);
+            }
         }
         // Need to create board before player.
         PlayerController.instance.Init(playas);

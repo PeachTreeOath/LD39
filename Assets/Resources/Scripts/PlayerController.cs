@@ -23,6 +23,10 @@ public class PlayerController : Singleton<PlayerController>
         players.Clear();
         players.AddRange(allPlayers);
 
+        if (players.Count == 0) {
+            Debug.LogError("No players loaded...are you sure they were in the level data?");
+        }
+
        // if (BoardManager.instance.relationshipBoardOn)
        // {
        //     PlayerBoardPiece relationshipPlayer = CreatePlayer();
