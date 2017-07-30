@@ -85,6 +85,7 @@ public class LevelFileIO : MonoBehaviour {
         Debug.Log("Writing new template level to " + filename);
         StreamWriter sw = new StreamWriter(filename);
         using (sw) {
+            writeHeaderHelp(sw);
             foreach (BoardManager.BoardType boardType in allTypes) {
                 writeHeader(sw, boardType, 0, getDefaultBoardPos(boardType));
                 writeTemplateBoard(sw, boardSize);
@@ -92,6 +93,29 @@ public class LevelFileIO : MonoBehaviour {
             sw.Close();
 
         }
+    }
+
+    private void writeHeaderHelp(StreamWriter sw) {
+        sw.WriteLine("#Help tips: Replace board underscores with 1 or more letters below");
+        sw.WriteLine("#Note, some combinations cannot be stacked on the same tile");
+        sw.WriteLine("#BARRIER_ORANGE = 'Z'");
+        sw.WriteLine("#BARRIER_PURPLE = 'X'");
+        sw.WriteLine("#BARRIER_GREEN = 'C'");
+        sw.WriteLine("#STATIC_BARRIER = 'Q'");
+        sw.WriteLine("#PLAYER = 'P'  (not implemented yet)");
+        sw.WriteLine("#BOOK = 'B'");
+        sw.WriteLine("#MONEY = 'M'  (note, money is also placed randomly)");
+        sw.WriteLine("#WAIFU = 'W'");
+        sw.WriteLine("#HEALTH = 'H'");
+        sw.WriteLine("#NOOP (ignored) = '_'");
+        sw.WriteLine("#NOOP1  (ignored) = ' '");
+        sw.WriteLine("#NOOP2  (tab ignored) = '\t'");
+        sw.WriteLine("#Parameters are applied in a bracket after certain letters: e.g. H[4] or W[1,2]  (not implemented yet)");
+        sw.WriteLine("#PARAM_START = '['");
+        sw.WriteLine("#PARAM_END = ']'");
+        sw.WriteLine("#FS_END (column separator) = ','");
+        sw.WriteLine("#end of help");
+        sw.WriteLine();
     }
 
     private void writeHeader(StreamWriter sw,
@@ -209,7 +233,7 @@ public class LevelFileIO : MonoBehaviour {
             } else {
                 string[] parts = line.Trim().Split(',');
                 //note that rows are actually numbered bottom to top
-                pcs.AddRange(readPieces(parts, (boardSize - rowCount-1)));
+                pcs.AddRange(readPieces(parts, (boardSize - rowCount - 1)));
                 //Debug.Log("Row done");
                 rowCount++;
             }
@@ -235,7 +259,7 @@ public class LevelFileIO : MonoBehaviour {
                 }
                 //there is always a blank cell under everything
                 pcs.Add(createBlank(rowNum, colCount, null));
-                BoardPiece newPc  = null;
+                BoardPiece newPc = null;
                 for (int i = 0; i < c.Length; i++) {
                     //Debug.Log("nextChar: " + c[i]);
                     newPc = null;
