@@ -19,11 +19,26 @@ public class Board : MonoBehaviour
     private float boardSize;
     private float tileSize;
 
+    public BoardManager.BoardType myBoardType;
+
     //array mirrors the board layout and stores a lookup value telling if something
     //(e.g. item, barrier) is at a particular index.
     //X starts from left, Y starts from bottom. 0-indexed.
     //Note index order is [x][y]. Content is BoardPiece.cs constant.
     private int[,] boardContent;
+
+    public void CreateEmptyBoardWithoutTiles(int boardSize, float tileSize)
+    {
+        Debug.Log("Create Board, size=" + boardSize + ", tileSize=" + tileSize);
+        this.boardSize = boardSize;
+        this.tileSize = tileSize;
+
+        startingXPos = boardSize * -tileSize / 2 + tileSize / 2;
+        startingYPos = boardSize * -tileSize / 2 + tileSize / 2;
+
+        boardContent = new int[boardSize, boardSize];
+
+    }
 
     public void CreateEmptyBoard(int boardSize, GameObject blockPrefab)
     {
@@ -61,7 +76,7 @@ public class Board : MonoBehaviour
     /// <param name="boardY">board Y coord where the piece will be positioned</param>
     public void AddPiece(BoardPiece newPiece, int boardX, int boardY)
     {
-        newPiece.gameObject.transform.SetParent(transform);
+        newPiece.gameObject.transform.SetParent(transform,false);
         newPiece.gameObject.transform.localPosition = GetLocalPositionFromCoords(boardX, boardY);
         boardPieces.Add(newPiece);
         newPiece.SetPosition(boardX, boardY);

@@ -5,9 +5,24 @@ using UnityEngine;
 /// <summary>
 /// Provides level content to the board manager from some TBD source.
 /// Level designer will make the levels, this will load 'em into the game.
+/// Generally this will be assigned on the BoardManager via inspector.
 /// </summary>
+[RequireComponent(typeof(LevelFileIO))]
 public class LevelLoader : MonoBehaviour {
 
+    /// <summary>
+    /// Load level from predefined file
+    /// </summary>
+    /// <param name="filename"></param>
+    /// <returns></returns>
+    public List<Board> LoadBoardsFromFile(string filename) {
+        LevelFileIO lfio = gameObject.GetComponent<LevelFileIO>();
+        if (lfio == null) {
+            Debug.LogError("You will need a fileIO to load a file");
+            return null;
+        }
+        return lfio.loadLevel(filename);
+    }
 
     /// <summary>
     /// Populate a board with content...somehow
