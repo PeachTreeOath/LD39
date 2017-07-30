@@ -41,15 +41,13 @@ public class ResourceLoader : Singleton<ResourceLoader>
     public Sprite portraitFemaleASprite;
 
     [HideInInspector]
-    public Sprite girlBodySprite;
-    [HideInInspector]
     public Sprite[] girlDressSprites;
     [HideInInspector]
     public Sprite[] girlHairSprites;
     [HideInInspector]
-    public Sprite girlEyesSprite;
+    public Sprite[] portraitGirlDressSprites;
     [HideInInspector]
-    public Sprite girlShadowSprite;
+    public Sprite[] portraitGirlHairSprites;
 
     protected override void Awake() {
         base.Awake();
@@ -57,21 +55,10 @@ public class ResourceLoader : Singleton<ResourceLoader>
     }
 
     private void LoadResources() {
-        girlBodySprite = Resources.Load<Sprite>("Textures/lady-bits/girl-front-body 1");
-        girlShadowSprite = Resources.Load<Sprite>("Textures/lady-bits/girl-front-shadow");
-        girlEyesSprite = Resources.Load<Sprite>("Textures/lady-bits/girl-front-eyes");
-
-        girlDressSprites = new Sprite[5];
-        for (int i = 0; i < girlDressSprites.Length; i++) {
-            string path = string.Format("Textures/lady-bits/girl-front-dress-{0}", i + 1);
-            girlDressSprites[i] = Resources.Load<Sprite>(path); 
-        }
-
-        girlHairSprites = new Sprite[6];
-        for (int i = 0; i < girlHairSprites.Length; i++) {
-            string path = string.Format("Textures/lady-bits/girl-front-hair-{0}", i + 1);
-            girlHairSprites[i] = Resources.Load<Sprite>(path);
-        }
+        girlDressSprites = LoadSpriteArray("Textures/lady-bits/girl-front-dress-{0}", 5);
+        girlHairSprites = LoadSpriteArray("Textures/lady-bits/girl-front-hair-{0}", 6);
+        portraitGirlHairSprites = LoadSpriteArray("Textures/big-lady-bits/girl-front-dress-{0}", 5);
+        portraitGirlDressSprites = LoadSpriteArray("Textures/big-lady-bits/girl-front-hair-{0}", 6);
 
         defaultBlockFab = Resources.Load<GameObject>("Prefabs/Blocks/DefaultBlock");
         fogBlockFab = Resources.Load<GameObject>("Prefabs/Blocks/FogBlock");
@@ -91,7 +78,15 @@ public class ResourceLoader : Singleton<ResourceLoader>
         portraitManSprite = Resources.Load<Sprite>("Textures/tempFaceMan");
         portraitOldManSprite = Resources.Load<Sprite>("Textures/tempFaceOldMan");
         portraitFemaleASprite = Resources.Load<Sprite>("Textures/tempGrill");
+    }
 
+    private Sprite[] LoadSpriteArray(string format, int count) {
+        Sprite[] sprites = new Sprite[count];
+        for (int i = 0; i < count;  i++) {
+            string path = string.Format(format, i + 1);
+            sprites[i] = Resources.Load<Sprite>(path);
+        }
 
+        return sprites;
     }
 }
