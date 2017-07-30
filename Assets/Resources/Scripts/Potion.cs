@@ -25,7 +25,8 @@ public class Potion : TurnBehaviour {
 
     public int turnsToHeal {
         get {
-            int index = Math.Max(level, healingAtLevel.Length - 1);
+            //int index = Math.Max(level, healingAtLevel.Length - 1); //why does this exist thooooo
+            int index = level;
             return healingAtLevel[index];
         }
     }
