@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 222702820718911108}
   - component: {fileID: 114787225603080276}
   m_Layer: 5
-  m_Name: StatsPanel
+  m_Name: StatsPanel DO NOT DISABLE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
