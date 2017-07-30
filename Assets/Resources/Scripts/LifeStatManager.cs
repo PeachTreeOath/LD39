@@ -22,9 +22,12 @@ public class LifeStatManager : Singleton<LifeStatManager> {
     private Text generationField;
     private RectTransform wealthBar;
     private RectTransform bookBar;
+    private RectTransform powerBar;
 
     private float barHeight;
-    private float maxBarWidth;
+    private float maxBarWidth;  //wealth and edu
+    private float powerBarWidth;
+
     private float maxCashVal = 3000; //arbitrary but effects bar increment
     private int maxBookLevel = 12; //?
 
@@ -48,6 +51,11 @@ public class LifeStatManager : Singleton<LifeStatManager> {
         bookBar = GameObject.Find("KnowledgeBar").GetComponent<RectTransform>();
         bookBar.sizeDelta = new Vector2(1, barHeight);
         //booksField = GameObject.Find("BooksValue").GetComponent<Text>();
+
+        powerBar = GameObject.Find("PowerBar").GetComponent<RectTransform>();
+        powerBarWidth = powerBar.rect.width;
+        powerBar.sizeDelta = new Vector2(powerBarWidth, barHeight);
+
         ageField = GameObject.Find("AgeValue").GetComponent<Text>();
         maxAgeField = GameObject.Find("MaxAgeValue").GetComponent<Text>();
         generationField = GameObject.Find("GenerationValue").GetComponent<Text>();
@@ -70,6 +78,9 @@ public class LifeStatManager : Singleton<LifeStatManager> {
         wealthBar.sizeDelta = new Vector2(maxBarWidth * curWealth / maxCashVal, barHeight);
         educationLevelField.text = StatConstants.instance.EducationString(educationLevel);
         bookBar.sizeDelta = new Vector2(maxBarWidth * totalBooks / maxBookLevel, barHeight);
+
+        float remainingAge = 1 + maxAge - age;
+        powerBar.sizeDelta = new Vector2(powerBarWidth * remainingAge / maxAge, barHeight);
         //booksField.text = StatConstants.instance.BooksString(books);
         ageField.text = "" + age;
         maxAgeField.text = "" + maxAge;
