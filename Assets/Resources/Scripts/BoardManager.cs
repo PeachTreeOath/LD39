@@ -32,6 +32,7 @@ public class BoardManager : Singleton<BoardManager>
     private LevelLoader levelLoader;
 
     public enum BoardType { RELATIONSHIP, CASH, EDUCATION, HEALTH };
+    public enum BoardPos { TOP_LEFT, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_RIGHT };
 
     void Start()
     {

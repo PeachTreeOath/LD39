@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EduBookBoardPiece : BoardPiece {
+public class EduBookBoardPiece :  BuyablePiece {
 
     public int bookValue = 1;
 
-    public override int GetContentType() {
-        return BoardPiece.PICKUP;
+    public void Start() {
+        price = 100;
     }
 }

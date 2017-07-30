@@ -140,10 +140,9 @@ public class Board : MonoBehaviour
     /// <summary>
     /// Test the key against all board pieces, unlocking the ones that accept the key.
     /// </summary>
-    /// <param name="zoneKey"></param>
-    public void useKey(ZoneKeyBoardPiece zoneKey) {
+    /// <param name="keyId"></param>
+    public void useKey(int keyId) {
         List<BoardPiece> piecesToRemove = new List<BoardPiece>();
-        int keyId = zoneKey.getKey();
         for (int i = 0; i < boardPieces.Count; i++) {
             //Debug.Log("index " + i + " (" + boardPieces[i].x + ", " + boardPieces[i].y + ")");
             BoardPiece piece = boardPieces[i];
@@ -195,6 +194,11 @@ public class Board : MonoBehaviour
     public void UpdatePieceMoved(BoardPiece piece, int oldX, int oldY, int newX, int newY) {
         UpdatePiece_Remove(piece, oldX, oldY);
         UpdatePiece_Place(piece, newX, newY);
+    }
+
+    public void UpdatePieceReplace(BoardPiece piece, int x, int y) {
+        boardContent[x, y] = 0;
+        UpdatePiece_Place(piece, x, y);
     }
 
     /// <summary>

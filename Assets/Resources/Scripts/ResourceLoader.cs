@@ -13,6 +13,8 @@ public class ResourceLoader : Singleton<ResourceLoader>
     [HideInInspector]
     public GameObject dollarBillFab;
     [HideInInspector]
+    public GameObject priceTagFab;
+    [HideInInspector]
     public GameObject barrierPieceFab;
     [HideInInspector]
     public GameObject zoneBarrierPieceFab;
@@ -24,6 +26,8 @@ public class ResourceLoader : Singleton<ResourceLoader>
     public GameObject waifuPieceFab;
     [HideInInspector]
     public GameObject eduBookFab;
+    [HideInInspector]
+    public GameObject scrollBGFab;
 
     [HideInInspector]
     public Sprite portraitKidSprite;
@@ -47,12 +51,14 @@ public class ResourceLoader : Singleton<ResourceLoader>
         playerBoardPieceFab = Resources.Load<GameObject>("Prefabs/PlayerBoardPiece");
         lootBoardPieceFab = Resources.Load<GameObject>("Prefabs/LootBoardPiece");
         dollarBillFab = Resources.Load<GameObject>("Prefabs/DollarBill");
+        priceTagFab = Resources.Load<GameObject>("Prefabs/PriceTag");
         barrierPieceFab = Resources.Load<GameObject>("Prefabs/BarrierBlock");
         zoneBarrierPieceFab = Resources.Load<GameObject>("Prefabs/ZoneBarrierBlock");
         zoneKeyPieceFab = Resources.Load<GameObject>("Prefabs/ZoneKeyBlock");
         potionPieceFab = Resources.Load<GameObject>("Prefabs/Potion");
         waifuPieceFab = Resources.Load<GameObject>("Prefabs/WaifuBlock");
         eduBookFab = Resources.Load<GameObject>("Prefabs/EduBookBlock");
+        scrollBGFab = Resources.Load<GameObject>("Prefabs/ScrollingBG");
 
         portraitKidSprite = Resources.Load<Sprite>("Textures/tempFaceKid");
         portraitManSprite = Resources.Load<Sprite>("Textures/tempFaceMan");

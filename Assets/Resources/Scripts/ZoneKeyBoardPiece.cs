@@ -31,7 +31,7 @@ public class ZoneKeyBoardPiece : BoardPiece {
 
     public override void OnPickup() {
         foreach (Board bb in BoardManager.instance.getAllBoards()) {
-            bb.useKey(this);
+            bb.useKey(this.getKey());
         }
     }
 }
