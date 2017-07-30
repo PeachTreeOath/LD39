@@ -39,6 +39,26 @@ public class ResourceLoader : Singleton<ResourceLoader>
     public Sprite portraitOldManSprite;
     [HideInInspector]
     public Sprite portraitFemaleASprite;
+    [HideInInspector]
+    public Sprite portraitChip1;
+    [HideInInspector]
+    public Sprite portraitChip10;
+    [HideInInspector]
+    public Sprite portraitChip20;
+    [HideInInspector]
+    public Sprite portraitChip30;
+    [HideInInspector]
+    public Sprite portraitChip40;
+    [HideInInspector]
+    public Sprite portraitChip50;
+    [HideInInspector]
+    public Sprite portraitChip60;
+    [HideInInspector]
+    public Sprite portraitChip70;
+    [HideInInspector]
+    public Sprite portraitChip80;
+    [HideInInspector]
+    public Sprite portraitChip90;
 
     [HideInInspector]
     public Sprite[] girlDressSprites;
@@ -78,6 +98,17 @@ public class ResourceLoader : Singleton<ResourceLoader>
         portraitManSprite = Resources.Load<Sprite>("Textures/tempFaceMan");
         portraitOldManSprite = Resources.Load<Sprite>("Textures/tempFaceOldMan");
         portraitFemaleASprite = Resources.Load<Sprite>("Textures/tempGrill");
+
+        portraitChip1 = Resources.Load<Sprite>("Textures/chip-portrait/chip-1");
+        portraitChip10 = Resources.Load<Sprite>("Textures/chip-portrait/chip-10");
+        portraitChip20 = Resources.Load<Sprite>("Textures/chip-portrait/chip-20");
+        portraitChip30 = Resources.Load<Sprite>("Textures/chip-portrait/chip-30");
+        portraitChip40 = Resources.Load<Sprite>("Textures/chip-portrait/chip-40");
+        portraitChip50 = Resources.Load<Sprite>("Textures/chip-portrait/chip-50");
+        portraitChip60 = Resources.Load<Sprite>("Textures/chip-portrait/chip-60");
+        portraitChip70 = Resources.Load<Sprite>("Textures/chip-portrait/chip-70");
+        portraitChip80 = Resources.Load<Sprite>("Textures/chip-portrait/chip-80");
+        portraitChip90 = Resources.Load<Sprite>("Textures/chip-portrait/chip-90");
     }
 
     private Sprite[] LoadSpriteArray(string format, int count) {
