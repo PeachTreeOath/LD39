@@ -27,7 +27,6 @@ public class PortraitSwapper : TurnBehaviour {
         if (transitionRunning) {
             if (Time.time > endLerpTime) {
                 //lerp complete, swap in new sprite
-                Debug.Log("Lerp done");
                 spr.sprite = nextSprite;
                 transitionRunning = false;
                 rend.material.SetFloat("_StartTime", Time.time + 120);
@@ -42,7 +41,6 @@ public class PortraitSwapper : TurnBehaviour {
     private void setNextSprite(Sprite nextSprite) {
 
         if (nextSprite != this.nextSprite && nextSprite != this.spr.sprite) {
-            Debug.Log("Starting lerp");
             if (transitionRunning && this.nextSprite != null) {
                 //premature abort for in progress transitions
                 spr.sprite = this.nextSprite;
