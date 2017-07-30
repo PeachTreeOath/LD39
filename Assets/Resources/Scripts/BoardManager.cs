@@ -68,7 +68,7 @@ public class BoardManager : Singleton<BoardManager> {
             List<Board> boards =
                 levelLoader.LoadBoardsFromFile("Assets/Resources/Levels/"+levelFile); //FIXME unhardcode
 
-            float boardDistance = 2.2f;
+            float boardDistance = 2f;
             //position boards correclty
             foreach (Board brd in boards) {
                 switch (brd.myBoardType) {

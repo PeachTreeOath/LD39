@@ -28,7 +28,7 @@ public class Board : MonoBehaviour
     //Note index order is [x][y]. Content is BoardPiece.cs constant.
     private int[,] boardContent;
 
-    private float scale = 0.8f;
+    private float scale = 0.75f;
     void Start()
     {
         transform.localScale = new Vector2(scale, scale);
