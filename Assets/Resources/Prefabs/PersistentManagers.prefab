@@ -51,5 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc4de6b5671d4f54fb5c9756866f4800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLevel: 0
+  startingWealth: 0
   generation: 1
-  wealth: 0
