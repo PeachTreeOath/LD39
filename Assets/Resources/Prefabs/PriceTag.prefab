@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 223540047831418804}
   - component: {fileID: 114876897152185084}
   - component: {fileID: 114931416184751928}
+  - component: {fileID: 114090261458133038}
   m_Layer: 0
   m_Name: PriceTag
   m_TagString: Untagged
@@ -46,6 +47,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114090261458133038
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1101695761768176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5915a8a1b089624fb14b98ddcb1edeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 99
 --- !u!114 &114876897152185084
 MonoBehaviour:
   m_ObjectHideFlags: 1
