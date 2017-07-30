@@ -21,7 +21,7 @@ public class BoardPiece : MonoBehaviour {
     private float lerpEndTime = 0;
     private bool moving = false;
 
-    private static float MOVE_DURATION = 0.15f; //in seconds
+    private static float MOVE_DURATION = 0.10f; //in seconds
 
     //TODO use [Flags] enum?
     //piece types, used to identify board content pieces, 
