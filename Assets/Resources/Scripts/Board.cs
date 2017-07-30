@@ -53,6 +53,7 @@ public class Board : MonoBehaviour
                 AddPiece(bp, j, i);
 
                 // Add fog to every piece
+                /*
                 if (j > boardSize - 2 || i > boardSize - 2) //WTF?
                     continue;
                 GameObject fogBlock = Instantiate(ResourceLoader.instance.fogBlockFab);
@@ -67,6 +68,7 @@ public class Board : MonoBehaviour
                     fbp.SetBoard(this);
                 }
                 AddPiece(fbp, j, i);
+                */
             }
         }
     }
