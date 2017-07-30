@@ -55,7 +55,8 @@ public class FogBoardPiece : BoardPiece
 
     public override int GetContentType()
     {
-        return BoardPiece.FOG;
+        //return BoardPiece.FOG;
+        return 0;
     }
 }
 

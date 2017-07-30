@@ -13,6 +13,7 @@ public class Board : MonoBehaviour
 
     [HideInInspector]
     public List<BoardPiece> boardPieces = new List<BoardPiece>();
+    private PlayerBoardPiece player;
 
     private float startingXPos;
     private float startingYPos;
@@ -272,6 +273,9 @@ public class Board : MonoBehaviour
     /// <returns></returns>
     public PlayerBoardPiece GetPlayerBoardPiece()
     {
+        if (player != null)
+            return player;
+
         PlayerBoardPiece[] players = FindObjectsOfType<PlayerBoardPiece>();
         foreach (PlayerBoardPiece player in players)
         {
@@ -281,6 +285,47 @@ public class Board : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public void PruneFog()
+    {
+
+        PlayerBoardPiece player = GetPlayerBoardPiece();
+
+        if (player != null)
+        {
+            foreach (BoardPiece piece in boardPieces)
+            {
+                /* Ressurect this if we want to have true fog of war reveal rather than vision
+                if (Mathf.Abs(player.x - x) < 3)
+                {
+                    Destroy(gameObject);
+                }
+                else if (Mathf.Abs(player.y - y) < 3)
+                {
+                    Destroy(gameObject);
+                }
+                */
+
+                SpriteRenderer fogSprite = piece.GetFogSprite();
+                if (fogSprite == null)
+                    continue;
+
+                if (Mathf.Abs(player.x - piece.x) < 3)
+                    fogSprite.enabled = false;
+                else
+                    fogSprite.enabled = true;
+
+                if (Mathf.Abs(player.y - piece.y) < 3)
+                    fogSprite.enabled = false;
+                else
+                    fogSprite.enabled = true;
+            }
+        }
+        else
+        {
+            Debug.LogError("No player found for some reason...");
+        }
     }
 
     //Create a mask that unsets the given value when bitwise-anded

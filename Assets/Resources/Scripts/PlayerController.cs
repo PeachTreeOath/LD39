@@ -139,7 +139,7 @@ public class PlayerController : Singleton<PlayerController>
         PlayerBoardPiece newPlayer = Instantiate(ResourceLoader.instance.playerBoardPieceFab).GetComponent<PlayerBoardPiece>();
         return newPlayer;
     }
-
+    TurnBehaviour[] turnBehaviours;
     void AdvanceTurn()
     {
         //Handle any local logic
@@ -147,7 +147,11 @@ public class PlayerController : Singleton<PlayerController>
         lifeStatManager.age++;
 
         //Invoke listeners that implement TurnBehaviour
-        TurnBehaviour[] turnBehaviours = FindObjectsOfType<TurnBehaviour>();
+        if(turnBehaviours == null)
+        {
+            turnBehaviours = FindObjectsOfType<TurnBehaviour>();
+            Debug.Log("HERE");
+                    }
         foreach (TurnBehaviour behaviour in turnBehaviours)
         {
             behaviour.OnAdvanceTurn();

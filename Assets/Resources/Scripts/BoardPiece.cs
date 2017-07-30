@@ -5,7 +5,8 @@ using UnityEngine;
 /// <summary>
 /// Objects that are represented on a board.
 /// </summary>
-public class BoardPiece : MonoBehaviour {
+public class BoardPiece : MonoBehaviour
+{
 
     public int x; // 0-indexed, starting from left of board
     public int y; // 0-indexed, starting from bottom of board
@@ -16,7 +17,6 @@ public class BoardPiece : MonoBehaviour {
 
     [HideInInspector]
     public Board board; // Board this piece belongs to
-
     private Vector2[] lerpFromTo = new Vector2[2];
     private float lerpEndTime = 0;
     private bool moving = false;
@@ -32,19 +32,28 @@ public class BoardPiece : MonoBehaviour {
     public static int BARRIER = 2;
     public static int ZONE_BARRIER = 4;
     public static int PICKUP = 8;
-    public static int FOG = 16;
 
-    void FixedUpdate() {
-        if (moving) {
-            float t = 1.0f - Mathf.Clamp((lerpEndTime - Time.time)/MOVE_DURATION, 0.0f, 1.0f);
+    private SpriteRenderer fogSprite;
+    void Start()
+    {
+        fogSprite = transform.Find("Fog").GetComponent<SpriteRenderer>();
+    }
+
+    void FixedUpdate()
+    {
+        if (moving)
+        {
+            float t = 1.0f - Mathf.Clamp((lerpEndTime - Time.time) / MOVE_DURATION, 0.0f, 1.0f);
             transform.localPosition = Vector2.Lerp(lerpFromTo[0], lerpFromTo[1], t);
-            if (t >= 1.0f) {
+            if (t >= 1.0f)
+            {
                 moving = false;
             }
         }
     }
 
-    public void SetPosition(int newX, int newY) {
+    public void SetPosition(int newX, int newY)
+    {
         SetPosition(newX, newY, false);
     }
 
@@ -53,19 +62,25 @@ public class BoardPiece : MonoBehaviour {
         //Don't forget to call SetBoard at least once before using this method!
         x = newX;
         y = newY;
-        if (lerp) {
+        if (lerp)
+        {
             lerpFromTo[0] = transform.localPosition;
             lerpFromTo[1] = board.GetLocalPositionFromCoords(x, y);
             lerpEndTime = Time.time + MOVE_DURATION;
             moving = true;
-        } else {
+        }
+        else
+        {
             transform.localPosition = board.GetLocalPositionFromCoords(x, y);
         }
 
         //update board tracking of this piece
-        if (!hasLastPos) {
+        if (!hasLastPos)
+        {
             board.UpdatePiece_Place(this, newX, newY);
-        } else {
+        }
+        else
+        {
             board.UpdatePieceMoved(this, lastXPos, lastYPos, newX, newY);
         }
         lastXPos = x;
@@ -83,7 +98,8 @@ public class BoardPiece : MonoBehaviour {
     /// Returns true if this piece is currently positioned on the board over another thing
     /// </summary>
     /// <returns></returns>
-    public bool isOverPickup() {
+    public bool isOverPickup()
+    {
         return board.hasTileContent(x, y);
     }
 
@@ -92,7 +108,8 @@ public class BoardPiece : MonoBehaviour {
     /// call isOverPickup() first to determine if there is anything to pickup.
     /// </summary>
     /// <returns>Pieces under current piece location</returns>
-    public List<BoardPiece> getPickups() {
+    public List<BoardPiece> getPickups()
+    {
         return board.getPickups(x, y);
     }
 
@@ -101,7 +118,8 @@ public class BoardPiece : MonoBehaviour {
     /// Default is none.
     /// </summary>
     /// <returns>Content constant from BoardPiece.cs</returns>
-    public virtual int GetContentType() {
+    public virtual int GetContentType()
+    {
         return OPEN_SPACE;
     }
 
@@ -111,15 +129,23 @@ public class BoardPiece : MonoBehaviour {
     /// <param name="testX"></param>
     /// <param name="testY"></param>
     /// <returns></returns>
-    public bool isAt(int testX, int testY) {
+    public bool isAt(int testX, int testY)
+    {
         return testX == x && testY == y;
     }
 
-    public virtual void OnPickup() {
+    public virtual void OnPickup()
+    {
 
     }
 
-    public virtual void OnRemove() {
+    public virtual void OnRemove()
+    {
         GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+    public SpriteRenderer GetFogSprite()
+    {
+        return fogSprite;
     }
 }

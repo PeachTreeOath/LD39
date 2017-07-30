@@ -13,6 +13,7 @@ public class PlayerBoardPiece : BoardPiece
         if (CheckValidMove(x, y + 1))
         {
             SetPosition(x, y + 1, true);
+            board.PruneFog();
         }
     }
     public void MoveDown()
