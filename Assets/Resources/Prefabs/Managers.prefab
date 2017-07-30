@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 81495641943491856}
   - component: {fileID: 114319648340376432}
   - component: {fileID: 114514344817745778}
+  - component: {fileID: 114979720296843528}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -173,6 +174,7 @@ MonoBehaviour:
   playerBoardPieceFab: {fileID: 0}
   lootBoardPieceFab: {fileID: 0}
   dollarBillFab: {fileID: 0}
+  priceTagFab: {fileID: 0}
   barrierPieceFab: {fileID: 0}
   zoneBarrierPieceFab: {fileID: 0}
   zoneKeyPieceFab: {fileID: 0}
@@ -184,3 +186,16 @@ MonoBehaviour:
   portraitManSprite: {fileID: 0}
   portraitOldManSprite: {fileID: 0}
   portraitFemaleASprite: {fileID: 0}
+--- !u!114 &114979720296843528
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1087000101360306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0ad3c2f52bf2c94d9508837a48b9f53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: 0.15
+  tileColor: {r: 0, g: 0, b: 0, a: 0}
