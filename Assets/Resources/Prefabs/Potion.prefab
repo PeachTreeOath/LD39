@@ -67,8 +67,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d2e83daef335914fbaef49ad97ee2b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnsPerLevel: 010000000200000003000000
-  healingAtLevel: 01000000020000000300000005000000
+  turnsPerLevel: 140000001400000014000000
+  healingAtLevel: 0300000006000000090000000c000000
   spriteAtLevel:
   - {fileID: 21300000, guid: 9f9da97cabf482647a9b21146f9a7e10, type: 3}
   - {fileID: 21300000, guid: aff9ac940e96f4d42bd3e80aef05e001, type: 3}
