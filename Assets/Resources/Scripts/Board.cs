@@ -41,14 +41,32 @@ public class Board : MonoBehaviour
             {
                 GameObject block = Instantiate(blockPrefab);
                 BoardPiece bp = block.GetComponent<BoardPiece>();
-                if (bp == null) {
+                if (bp == null)
+                {
                     Debug.LogError("Your prefab or gameobject '" + block.name + "' doesn't have a BoardPiece component - Adding default");
                     bp = block.AddComponent<BoardPiece>();
                 }
-                if (bp.board == null) {
+                if (bp.board == null)
+                {
                     bp.SetBoard(this);
                 }
                 AddPiece(bp, j, i);
+
+                // Add fog to every piece
+                if (j > boardSize - 2 || i > boardSize - 2) //WTF?
+                    continue;
+                GameObject fogBlock = Instantiate(ResourceLoader.instance.fogBlockFab);
+                FogBoardPiece fbp = fogBlock.GetComponent<FogBoardPiece>();
+                if (fbp == null)
+                {
+                    Debug.LogError("Your prefab or gameobject '" + fogBlock.name + "' doesn't have a FogBoardPiece component - Adding default");
+                    fbp = fogBlock.AddComponent<FogBoardPiece>();
+                }
+                if (fbp.board == null)
+                {
+                    fbp.SetBoard(this);
+                }
+                AddPiece(fbp, j, i);
             }
         }
     }
@@ -86,14 +104,18 @@ public class Board : MonoBehaviour
     /// <param name="xPos"></param>
     /// <param name="yPos"></param>
     /// <returns>All pickups at location or an empty list if there are none.</returns>
-    public List<BoardPiece> getPickups(int xPos, int yPos) {
+    public List<BoardPiece> getPickups(int xPos, int yPos)
+    {
         List<BoardPiece> pickups = new List<BoardPiece>();
 
-        for (int i = 0; i < boardPieces.Count; i++) {
+        for (int i = 0; i < boardPieces.Count; i++)
+        {
             int tileContent = boardContent[xPos, yPos];
-            if (hasSet(tileContent, BoardPiece.PICKUP)) {
+            if (hasSet(tileContent, BoardPiece.PICKUP))
+            {
                 BoardPiece bp = boardPieces[i];
-                if (bp.isAt(xPos, yPos) && bp.GetContentType()==BoardPiece.PICKUP) {
+                if (bp.isAt(xPos, yPos) && bp.GetContentType() == BoardPiece.PICKUP)
+                {
                     pickups.Add(boardPieces[i]);
                     RemovePiece(boardPieces[i], xPos, yPos);
                 }
@@ -103,7 +125,8 @@ public class Board : MonoBehaviour
         return pickups;
     }
 
-    public int GetBoardSize() {
+    public int GetBoardSize()
+    {
         return (int)boardSize;
     }
 
@@ -119,7 +142,8 @@ public class Board : MonoBehaviour
     // Checks if player can move to this spot.
     public bool IsSquareMovable(int x, int y)
     {
-        if (dbg_bypass_cockblock) {
+        if (dbg_bypass_cockblock)
+        {
             return true;
         }
 
@@ -128,10 +152,12 @@ public class Board : MonoBehaviour
             return false;
         }
         int tileContent = boardContent[x, y];
-        if (hasSet(tileContent, BoardPiece.BARRIER)) {
+        if (hasSet(tileContent, BoardPiece.BARRIER))
+        {
             return false;
         }
-        if (hasSet(tileContent, BoardPiece.ZONE_BARRIER)) {
+        if (hasSet(tileContent, BoardPiece.ZONE_BARRIER))
+        {
             return false;
         }
         return true;
@@ -141,24 +167,29 @@ public class Board : MonoBehaviour
     /// Test the key against all board pieces, unlocking the ones that accept the key.
     /// </summary>
     /// <param name="keyId"></param>
-    public void useKey(int keyId) {
+    public void useKey(int keyId)
+    {
         List<BoardPiece> piecesToRemove = new List<BoardPiece>();
-        for (int i = 0; i < boardPieces.Count; i++) {
+        for (int i = 0; i < boardPieces.Count; i++)
+        {
             //Debug.Log("index " + i + " (" + boardPieces[i].x + ", " + boardPieces[i].y + ")");
             BoardPiece piece = boardPieces[i];
             int xPos = piece.x;
             int yPos = piece.y;
             int tileContent = boardContent[xPos, yPos];
-            if (piece.isAt(xPos, yPos) && piece.GetContentType() == BoardPiece.ZONE_BARRIER) {
+            if (piece.isAt(xPos, yPos) && piece.GetContentType() == BoardPiece.ZONE_BARRIER)
+            {
                 ZoneBarrierBoardPiece zbb = (ZoneBarrierBoardPiece)boardPieces[i];
-                if (zbb.unlocks(keyId)) {
+                if (zbb.unlocks(keyId))
+                {
                     piecesToRemove.Add(zbb);
                 }
-        
+
             }
         }
 
-        foreach (BoardPiece bp in piecesToRemove) {
+        foreach (BoardPiece bp in piecesToRemove)
+        {
             RemovePiece(bp, bp.x, bp.y);
             Destroy(bp.gameObject);
         }
@@ -171,13 +202,15 @@ public class Board : MonoBehaviour
     /// <param name="x"></param>
     /// <param name="y"></param>
     /// <returns>true if the tile contains something other than the player or a barrier</returns>
-    public bool hasTileContent(int x, int y) {
+    public bool hasTileContent(int x, int y)
+    {
         int contentId = ~(BoardPiece.ZONE_BARRIER | BoardPiece.BARRIER | BoardPiece.PLAYER);
         int tileContent = boardContent[x, y];
         return hasSet(tileContent, contentId);
     }
 
-    public bool IsOccupied(int x, int y) {
+    public bool IsOccupied(int x, int y)
+    {
         return boardContent[x, y] != 0;
     }
 
@@ -191,12 +224,14 @@ public class Board : MonoBehaviour
     /// <param name="oldY">prev y location</param>
     /// <param name="newX">new x location</param>
     /// <param name="newY">new y location</param>
-    public void UpdatePieceMoved(BoardPiece piece, int oldX, int oldY, int newX, int newY) {
+    public void UpdatePieceMoved(BoardPiece piece, int oldX, int oldY, int newX, int newY)
+    {
         UpdatePiece_Remove(piece, oldX, oldY);
         UpdatePiece_Place(piece, newX, newY);
     }
 
-    public void UpdatePieceReplace(BoardPiece piece, int x, int y) {
+    public void UpdatePieceReplace(BoardPiece piece, int x, int y)
+    {
         boardContent[x, y] = 0;
         UpdatePiece_Place(piece, x, y);
     }
@@ -209,7 +244,8 @@ public class Board : MonoBehaviour
     /// <param name="piece">Piece that was moved</param>
     /// <param name="oldX">prev x location</param>
     /// <param name="oldY">prev y location</param>
-    public void UpdatePiece_Remove(BoardPiece piece, int oldX, int oldY) {
+    public void UpdatePiece_Remove(BoardPiece piece, int oldX, int oldY)
+    {
         int typeId = piece.GetContentType();
         boardContent[oldX, oldY] &= mask_remove(typeId);
     }
@@ -222,13 +258,32 @@ public class Board : MonoBehaviour
     /// <param name="piece">Piece that was moved</param>
     /// <param name="newX">new x location</param>
     /// <param name="newY">new y location</param>
-    public void UpdatePiece_Place(BoardPiece piece, int newX, int newY) {
+    public void UpdatePiece_Place(BoardPiece piece, int newX, int newY)
+    {
         int typeId = piece.GetContentType();
-        boardContent[newX, newY] |= typeId; 
+        boardContent[newX, newY] |= typeId;
+    }
+
+    /// <summary>
+    /// Locates the player piece on the board.
+    /// </summary>
+    /// <returns></returns>
+    public PlayerBoardPiece GetPlayerBoardPiece()
+    {
+        PlayerBoardPiece[] players = FindObjectsOfType<PlayerBoardPiece>();
+        foreach (PlayerBoardPiece player in players)
+        {
+            if (player.board == this)
+            {
+                return player;
+            }
+        }
+        return null;
     }
 
     //Create a mask that unsets the given value when bitwise-anded
-    private int mask_remove(int valToRemove) {
+    private int mask_remove(int valToRemove)
+    {
         int mask = ~valToRemove;
         return mask;
     }
@@ -239,7 +294,8 @@ public class Board : MonoBehaviour
     /// <param name="packedVal">questionable input</param>
     /// <param name="testVal">testing if in input</param>
     /// <returns>true if packedVal contains testVal</returns>
-    private bool hasSet(int packedVal, int testVal) {
+    private bool hasSet(int packedVal, int testVal)
+    {
         return (packedVal & testVal) > 0;
     }
 }
