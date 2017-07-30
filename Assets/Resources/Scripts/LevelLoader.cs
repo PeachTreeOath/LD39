@@ -38,9 +38,9 @@ public class LevelLoader : MonoBehaviour {
             //vertical barrier at x=2
             board.AddPiece(wbp, 8, 8);
 
-            addKey(board, 0, 3, 3);
-            addKey(board, 1, 4, 5);
-            addKey(board, 2, 5, 8);
+            //addKey(board, 0, 3, 3);
+            //addKey(board, 1, 4, 5);
+            //addKey(board, 2, 5, 8);
         }
         if (btype == BoardManager.BoardType.HEALTH) {
             //health pots wherever
