@@ -69,7 +69,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   booksToLevelEducation: 3
   initialMaxAge: 50
-  initialAge: 15
+  initialAge: 0
   initialGoldDropRate: 1
   goldDropRateScalar: 0.5
 --- !u!114 &114319648340376432

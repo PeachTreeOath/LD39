@@ -150,7 +150,7 @@ Prefab:
     - target: {fileID: 114365719835449318, guid: b7da24728b6b95d449d62d67eee11ff6,
         type: 2}
       propertyPath: filename
-      value: ChroLevel3
+      value: ChroLevel7
       objectReference: {fileID: 0}
     - target: {fileID: 114365719835449318, guid: b7da24728b6b95d449d62d67eee11ff6,
         type: 2}
@@ -220,6 +220,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114410542767506160, guid: 030f38be99fa7314ba44dae89325567d,
+        type: 2}
+      propertyPath: levelList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4681323132373062, guid: 030f38be99fa7314ba44dae89325567d, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -266,6 +271,11 @@ Prefab:
         type: 2}
       propertyPath: levelList.Array.data[0]
       value: ChroLevel1.lvl
+      objectReference: {fileID: 0}
+    - target: {fileID: 114410542767506160, guid: 030f38be99fa7314ba44dae89325567d,
+        type: 2}
+      propertyPath: levelList.Array.data[2]
+      value: ChroLevel3.lvl
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 030f38be99fa7314ba44dae89325567d, type: 2}
@@ -748,6 +758,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 212167010649232214, guid: 05e4b9c8699024944b7eaec93d650dd8,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 33bbfef0943adf545ab82d9da375f457, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05e4b9c8699024944b7eaec93d650dd8, type: 2}
   m_IsPrefabParent: 0
