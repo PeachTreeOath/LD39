@@ -158,6 +158,7 @@ MonoBehaviour:
   isMarried: 0
   educationLevel: 0
   books: 0
+  totalBooks: 0
   age: 0
   maxAge: 0
 --- !u!114 &114807795469971148
