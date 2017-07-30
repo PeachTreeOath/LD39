@@ -8,7 +8,7 @@ public class StatConstants : Singleton<StatConstants> {
 
     public int booksToLevelEducation;
     public int initialMaxAge;
-    public int initialAge;
+    public int initialAge; //Put this at 0 or so help me God it will break everything
     public float initialGoldDropRate;
     public float goldDropRateScalar; //multiplies by education level to determine increased gold drop rate
 
