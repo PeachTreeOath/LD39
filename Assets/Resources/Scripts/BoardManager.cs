@@ -76,25 +76,31 @@ public class BoardManager : Singleton<BoardManager> {
                         brd.name = "Relationship Board";
                         brd.transform.position = new Vector2(-boardDistance, boardDistance);
                         relationshipBoard = brd;
-                        activeBoards.Add(brd);
+                        if(relationshipBoardOn)
+                            activeBoards.Add(brd);
                         break;
                     case BoardType.CASH:
                         brd.name = "Cash Board";
                         brd.transform.position = new Vector2(-boardDistance, -boardDistance);
                         cashBoard = brd;
-                        brd.gameObject.AddComponent<LootBoardManager>();
+                        //NOTE: Attempting to design no randomness for now
+                        //brd.gameObject.AddComponent<LootBoardManager>();
+                        if (cashBoardOn)
+                            activeBoards.Add(brd);
                         break;
                     case BoardType.EDUCATION:
                         brd.name = "Education Board";
                         brd.transform.position = new Vector2(boardDistance, -boardDistance);
                         educationBoard = brd;
-                        activeBoards.Add(brd);
+                        if(educationBoardOn)
+                            activeBoards.Add(brd);
                         break;
                     case BoardType.HEALTH:
                         brd.name = "Health Board";
                         brd.transform.position = new Vector2(boardDistance, boardDistance);
                         healthBoard = brd;
-                        activeBoards.Add(brd);
+                        if (healthBoardOn)
+                            activeBoards.Add(brd);
                         break;
 
                 }
