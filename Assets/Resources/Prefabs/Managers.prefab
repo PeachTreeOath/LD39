@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeed: 0.15
-  tileColor: {r: 0.16176468, g: 0.9306288, b: 1, a: 0.403}
+  tileColor: {r: 1, g: 1, b: 1, a: 0.403}
 --- !u!114 &114633306691937126
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -200,6 +200,16 @@ MonoBehaviour:
   portraitManSprite: {fileID: 0}
   portraitOldManSprite: {fileID: 0}
   portraitFemaleASprite: {fileID: 0}
+  portraitChip1: {fileID: 0}
+  portraitChip10: {fileID: 0}
+  portraitChip20: {fileID: 0}
+  portraitChip30: {fileID: 0}
+  portraitChip40: {fileID: 0}
+  portraitChip50: {fileID: 0}
+  portraitChip60: {fileID: 0}
+  portraitChip70: {fileID: 0}
+  portraitChip80: {fileID: 0}
+  portraitChip90: {fileID: 0}
   girlDressSprites: []
   girlHairSprites: []
   portraitGirlDressSprites: []

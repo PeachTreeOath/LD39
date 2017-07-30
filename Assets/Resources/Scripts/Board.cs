@@ -28,6 +28,11 @@ public class Board : MonoBehaviour
     //Note index order is [x][y]. Content is BoardPiece.cs constant.
     private int[,] boardContent;
 
+    void Start()
+    {
+
+    }
+
     public void CreateEmptyBoardWithoutTiles(int boardSize, float tileSize)
     {
         Debug.Log("Create Board, size=" + boardSize + ", tileSize=" + tileSize);
@@ -38,7 +43,6 @@ public class Board : MonoBehaviour
         startingYPos = boardSize * -tileSize / 2 + tileSize / 2;
 
         boardContent = new int[boardSize, boardSize];
-
     }
 
     public void CreateEmptyBoard(int boardSize, GameObject blockPrefab)
