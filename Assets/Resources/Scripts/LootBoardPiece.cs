@@ -22,6 +22,7 @@ public class LootBoardPiece : BoardPiece {
     }
 
     void Start() {
+        size = value / 25;
         CreateStack(size);
     }
 
