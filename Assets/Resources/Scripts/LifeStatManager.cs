@@ -31,6 +31,27 @@ public class LifeStatManager : Singleton<LifeStatManager> {
     private float maxCashVal = 3000; //arbitrary but effects bar increment
     private int maxBookLevel = 12; //?
 
+    public int startingWealth;
+
+    private int _wealth = 0; // :-(
+
+    public int wealth
+    {
+        get { return _wealth; }
+        set
+        {
+            if (_wealth != value)
+            {
+                _wealth = value;
+
+                BuyablePiece[] buyables = Object.FindObjectsOfType<BuyablePiece>();
+                foreach (BuyablePiece buyable in buyables)
+                {
+                    buyable.OnWealthChange();
+                }
+            }
+        }
+    }
 
     public float GetGoldDropRate()
     {
@@ -43,10 +64,10 @@ public class LifeStatManager : Singleton<LifeStatManager> {
         //Where is the relationship bar??
         //relationshipStatusField = GameObject.Find("RelationshipStatusValue").GetComponent<Text>();
         wealthField = GameObject.Find("CashValue").GetComponent<Text>();
-        wealthBar = GameObject.Find("WealthBar").GetComponent<RectTransform>();
-        barHeight = wealthBar.rect.height;
-        maxBarWidth = wealthBar.rect.width; 
-        wealthBar.sizeDelta = new Vector2(1, barHeight);
+        //wealthBar = GameObject.Find("WealthBar").GetComponent<RectTransform>();
+        //barHeight = wealthBar.rect.height;
+        //maxBarWidth = wealthBar.rect.width; 
+        //wealthBar.sizeDelta = new Vector2(1, barHeight);
         educationLevelField = GameObject.Find("KnowledgeValue").GetComponent<Text>();
         bookBar = GameObject.Find("KnowledgeBar").GetComponent<RectTransform>();
         bookBar.sizeDelta = new Vector2(1, barHeight);
@@ -63,6 +84,7 @@ public class LifeStatManager : Singleton<LifeStatManager> {
         //InitiallizeFields
         maxAge = StatConstants.instance.initialMaxAge;
         age = StatConstants.instance.initialAge;
+        _wealth = startingWealth;
 
         GameObject.Find("StatsPanel DO NOT DISABLE").gameObject.SetActive(false);
     }
@@ -73,9 +95,9 @@ public class LifeStatManager : Singleton<LifeStatManager> {
         //Stats panel currently disabled
         
         //relationshipStatusField.text = StatConstants.instance.RelationshipStatusString(isMarried);
-        float curWealth = PermanentStatManager.instance.wealth;
+        float curWealth = LifeStatManager.instance.wealth;
         wealthField.text = "$" + curWealth;
-        wealthBar.sizeDelta = new Vector2(maxBarWidth * curWealth / maxCashVal, barHeight);
+        //wealthBar.sizeDelta = new Vector2(maxBarWidth * curWealth / maxCashVal, barHeight);
         educationLevelField.text = StatConstants.instance.EducationString(educationLevel);
         bookBar.sizeDelta = new Vector2(maxBarWidth * totalBooks / maxBookLevel, barHeight);
 

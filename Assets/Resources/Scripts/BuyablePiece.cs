@@ -44,7 +44,7 @@ public class BuyablePiece : BoardPiece {
 
     public override void OnPickup() {
         pickedUp = true;
-        PermanentStatManager.instance.wealth -= price;
+        LifeStatManager.instance.wealth -= price;
     }
 
     public virtual void OnWealthChange() {
@@ -63,7 +63,7 @@ public class BuyablePiece : BoardPiece {
             board.UpdatePiece_Remove(this, x, y);
         }
 
-        canBuy = PermanentStatManager.instance.wealth < price;
+        canBuy = LifeStatManager.instance.wealth < price;
 
         if(board != null) {
             board.UpdatePiece_Place(this, x, y);

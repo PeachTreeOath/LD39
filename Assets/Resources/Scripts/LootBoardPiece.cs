@@ -47,7 +47,7 @@ public class LootBoardPiece : BoardPiece {
     }
 
     public override void OnPickup() {
-        PermanentStatManager.instance.wealth += value;
+        LifeStatManager.instance.wealth += value;
     }
 
     public override void OnRemove() {
