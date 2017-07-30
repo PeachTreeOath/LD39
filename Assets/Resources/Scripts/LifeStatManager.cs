@@ -64,7 +64,7 @@ public class LifeStatManager : Singleton<LifeStatManager> {
         maxAge = StatConstants.instance.initialMaxAge;
         age = StatConstants.instance.initialAge;
 
-        GameObject.Find("StatsPanel").gameObject.SetActive(false);
+        GameObject.Find("StatsPanel DO NOT DISABLE").gameObject.SetActive(false);
     }
 
     void Update()
