@@ -7,12 +7,19 @@ public class GameEnder : TurnBehaviour {
 
     public override void OnAdvanceTurn()
     {
-        if (LifeStatManager.instance.age > LifeStatManager.instance.maxAge)
+        if(LifeStatManager.instance.isMarried)
         {
             PermanentStatManager.instance.generation++;
             PermanentStatManager.instance.currentLevel++;
             SceneManager.LoadScene("Game");
         }
-    }
+        else if (LifeStatManager.instance.age > LifeStatManager.instance.maxAge)
+        {
+            // TODO: Replay level instead
+            PermanentStatManager.instance.generation++;
+            PermanentStatManager.instance.currentLevel++;
+            SceneManager.LoadScene("Game");
+        }
+}
 
 }
