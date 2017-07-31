@@ -41,6 +41,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
 
     private void playEndingEffects()
     {
+        AudioManager.instance.PlayMusicOnce("VictoryTheme", AudioManager.instance.GetMusicVolume());
         endingTime = 0f;
         endingStarted = true;
 
@@ -56,6 +57,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
   
     private void playDeathEffects()
     {
+        AudioManager.instance.PlayMusicOnce("LoseTheme", AudioManager.instance.GetMusicVolume());
         endingTime = 0f;
         deathStarted = true;
         gameOverText.enabled = true;

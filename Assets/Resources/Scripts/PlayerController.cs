@@ -114,7 +114,7 @@ public class PlayerController : Singleton<PlayerController>
             else if (bpType == typeof(WaifuBoardPiece))
             {
                 LogManager.instance.Log("She said yes!");
-                AudioManager.instance.PlaySound("Marriage");
+               // AudioManager.instance.PlaySound("Marriage");
                 LifeStatManager.instance.isMarried = true;
                // WaifuPortraitSwapper.instance.TurnOnPortrait((WaifuBoardPiece)bp);
             }
