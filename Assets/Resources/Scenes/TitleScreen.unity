@@ -1219,7 +1219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeed: 0.25
-  tileColor: {r: 0.353625, g: 0.6309175, b: 0.9044118, a: 0.673}
+  tileColor: {r: 0.784, g: 0.64822376, b: 0.370048, a: 0.673}
 --- !u!4 &512489090
 Transform:
   m_ObjectHideFlags: 0
