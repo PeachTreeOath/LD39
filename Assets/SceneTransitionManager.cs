@@ -86,7 +86,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
         Vector3 cameraStartingPos = Camera.main.transform.localPosition;
         float cameraCurrentPosY = cameraStartingPos.y;
 
-        while (verticalWipeDistance + startingPos.y - currentPosY > 0f)
+        while (Mathf.Abs(startingPos.y - currentPosY) < verticalWipeDistance)
         {
             verticalWipeTime += Time.deltaTime;
             Debug.Log("startingPos.y = " + startingPos.y);
