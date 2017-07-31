@@ -18,6 +18,7 @@
 #FS_END (column separator) = ','
 #end of help
 
+boardTitle: Split Paths
 boardType:	RELATIONSHIP
 fogSize:	0
 boardPos:	TOP_LEFT
