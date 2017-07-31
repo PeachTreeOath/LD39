@@ -75,6 +75,31 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
         yield return null;
     }
 
+    IEnumerator DoVerticalWipe()
+    {
+        float verticalWipeTime = 0f;
+        float verticalWipeDistance = 8f; //needs to be adjusted to length of the line
+        
+        Vector3 startingPos = verticalLineMask.transform.localPosition;
+        float currentPosY = startingPos.y;
+        
+        Debug.Log("startingPosY = " + currentPosY);
+        while (verticalWipeDistance + startingPos.y - currentPosY > 0f)
+        {
+            verticalWipeTime += Time.deltaTime;
+            Debug.Log("startingPos.y = " + startingPos.y);
+            currentPosY = startingPos.y - (verticalWipeDistance * verticalWipeTime) / secondsToRevealVerticalLine;
+            Debug.Log("currentPosY = " + currentPosY);
+            Vector3 newPos = verticalLineMask.transform.localPosition;
+            newPos.y = currentPosY;
+            verticalLineMask.transform.localPosition = newPos;
+            yield return null;
+        }
+        verticalWipeDone = true;
+        coroutineInProgress = false;
+        yield return null;
+    }
+
     void Start()
     {
         blackLineHorizontal = GameObject.Find("BlackLineHorizontal").GetComponent<SpriteRenderer>();
@@ -99,6 +124,9 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
             else if (endingTime >= secondsToRevealHorizontalLine && !verticalWipeDone && !coroutineInProgress)
             {
                 //kickoff verticalWipe
+                endingTime = 0f;
+                coroutineInProgress = true;
+                StartCoroutine(DoVerticalWipe());
             }
             else if (endingTime >= secondsToRevealVerticalLine && !finalPauseDone && !coroutineInProgress)
             {

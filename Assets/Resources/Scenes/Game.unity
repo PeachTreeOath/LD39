@@ -242,31 +242,6 @@ Prefab:
       propertyPath: levelLoader
       value: 
       objectReference: {fileID: 13100984}
-    - target: {fileID: 114790825136588816, guid: 030f38be99fa7314ba44dae89325567d,
-        type: 2}
-      propertyPath: secondsToFade
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114790825136588816, guid: 030f38be99fa7314ba44dae89325567d,
-        type: 2}
-      propertyPath: secondsToRevealHorizontalLine
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114790825136588816, guid: 030f38be99fa7314ba44dae89325567d,
-        type: 2}
-      propertyPath: secondsToRevealVerticalLine
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114790825136588816, guid: 030f38be99fa7314ba44dae89325567d,
-        type: 2}
-      propertyPath: secondsToPauseBeforeSceneTransition
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114790825136588816, guid: 030f38be99fa7314ba44dae89325567d,
-        type: 2}
-      propertyPath: endingTotalTime
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 030f38be99fa7314ba44dae89325567d, type: 2}
   m_IsPrefabParent: 0
