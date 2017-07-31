@@ -201,9 +201,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLines: 5
-  maxFadeLines: 2
-  fadeLines: 0
-  intervalTime: 1.7
 --- !u!114 &114966648603352932
 MonoBehaviour:
   m_ObjectHideFlags: 1
