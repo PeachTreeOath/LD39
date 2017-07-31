@@ -36,13 +36,14 @@ public class AudioManager : Singleton<AudioManager>
 
         ToggleMute(mute);
 
-        PlayMusic("MainTheme", .1f);
+        PlayMusic("MainTheme", .2f);
     }
 
 	public void UpdateMusicVolume()
 	{
 		musicChannel.volume = VolumeListener.volumeLevel;
-	}
+        soundChannel.volume = VolumeListener.volumeLevel;
+    }
 
     public float GetMusicVolume()
     {
@@ -52,7 +53,7 @@ public class AudioManager : Singleton<AudioManager>
     public void PlayMusic(string name, float volume)
     {
         musicChannel.clip = soundMap[name];
-		musicChannel.volume = VolumeListener.volumeLevel;
+		musicChannel.volume = volume;
         musicChannel.Play();
     }
 

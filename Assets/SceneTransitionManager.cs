@@ -75,6 +75,40 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
         yield return null;
     }
 
+    IEnumerator DoVerticalWipe()
+    {
+        float verticalWipeTime = 0f;
+        float verticalWipeDistance = 8f; //needs to be adjusted to length of the line
+        
+        Vector3 startingPos = verticalLineMask.transform.localPosition;
+        float currentPosY = startingPos.y;
+
+        Vector3 cameraStartingPos = Camera.main.transform.localPosition;
+        float cameraCurrentPosY = cameraStartingPos.y;
+
+        while (Mathf.Abs(startingPos.y - currentPosY) < verticalWipeDistance)
+        {
+            verticalWipeTime += Time.deltaTime;
+            Debug.Log("startingPos.y = " + startingPos.y);
+            currentPosY = startingPos.y - (verticalWipeDistance * verticalWipeTime) / secondsToRevealVerticalLine;
+            Debug.Log("currentPosY = " + currentPosY);
+            cameraCurrentPosY = cameraStartingPos.y - (verticalWipeDistance * verticalWipeTime) / secondsToRevealVerticalLine;
+
+            Vector3 newPos = verticalLineMask.transform.localPosition;
+            Vector3 newCamPos = Camera.main.transform.localPosition;
+
+            newPos.y = currentPosY;
+            newCamPos.y = cameraCurrentPosY;
+
+            verticalLineMask.transform.localPosition = newPos;
+            Camera.main.transform.localPosition = newCamPos;
+            yield return null;
+        }
+        verticalWipeDone = true;
+        coroutineInProgress = false;
+        yield return null;
+    }
+
     void Start()
     {
         blackLineHorizontal = GameObject.Find("BlackLineHorizontal").GetComponent<SpriteRenderer>();
@@ -99,6 +133,9 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
             else if (endingTime >= secondsToRevealHorizontalLine && !verticalWipeDone && !coroutineInProgress)
             {
                 //kickoff verticalWipe
+                endingTime = 0f;
+                coroutineInProgress = true;
+                StartCoroutine(DoVerticalWipe());
             }
             else if (endingTime >= secondsToRevealVerticalLine && !finalPauseDone && !coroutineInProgress)
             {
