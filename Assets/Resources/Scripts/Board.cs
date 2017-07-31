@@ -20,6 +20,8 @@ public class Board : MonoBehaviour
     private float boardSize;
     private float tileSize;
 
+    public string boardTitle = "";
+
     public BoardManager.BoardType myBoardType;
 
     //array mirrors the board layout and stores a lookup value telling if something
