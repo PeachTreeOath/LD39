@@ -17,8 +17,9 @@ public class BuyablePiece : BoardPiece {
             cost = value;
             if(oldCost != cost) {
                 if (cost > 0) {
-                    if (priceTag == null) AddPriceTag();
-                    priceTag.amount = cost;
+                    //Removing pricetag for now
+                    //if (priceTag == null) AddPriceTag();
+                    //priceTag.amount = cost;
                 }
 
                 UpdateCanBuy();
