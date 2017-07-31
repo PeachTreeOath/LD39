@@ -46,6 +46,9 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
         //kicks off these coroutines
         FadeUI.instance.FadeMe();
         FadeSprite.instance.FadeMe();
+
+        PlayerController.instance.inputEnabled = false;
+        
     }
   
     private void playDeathEffects()
@@ -61,6 +64,8 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
         FadeUI.instance.FadeMe();
         FadeSprite.instance.FadeMe();
 
+        PlayerController.instance.inputEnabled = false;
+        PlayerController.instance.onDeathScreen = true;
         portraitSwapper.transitionToSkeleton();
     }
     IEnumerator DoHorizontalWipe()

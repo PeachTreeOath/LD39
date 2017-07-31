@@ -9,6 +9,8 @@ public class PlayerController : Singleton<PlayerController>
 {
 
     public Vector2 startingPosition = new Vector2(4, 4);
+    public bool onDeathScreen = false;
+    public bool inputEnabled = true;
 
     private List<PlayerBoardPiece> players = new List<PlayerBoardPiece>();
 
@@ -33,7 +35,7 @@ public class PlayerController : Singleton<PlayerController>
     void Update()
     {
         bool turnWillAdv = false;
-        if (Input.GetButtonDown("Up"))
+        if (Input.GetButtonDown("Up") && inputEnabled)
         {
             foreach (PlayerBoardPiece player in players)
             {
@@ -42,7 +44,7 @@ public class PlayerController : Singleton<PlayerController>
             }
             turnWillAdv = true;
         }
-        else if (Input.GetButtonDown("Down"))
+        else if (Input.GetButtonDown("Down") && inputEnabled)
         {
             foreach (PlayerBoardPiece player in players)
             {
@@ -51,7 +53,7 @@ public class PlayerController : Singleton<PlayerController>
             }
             turnWillAdv = true;
         }
-        else if (Input.GetButtonDown("Left"))
+        else if (Input.GetButtonDown("Left") && inputEnabled)
         {
             foreach (PlayerBoardPiece player in players)
             {
@@ -60,7 +62,7 @@ public class PlayerController : Singleton<PlayerController>
             }
             turnWillAdv = true;
         }
-        else if (Input.GetButtonDown("Right"))
+        else if (Input.GetButtonDown("Right") && inputEnabled)
         {
             foreach (PlayerBoardPiece player in players)
             {
@@ -68,6 +70,10 @@ public class PlayerController : Singleton<PlayerController>
                 turnPickups.AddRange(player.GetPickups());
             }
             turnWillAdv = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.Space) && onDeathScreen)
+        {
+            SceneTransitionManager.instance.ReplayCurrentLevel();
         }
 
         processPickups(turnPickups);
