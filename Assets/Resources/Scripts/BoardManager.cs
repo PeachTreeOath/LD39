@@ -71,7 +71,7 @@ public class BoardManager : Singleton<BoardManager> {
                 }
                 else if (board.boardTitle.Trim().Equals("Tutorial 2/3: Cheating Death"))
                 {
-                    SetTutorialText("-Relationships aren't the only aspect of your life to juggle\r\n\r\n-Extend your age limit by collecting pills in the HEALTH board\r\n\r\n-Pills are more effective later in life, so try to save them for your later years");
+                    SetTutorialText("-You must juggle multiple aspects of your life to succeed\r\n\r\n-Extend your age limit by collecting pills in the HEALTH board\r\n\r\n-Pills are more effective later in life, so try to save them for your later years");
                 }
                 else if (board.boardTitle.Trim().Equals("Tutorial 3/3: I Don't Want No Scrubs"))
                 {
