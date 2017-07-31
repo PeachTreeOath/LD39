@@ -59,6 +59,10 @@ public class ResourceLoader : Singleton<ResourceLoader>
     public Sprite portraitChip80;
     [HideInInspector]
     public Sprite portraitChip90;
+    [HideInInspector]
+    public Sprite bookUnlit;
+    [HideInInspector]
+    public Sprite bookLit;
 
     [HideInInspector]
     public Sprite[] girlDressSprites;
@@ -109,6 +113,9 @@ public class ResourceLoader : Singleton<ResourceLoader>
         portraitChip70 = Resources.Load<Sprite>("Textures/chip-portrait/chip-70");
         portraitChip80 = Resources.Load<Sprite>("Textures/chip-portrait/chip-80");
         portraitChip90 = Resources.Load<Sprite>("Textures/chip-portrait/chip-90");
+
+        bookUnlit = Resources.Load<Sprite>("Textures/brownBook");
+        bookLit = Resources.Load<Sprite>("Textures/brownBookLit");
     }
 
     public TextAsset getLevelTextAsset(string levelName) {
