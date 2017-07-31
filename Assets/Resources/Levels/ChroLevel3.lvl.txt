@@ -18,7 +18,7 @@
 #FS_END (column separator) = ','
 #end of help
 
-boardTitle: Easy Money
+boardTitle: Jimmy Wellington III: Easy Money
 boardType:	RELATIONSHIP
 fogSize:	0
 boardPos:	TOP_LEFT

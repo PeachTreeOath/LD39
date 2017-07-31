@@ -18,7 +18,7 @@
 #FS_END (column separator) = ','
 #end of help
 
-boardTitle: Checkers
+boardTitle: Jimmy Wellington X: Checkers
 boardType:	RELATIONSHIP
 fogSize:	0
 boardPos:	TOP_LEFT
