@@ -43,7 +43,8 @@ public class PlayerBoardPiece : BoardPiece {
             return; //level may be loading
         }
 
-        chipSprite.sprite = chipForward;
+        //This would reset position to face forward after moving
+        //chipSprite.sprite = chipForward;
     }
 
     public override void PreMoveHook(Vector2 from, Vector2 to) {
