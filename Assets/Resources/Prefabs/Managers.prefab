@@ -118,9 +118,9 @@ MonoBehaviour:
   - ChroLevel5.lvl
   - ChroLevel6.lvl
   - ChroLevel7.lvl
-  - ChroLevel7.lvl
-  - ChroLevel7.lvl
-  - ChroLevel7.lvl
+  - ChroLevel8.lvl
+  - ChroLevel9.lvl
+  - ChroLevel10.lvl
 --- !u!114 &114458622068339646
 MonoBehaviour:
   m_ObjectHideFlags: 1
