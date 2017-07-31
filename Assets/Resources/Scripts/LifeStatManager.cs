@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LifeStatManager : Singleton<LifeStatManager> {
+public class LifeStatManager : Singleton<LifeStatManager>
+{
 
-	public bool isMarried;
+    public bool isMarried;
     public int educationLevel; //cur education tier
     public int books; //num books in this edu level
     public int totalBooks; //lifetime num books
@@ -22,15 +23,19 @@ public class LifeStatManager : Singleton<LifeStatManager> {
     private Text newAgeField;
     private Text generationField;
     private RectTransform wealthBar;
-    private RectTransform bookBar;
+    //private RectTransform bookBar;
+    private RectTransform bookGBar;
+    private RectTransform bookYBar;
+    private RectTransform bookRBar;
     private RectTransform powerBar;
 
     private float barHeight = 2;
     private float maxBarWidth;  //wealth and edu
+    private float maxBookBarWidth;
     private float powerBarWidth;
 
     private float maxCashVal = 3000; //arbitrary but effects bar increment
-    private int maxBookLevel = 12; //?
+    private int maxBookLevel = 9; //?
 
     public int startingWealth;
 
@@ -70,8 +75,13 @@ public class LifeStatManager : Singleton<LifeStatManager> {
         //maxBarWidth = wealthBar.rect.width; 
         //wealthBar.sizeDelta = new Vector2(1, barHeight);
         educationLevelField = GameObject.Find("KnowledgeValue").GetComponent<Text>();
-        bookBar = GameObject.Find("KnowledgeBar").GetComponent<RectTransform>();
-        bookBar.sizeDelta = new Vector2(1, barHeight);
+        bookGBar = GameObject.Find("KnowledgeBarGreen").GetComponent<RectTransform>();
+        maxBookBarWidth = bookGBar.rect.width;
+        bookGBar.sizeDelta = new Vector2(0, barHeight); //Intentional 3 to create tick marks
+        bookYBar = GameObject.Find("KnowledgeBarYellow").GetComponent<RectTransform>();
+        bookYBar.sizeDelta = new Vector2(0, barHeight);
+        bookRBar = GameObject.Find("KnowledgeBarRed").GetComponent<RectTransform>();
+        bookRBar.sizeDelta = new Vector2(0, barHeight);
         //booksField = GameObject.Find("BooksValue").GetComponent<Text>();
 
         powerBar = GameObject.Find("PowerBar").GetComponent<RectTransform>();
@@ -94,49 +104,73 @@ public class LifeStatManager : Singleton<LifeStatManager> {
     {
         //Update UI
         //Stats panel currently disabled
-        
+
         //relationshipStatusField.text = StatConstants.instance.RelationshipStatusString(isMarried);
         float curWealth = LifeStatManager.instance.wealth;
         wealthField.text = "$" + curWealth;
         //wealthBar.sizeDelta = new Vector2(maxBarWidth * curWealth / maxCashVal, barHeight);
         educationLevelField.text = StatConstants.instance.EducationString(educationLevel);
-        bookBar.sizeDelta = new Vector2(maxBarWidth * totalBooks / maxBookLevel, barHeight);
+        float booksInSection = maxBookLevel / 3;
+        float bookRatio = totalBooks / booksInSection;
+        float newWidthGreen = maxBookBarWidth * bookRatio;
+        bookGBar.sizeDelta = new Vector2(Mathf.Min(newWidthGreen, maxBookBarWidth), barHeight);
+
+        if (bookRatio >= 1)
+        {
+            bookRatio -= 1;
+            float newWidthYellow = maxBookBarWidth * bookRatio;
+            bookYBar.sizeDelta = new Vector2(Mathf.Min(newWidthYellow, maxBookBarWidth), barHeight);
+
+            if (bookRatio >= 1)
+            {
+                bookRatio -= 1;
+                float newWidthRed = maxBookBarWidth * bookRatio;
+                bookRBar.sizeDelta = new Vector2(Mathf.Min(newWidthRed, maxBookBarWidth), barHeight);
+            }
+        }
 
         float remainingAge = 1 + maxAge - age;
-        powerBar.sizeDelta = new Vector2(powerBarWidth * ((remainingAge-1) / maxAge), barHeight);
+        powerBar.sizeDelta = new Vector2(powerBarWidth * ((remainingAge - 1) / maxAge), barHeight);
         //booksField.text = StatConstants.instance.BooksString(books);
         ageField.text = "" + age;
         maxAgeField.text = "" + maxAge;
         newAgeField.text = "Age " + age + " / " + maxAge;
         generationField.text = "" + PermanentStatManager.instance.generation;
-        
+
     }
 
-    public void addBooks(int amt) {
+    public void addBooks(int amt)
+    {
         books += amt;
         totalBooks += amt;
         int max = StatConstants.instance.booksToLevelEducation;
-        while (books >= max) {
+        while (books >= max)
+        {
             books -= max;
             addEducation(1);
         }
     }
 
-    public void addEducation(int amt) {
+    public void addEducation(int amt)
+    {
         int oldEducationLevel = educationLevel;
         int newEducationLevel = educationLevel + amt;
 
-        if(newEducationLevel > oldEducationLevel) {
-            for(int keyId = oldEducationLevel; keyId < newEducationLevel; keyId++) {
+        if (newEducationLevel > oldEducationLevel)
+        {
+            for (int keyId = oldEducationLevel; keyId < newEducationLevel; keyId++)
+            {
                 UnlockZone(keyId);
             }
         }
 
-        educationLevel = newEducationLevel;        
+        educationLevel = newEducationLevel;
     }
 
-    protected void UnlockZone(int keyId) {
-        foreach (Board bb in BoardManager.instance.getAllBoards()) {
+    protected void UnlockZone(int keyId)
+    {
+        foreach (Board bb in BoardManager.instance.getAllBoards())
+        {
             bb.useKey(keyId);
         }
     }
