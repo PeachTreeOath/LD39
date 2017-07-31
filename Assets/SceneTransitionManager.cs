@@ -175,7 +175,10 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
             }
             else if (endingTime >= secondsToPauseBeforeSceneTransition && !coroutineInProgress)
             {
-                SceneManager.LoadScene("Game");
+                if(PermanentStatManager.instance.currentLevel == 14)
+                    SceneManager.LoadScene("EndScreen");
+                else
+                    SceneManager.LoadScene("Game");
             }
         }
 
