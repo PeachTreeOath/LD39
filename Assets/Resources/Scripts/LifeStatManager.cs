@@ -34,7 +34,7 @@ public class LifeStatManager : Singleton<LifeStatManager>
     private float maxBookBarWidth;
     private float powerBarWidth;
 
-    private float maxCashVal = 3000; //arbitrary but effects bar increment
+    private float maxCashVal = 1600; //arbitrary but effects bar increment
     private int maxBookLevel = 9; //?
 
     public int startingWealth;
@@ -70,10 +70,10 @@ public class LifeStatManager : Singleton<LifeStatManager>
         //Where is the relationship bar??
         //relationshipStatusField = GameObject.Find("RelationshipStatusValue").GetComponent<Text>();
         wealthField = GameObject.Find("CashValue").GetComponent<Text>();
-        //wealthBar = GameObject.Find("WealthBar").GetComponent<RectTransform>();
-        //barHeight = wealthBar.rect.height;
-        //maxBarWidth = wealthBar.rect.width; 
-        //wealthBar.sizeDelta = new Vector2(1, barHeight);
+        wealthBar = GameObject.Find("WealthBar").GetComponent<RectTransform>();
+        barHeight = wealthBar.rect.height;
+        maxBarWidth = wealthBar.rect.width; 
+        wealthBar.sizeDelta = new Vector2(1, barHeight);
         educationLevelField = GameObject.Find("KnowledgeValue").GetComponent<Text>();
         bookGBar = GameObject.Find("KnowledgeBarGreen").GetComponent<RectTransform>();
         maxBookBarWidth = bookGBar.rect.width;
@@ -108,7 +108,7 @@ public class LifeStatManager : Singleton<LifeStatManager>
         //relationshipStatusField.text = StatConstants.instance.RelationshipStatusString(isMarried);
         float curWealth = LifeStatManager.instance.wealth;
         wealthField.text = "$" + curWealth;
-        //wealthBar.sizeDelta = new Vector2(maxBarWidth * curWealth / maxCashVal, barHeight);
+        wealthBar.sizeDelta = new Vector2(maxBarWidth * curWealth / maxCashVal, barHeight);
         educationLevelField.text = StatConstants.instance.EducationString(educationLevel);
         float booksInSection = maxBookLevel / 3;
         float bookRatio = totalBooks / booksInSection;
