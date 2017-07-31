@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransitionManager : Singleton<SceneTransitionManager> {
 
-    public float endingTotalTime;
-
     public float secondsToFade;
     public float secondsToRevealHorizontalLine;
     public float secondsToRevealVerticalLine;
