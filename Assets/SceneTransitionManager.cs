@@ -170,7 +170,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
         {
             endingTime += Time.deltaTime;
             //Fade to black happens before this
-            if (endingTime >= secondsToFade && !coroutineInProgress)
+            if (endingTime >= secondsToFade && !finalPauseDone && !coroutineInProgress)
             {
                 //kickoff finalPause
                 endingTime = 0f;
@@ -178,7 +178,6 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
             }
             else if (endingTime >= secondsToPauseBeforeSceneTransition && !coroutineInProgress)
             {
-                
                 SceneManager.LoadScene("Game");
             }
         }
