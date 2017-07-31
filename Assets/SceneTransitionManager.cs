@@ -140,6 +140,8 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
             else if (endingTime >= secondsToRevealVerticalLine && !finalPauseDone && !coroutineInProgress)
             {
                 //kickoff finalPause
+                endingTime = 0f;
+                finalPauseDone = true;
             }
             if (endingTime >= secondsToPauseBeforeSceneTransition && !coroutineInProgress)
             {
