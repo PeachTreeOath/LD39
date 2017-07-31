@@ -86,9 +86,9 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
         while (currentScaleX > 0f)
         {
             horizontalWipeTime += Time.deltaTime;
-            Debug.Log("startingScale.x = " + startingScale.x);
+            //Debug.Log("startingScale.x = " + startingScale.x);
             currentScaleX = Mathf.Max(startingScale.x - (startingScale.x * horizontalWipeTime) / secondsToRevealHorizontalLine, 0);
-            Debug.Log("currentScaleX = " + currentScaleX);
+           // Debug.Log("currentScaleX = " + currentScaleX);
             Vector3 newScale = horizontalLineMask.transform.localScale;
             newScale.x = currentScaleX;
             horizontalLineMask.transform.localScale = newScale;
