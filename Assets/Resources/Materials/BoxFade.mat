@@ -6,9 +6,9 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: SpriteLerp
-  m_Shader: {fileID: 4800000, guid: 70c5445ee3233f543b43ef9bc519d07a, type: 3}
-  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
+  m_Name: BoxFade
+  m_Shader: {fileID: 4800000, guid: ef6393945224ef042b75b68c9bce0adf, type: 3}
+  m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -58,16 +58,13 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _StartTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _Duration: 1
+    - _FadeDist: 1
     - _GameTimeOffset: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
@@ -79,7 +76,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _StartTime: 22
+    - _StartTime: 60
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
