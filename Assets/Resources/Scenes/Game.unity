@@ -245,12 +245,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 030f38be99fa7314ba44dae89325567d, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &683464233 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114616986588865324, guid: d518763f683ddeb4582bd97c5288c4af,
-    type: 2}
-  m_PrefabInternal: {fileID: 1874653616}
-  m_Script: {fileID: 11500000, guid: 080e5ae45bb26da4f85fc20cccfa91aa, type: 3}
 --- !u!1 &888201950
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,21 +664,6 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114248119104015464, guid: 850109530a61a76438f578608e80b98e,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 683464233}
-    - target: {fileID: 114229219111676554, guid: 850109530a61a76438f578608e80b98e,
-        type: 2}
-      propertyPath: m_FontData.m_FontStyle
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224839314086733278, guid: 850109530a61a76438f578608e80b98e,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 715
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 850109530a61a76438f578608e80b98e, type: 2}

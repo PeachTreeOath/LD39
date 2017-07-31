@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 114319648340376432}
   - component: {fileID: 114514344817745778}
   - component: {fileID: 114633306691937126}
+  - component: {fileID: 114790825136588816}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -149,6 +150,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bb96e3ac6d52684fb1f0a83db5cf9fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114790825136588816
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1087000101360306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e142d540c99a8b74eaf51ed6200cb59b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endingTotalTime: 2
 --- !u!114 &114805188963238486
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -166,6 +179,7 @@ MonoBehaviour:
   totalBooks: 0
   age: 0
   maxAge: 0
+  startingWealth: 0
 --- !u!114 &114807795469971148
 MonoBehaviour:
   m_ObjectHideFlags: 1
