@@ -35,6 +35,8 @@ public class AudioManager : Singleton<AudioManager>
         }
 
         ToggleMute(mute);
+
+        PlayMusic("MainTheme", .1f);
     }
 
 	public void UpdateMusicVolume()
