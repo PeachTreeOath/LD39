@@ -21,7 +21,7 @@ public class BoardPiece : MonoBehaviour
     private float lerpEndTime = 0;
     private bool moving = false;
 
-    private static float MOVE_DURATION = 0.10f; //in seconds
+    private static float MOVE_DURATION = 0.15f; //in seconds
 
     //TODO use [Flags] enum?
     //piece types, used to identify board content pieces, 
@@ -51,9 +51,16 @@ public class BoardPiece : MonoBehaviour
             if (t >= 1.0f)
             {
                 moving = false;
+                PostMoveHook(lerpFromTo[0], lerpFromTo[1]);
             }
         }
     }
+
+    //Called right before a move is done
+    public virtual void PreMoveHook(Vector2 from, Vector2 to) { }
+    //Called after a move (and possibly lerp) is complete
+    public virtual void PostMoveHook(Vector2 from, Vector2 to) { }
+
 
     public void SetPosition(int newX, int newY)
     {
@@ -65,16 +72,19 @@ public class BoardPiece : MonoBehaviour
         //Don't forget to call SetBoard at least once before using this method!
         x = newX;
         y = newY;
-        if (lerp)
-        {
+
             lerpFromTo[0] = transform.localPosition;
             lerpFromTo[1] = board.GetLocalPositionFromCoords(x, y);
+            PreMoveHook(lerpFromTo[0], lerpFromTo[1]);
+        if (lerp)
+        {
             lerpEndTime = Time.time + MOVE_DURATION;
             moving = true;
         }
         else
         {
             transform.localPosition = board.GetLocalPositionFromCoords(x, y);
+            PostMoveHook(lerpFromTo[0], lerpFromTo[1]);
         }
 
         //update board tracking of this piece
@@ -89,6 +99,7 @@ public class BoardPiece : MonoBehaviour
         lastXPos = x;
         lastYPos = y;
         hasLastPos = true;
+
     }
 
     public void SetBoard(Board newBoard)
