@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 /// <summary>
 /// Creates and manages player board pieces.
 /// </summary>
@@ -73,7 +73,7 @@ public class PlayerController : Singleton<PlayerController>
         }
         else if (Input.GetKeyDown(KeyCode.Space) && onDeathScreen)
         {
-            SceneTransitionManager.instance.ReplayCurrentLevel();
+            SceneManager.LoadScene("Game");
         }
 
         processPickups(turnPickups);
