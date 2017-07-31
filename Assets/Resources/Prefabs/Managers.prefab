@@ -108,12 +108,18 @@ MonoBehaviour:
   tileSize: 0
   levelLoader: {fileID: 0}
   levelList:
+  - TutorialLevel1.lvl
+  - TutorialLevel2.lvl
+  - TutorialLevel3.lvl
   - ChroLevel1.lvl
   - ChroLevel2.lvl
   - ChroLevel3.lvl
   - ChroLevel4.lvl
   - ChroLevel5.lvl
   - ChroLevel6.lvl
+  - ChroLevel7.lvl
+  - ChroLevel7.lvl
+  - ChroLevel7.lvl
   - ChroLevel7.lvl
 --- !u!114 &114458622068339646
 MonoBehaviour:
@@ -195,6 +201,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLines: 5
+  maxFadeLines: 2
+  fadeLines: 0
   intervalTime: 1.7
 --- !u!114 &114966648603352932
 MonoBehaviour:
