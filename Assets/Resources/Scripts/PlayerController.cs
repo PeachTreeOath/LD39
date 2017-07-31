@@ -87,6 +87,9 @@ public class PlayerController : Singleton<PlayerController>
 
     private void processPickups(List<BoardPiece> pickups)
     {
+        if(pickups.Count != 0)
+            LogManager.instance.ClearLog();
+
         foreach (BoardPiece bp in pickups)
         {
             bp.OnPickup();
@@ -94,7 +97,7 @@ public class PlayerController : Singleton<PlayerController>
             System.Type bpType = bp.GetType();
             if (bpType == typeof(PotionBoardPiece))
             {
-                LogManager.instance.Log("Pill picked up.");
+                LogManager.instance.Log("Lifespan increased by "+((PotionBoardPiece)bp).getPotion().turnsToHeal);
                 AudioManager.instance.PlaySound("PotionPickup");
             }
             else if (bpType == typeof(LootBoardPiece))
@@ -104,7 +107,7 @@ public class PlayerController : Singleton<PlayerController>
             }
             else if (bpType == typeof(EduBookBoardPiece))
             {
-                LogManager.instance.Log("Book picked up.");
+                LogManager.instance.Log("Purchased book for $100");
                 LifeStatManager.instance.addBooks(((EduBookBoardPiece)bp).bookValue);
                 AudioManager.instance.PlaySound("BookPickup",0.5f);
             }
