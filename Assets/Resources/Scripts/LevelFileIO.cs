@@ -14,6 +14,7 @@ public class LevelFileIO : MonoBehaviour {
 
     private static string BOARD_TYPE = "boardType:\t";
     private static string FOG_SIZE = "fogSize:\t";
+    private static string BOARD_TITLE = "boardTitle:\t";
     private static string BOARD_POS = "boardPos:\t";
     private static string START_BOARD = "startdata:\t";
     private static string END_BOARD = "enddata:\t";
@@ -122,6 +123,7 @@ public class LevelFileIO : MonoBehaviour {
         BoardManager.BoardType boardType, int fogSize, BoardManager.BoardPos boardPos) {
         sw.WriteLine(BOARD_TYPE + boardType.ToString());
         sw.WriteLine(FOG_SIZE + fogSize.ToString());
+        sw.WriteLine(BOARD_TITLE + " "); //use first name found that isn't empty
         sw.WriteLine(BOARD_POS + boardPos.ToString());
     }
 
@@ -176,6 +178,7 @@ public class LevelFileIO : MonoBehaviour {
             using (sr) {
                 bool boardReadComplete = false;
                 string boardTypeStr = "";
+                string boardTitleStr = "";
                 string fogSizeStr = "";
                 string boardPosStr = "";
 
@@ -189,6 +192,11 @@ public class LevelFileIO : MonoBehaviour {
                         boardTypeStr = line.Replace(BOARD_TYPE, "").Trim().ToUpper();
                     } else if (line.StartsWith(FOG_SIZE)) {
                         fogSizeStr = line.Replace(FOG_SIZE, "").Trim();
+                    } else if (line.StartsWith(BOARD_TITLE.Trim())) {
+                        string nameVal = line.Replace(BOARD_TITLE.Trim(), "").Trim();
+                        if (nameVal != null && nameVal.Length > 0) {
+                            boardTitleStr = nameVal;
+                        }
                     } else if (line.StartsWith(BOARD_POS)) {
                         boardPosStr = line.Replace(BOARD_POS, "").Trim().ToUpper();
                     } else if (line.StartsWith(START_BOARD.Trim())) {
@@ -207,11 +215,13 @@ public class LevelFileIO : MonoBehaviour {
                     if (boardReadComplete) {
                         BoardManager.BoardType mbt = (BoardManager.BoardType)Enum.Parse(typeof(BoardManager.BoardType), boardTypeStr);
                         curBoard.myBoardType = mbt;
+                        curBoard.boardTitle = boardTitleStr;
                         levelBoards.Add(curBoard);
 
                         curBoard = null;
                         boardReadComplete = false;
                         boardTypeStr = "";
+                        boardTitleStr = "";
                         fogSizeStr = "";
                         boardPosStr = "";
                     }

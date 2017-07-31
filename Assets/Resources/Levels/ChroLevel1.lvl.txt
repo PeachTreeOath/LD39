@@ -21,6 +21,7 @@
 boardType:	RELATIONSHIP
 fogSize:	0
 boardPos:	TOP_LEFT
+boardTitle: So you want to play a game
 startdata:	
 #   0,	     1,	     2,	     3,	     4,	     5,	     6,	     7,	     8,	     9,	  
    __,	   __,	   __,	   Q,	   __,	   __,	   Q,	   __,	   C,	   __,	 #0

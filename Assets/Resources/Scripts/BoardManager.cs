@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Creates all boards.
@@ -13,6 +14,8 @@ public class BoardManager : Singleton<BoardManager> {
     public bool educationBoardOn = true;
     public bool healthBoardOn = true;
     public int boardSize = 10;
+
+    private Text boardTitleText;
 
     [HideInInspector]
     public Board relationshipBoard;
@@ -50,13 +53,19 @@ public class BoardManager : Singleton<BoardManager> {
         tileSize = ResourceLoader.instance.defaultBlockFab.GetComponent<SpriteRenderer>().size.x;
         loadlevel(PermanentStatManager.instance.currentLevel);
 
+        boardTitleText = GameObject.Find("BoardTitle").GetComponent<Text>();
+
         List<PlayerBoardPiece> playas = new List<PlayerBoardPiece>();
         foreach (Board board in activeBoards) {
             PlayerBoardPiece pbp = board.GetPlayerBoardPiece();
             if (pbp != null) {
                 playas.Add(pbp);
             }
+            if (board.boardTitle != null && board.boardTitle.Length > 0) {
+                boardTitleText.text = board.boardTitle;
+            }
         }
+
         // Need to create board before player.
         PlayerController.instance.Init(playas);
     }
