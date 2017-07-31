@@ -23,6 +23,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
     SpriteRenderer horizontalLineMask;
     SpriteRenderer verticalLineMask;
     SpriteRenderer whiteMask;
+    SpriteRenderer gameOverText;
 
     PortraitSwapper portraitSwapper;
 
@@ -43,6 +44,8 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
         endingTime = 0f;
         endingStarted = true;
 
+        
+
         //kicks off these coroutines
         FadeUI.instance.FadeMe();
         FadeSprite.instance.FadeMe();
@@ -55,6 +58,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
     {
         endingTime = 0f;
         deathStarted = true;
+        gameOverText.enabled = true;
 
         //kicks off these coroutines
         Color color = Color.black;
@@ -137,6 +141,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
         verticalLineMask = GameObject.Find("VerticalLineMask").GetComponent<SpriteRenderer>();
         whiteMask = GameObject.Find("WhiteMask").GetComponent<SpriteRenderer>();
         portraitSwapper = GameObject.Find("Portrait").GetComponent<PortraitSwapper>();
+        gameOverText = GameObject.Find("GameOverText").GetComponent<SpriteRenderer>();
     }
 
     void Update()
