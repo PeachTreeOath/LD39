@@ -94,19 +94,19 @@ public class PlayerController : Singleton<PlayerController>
             System.Type bpType = bp.GetType();
             if (bpType == typeof(PotionBoardPiece))
             {
-                LogManager.instance.Log("Potion picked up.");
+                LogManager.instance.Log("Pill picked up.");
                 AudioManager.instance.PlaySound("PotionPickup");
             }
             else if (bpType == typeof(LootBoardPiece))
             {
-                LogManager.instance.Log("Cash me outside.");
-                AudioManager.instance.PlaySound("MoneyPickup");
+                LogManager.instance.Log("Earned $" + ((LootBoardPiece)bp).value);
+                AudioManager.instance.PlaySound("MoneyPickup", 0.7f);
             }
             else if (bpType == typeof(EduBookBoardPiece))
             {
                 LogManager.instance.Log("Book picked up.");
                 LifeStatManager.instance.addBooks(((EduBookBoardPiece)bp).bookValue);
-                AudioManager.instance.PlaySound("BookPickup");
+                AudioManager.instance.PlaySound("BookPickup",0.5f);
             }
             else if (bpType == typeof(WaifuBoardPiece))
             {

@@ -113,9 +113,9 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
         while (Mathf.Abs(startingPos.y - currentPosY) < verticalWipeDistance)
         {
             verticalWipeTime += Time.deltaTime;
-            Debug.Log("startingPos.y = " + startingPos.y);
+            //Debug.Log("startingPos.y = " + startingPos.y);
             currentPosY = startingPos.y - (verticalWipeDistance * verticalWipeTime) / secondsToRevealVerticalLine;
-            Debug.Log("currentPosY = " + currentPosY);
+            //Debug.Log("currentPosY = " + currentPosY);
             cameraCurrentPosY = cameraStartingPos.y - (verticalWipeDistance * verticalWipeTime) / secondsToRevealVerticalLine;
 
             Vector3 newPos = verticalLineMask.transform.localPosition;

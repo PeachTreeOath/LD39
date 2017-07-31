@@ -35,13 +35,13 @@ public class AudioManager : Singleton<AudioManager>
         }
 
         ToggleMute(mute);
-
-        PlayMusic("MainTheme", .2f);
+        musicChannel.volume = .3f;
+        PlayMusic("MainTheme", musicChannel.volume);
     }
 
 	public void UpdateMusicVolume()
 	{
-		musicChannel.volume = VolumeListener.volumeLevel;
+		musicChannel.volume = VolumeListener.volumeLevel * .3f;
         soundChannel.volume = VolumeListener.volumeLevel;
     }
 
