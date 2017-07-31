@@ -492,7 +492,7 @@ public class LevelFileIO : MonoBehaviour {
             if (prams.Count >= 1)
             {
                 int dropVal = prams[0];
-                Debug.Log("money value is " + dropVal);
+                //Debug.Log("money value is " + dropVal);
                 pc.value = dropVal;
             }
         }
