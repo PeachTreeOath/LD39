@@ -5,10 +5,11 @@ using UnityEngine.UI;
 public class BuyablePiece : BoardPiece {
 
     private int cost = 0;
-    private bool canBuy = false;
+    private bool cantBuy = false;
     private bool pickedUp = false;
 
     private PriceTag priceTag = null;
+    private SpriteRenderer spr;
 
     public int price {
         get { return cost; }
@@ -29,7 +30,7 @@ public class BuyablePiece : BoardPiece {
 
     public override int GetContentType() {
         int contentType = BoardPiece.PICKUP;
-        if(canBuy) contentType |= BoardPiece.BARRIER;
+        if(cantBuy) contentType |= BoardPiece.BARRIER;
 
         return contentType;
     }
@@ -64,7 +65,15 @@ public class BuyablePiece : BoardPiece {
             board.UpdatePiece_Remove(this, x, y);
         }
 
-        canBuy = LifeStatManager.instance.wealth < price;
+        cantBuy = LifeStatManager.instance.wealth < price;
+        if (spr == null)
+        {
+            spr = GetComponent<SpriteRenderer>();
+        }
+        if (cantBuy)
+            spr.sprite = ResourceLoader.instance.bookUnlit;
+        else
+            spr.sprite = ResourceLoader.instance.bookLit;
 
         if(board != null) {
             board.UpdatePiece_Place(this, x, y);
