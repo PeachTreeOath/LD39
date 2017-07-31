@@ -60,9 +60,7 @@ public class PortraitSwapper : TurnBehaviour {
 
     public override void OnAdvanceTurn() {
         //Debug.Log("Age is " + LifeStatManager.instance.age);
-        if (LifeStatManager.instance.age >= 90) {
-            setNextSprite(ResourceLoader.instance.portraitChip90);
-        } else if (LifeStatManager.instance.age >= 80) {
+        if (LifeStatManager.instance.age >= 80) {
             setNextSprite(ResourceLoader.instance.portraitChip80);
         } else if (LifeStatManager.instance.age >= 70) {
             setNextSprite(ResourceLoader.instance.portraitChip70);
