@@ -82,17 +82,26 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
         
         Vector3 startingPos = verticalLineMask.transform.localPosition;
         float currentPosY = startingPos.y;
-        
-        Debug.Log("startingPosY = " + currentPosY);
+
+        Vector3 cameraStartingPos = Camera.main.transform.localPosition;
+        float cameraCurrentPosY = cameraStartingPos.y;
+
         while (verticalWipeDistance + startingPos.y - currentPosY > 0f)
         {
             verticalWipeTime += Time.deltaTime;
             Debug.Log("startingPos.y = " + startingPos.y);
             currentPosY = startingPos.y - (verticalWipeDistance * verticalWipeTime) / secondsToRevealVerticalLine;
             Debug.Log("currentPosY = " + currentPosY);
+            cameraCurrentPosY = cameraStartingPos.y - (verticalWipeDistance * verticalWipeTime) / secondsToRevealVerticalLine;
+
             Vector3 newPos = verticalLineMask.transform.localPosition;
+            Vector3 newCamPos = Camera.main.transform.localPosition;
+
             newPos.y = currentPosY;
+            newCamPos.y = cameraCurrentPosY;
+
             verticalLineMask.transform.localPosition = newPos;
+            Camera.main.transform.localPosition = newCamPos;
             yield return null;
         }
         verticalWipeDone = true;
