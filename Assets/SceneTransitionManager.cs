@@ -11,6 +11,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
     public float secondsToPauseBeforeSceneTransition;
 
     private bool endingStarted = false;
+    private bool deathStarted = false;
     private float endingTime;
     private bool horizontalWipeDone = false;
     private bool verticalWipeDone = false;
@@ -21,6 +22,9 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
     SpriteRenderer blackLineVertical;
     SpriteRenderer horizontalLineMask;
     SpriteRenderer verticalLineMask;
+    SpriteRenderer whiteMask;
+
+    PortraitSwapper portraitSwapper;
 
     public void TransitionToNextLevel()
     {
@@ -31,7 +35,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
 
     public void ReplayCurrentLevel()
     {
-        SceneManager.LoadScene("Game");
+        playDeathEffects();
     }
 
     private void playEndingEffects()
@@ -42,12 +46,23 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
         //kicks off these coroutines
         FadeUI.instance.FadeMe();
         FadeSprite.instance.FadeMe();
-
-        
-
-        
     }
   
+    private void playDeathEffects()
+    {
+        endingTime = 0f;
+        deathStarted = true;
+
+        //kicks off these coroutines
+        Color color = Color.black;
+        color.a = 0;
+        whiteMask.color = color;
+
+        FadeUI.instance.FadeMe();
+        FadeSprite.instance.FadeMe();
+
+        portraitSwapper.transitionToSkeleton();
+    }
     IEnumerator DoHorizontalWipe()
     {
         blackLineHorizontal.enabled = true;
@@ -115,6 +130,8 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
         blackLineVertical = GameObject.Find("BlackLineVertical").GetComponent<SpriteRenderer>();
         horizontalLineMask = GameObject.Find("HorizontalLineMask").GetComponent<SpriteRenderer>();
         verticalLineMask = GameObject.Find("VerticalLineMask").GetComponent<SpriteRenderer>();
+        whiteMask = GameObject.Find("WhiteMask").GetComponent<SpriteRenderer>();
+        portraitSwapper = GameObject.Find("Portrait").GetComponent<PortraitSwapper>();
     }
 
     void Update()
@@ -143,8 +160,25 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
                 endingTime = 0f;
                 finalPauseDone = true;
             }
-            if (endingTime >= secondsToPauseBeforeSceneTransition && !coroutineInProgress)
+            else if (endingTime >= secondsToPauseBeforeSceneTransition && !coroutineInProgress)
             {
+                SceneManager.LoadScene("Game");
+            }
+        }
+
+        if (deathStarted)
+        {
+            endingTime += Time.deltaTime;
+            //Fade to black happens before this
+            if (endingTime >= secondsToFade && !coroutineInProgress)
+            {
+                //kickoff finalPause
+                endingTime = 0f;
+                finalPauseDone = true;
+            }
+            else if (endingTime >= secondsToPauseBeforeSceneTransition && !coroutineInProgress)
+            {
+                
                 SceneManager.LoadScene("Game");
             }
         }

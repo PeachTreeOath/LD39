@@ -57,6 +57,10 @@ public class PortraitSwapper : TurnBehaviour {
         }
 
     }
+    public void transitionToSkeleton()
+    {
+        setNextSprite(ResourceLoader.instance.portraitChip90);
+    }
 
     public override void OnAdvanceTurn() {
         //Debug.Log("Age is " + LifeStatManager.instance.age);
