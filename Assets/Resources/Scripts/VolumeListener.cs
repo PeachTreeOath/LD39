@@ -9,7 +9,7 @@ public class VolumeListener : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        gameObject.GetComponent<Slider>().value = AudioManager.instance.GetMusicVolume(); 
+       // gameObject.GetComponent<Slider>().value = AudioManager.instance.GetMusicVolume(); 
     }
 	
 	public void VolumeChanged()
