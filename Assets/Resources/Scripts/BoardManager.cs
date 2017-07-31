@@ -73,7 +73,7 @@ public class BoardManager : Singleton<BoardManager> {
                 {
                     SetTutorialText("-Relationships aren't the only aspect of your life to juggle\r\n\r\n-Extend your age limit by collecting pills in the HEALTH board\r\n\r\n-Pills are more effective later in life, so try to save them for your later years");
                 }
-                else if (board.boardTitle.Trim().Equals("Tutorial 3/3: No Scrubs Allowed"))
+                else if (board.boardTitle.Trim().Equals("Tutorial 3/3: I Don't Want No Scrubs"))
                 {
                     SetTutorialText("-Some girls have higher standards and you'll need an education to even get near them\r\n\r\n-Collect money in the WEALTH board\r\n\r\n-Purchase 3 books in the KNOWLEDGE board to unlock a zone (books cost $100 each)");
                 }
