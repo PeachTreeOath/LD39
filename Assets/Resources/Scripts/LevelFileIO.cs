@@ -265,7 +265,7 @@ public class LevelFileIO : MonoBehaviour {
             line = sr.ReadLine();
 
         }
-        Debug.Log("Board finished loading with " + pcs.Count + " pieces");
+        //Debug.Log("Board finished loading with " + pcs.Count + " pieces");
     }
 
     //read each column of a board row. pieces are stored in global curBoard.

@@ -38,7 +38,7 @@ public class Board : MonoBehaviour
 
     public void CreateEmptyBoardWithoutTiles(int boardSize, float tileSize)
     {
-        Debug.Log("Create Board, size=" + boardSize + ", tileSize=" + tileSize);
+        //Debug.Log("Create Board, size=" + boardSize + ", tileSize=" + tileSize);
         this.boardSize = boardSize;
         this.tileSize = tileSize;
 

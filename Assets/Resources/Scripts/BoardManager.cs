@@ -109,7 +109,7 @@ public class BoardManager : Singleton<BoardManager> {
 
     private void loadlevel(int levelId) {
         //TODO convert levelId into filenames or something
-        Debug.Log("loading level " + levelId);
+        //Debug.Log("loading level " + levelId);
         if (levelLoader != null) {
             activeBoards.Clear();
 
