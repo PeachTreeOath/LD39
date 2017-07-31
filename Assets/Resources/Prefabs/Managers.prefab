@@ -170,7 +170,8 @@ MonoBehaviour:
   secondsToFade: 1
   secondsToRevealHorizontalLine: 1
   secondsToRevealVerticalLine: 1
-  secondsToPauseBeforeSceneTransition: 1
+  secondsToPauseBeforeSceneTransition: 2
+  secondsToPauseOnDeath: 4
 --- !u!114 &114805188963238486
 MonoBehaviour:
   m_ObjectHideFlags: 1

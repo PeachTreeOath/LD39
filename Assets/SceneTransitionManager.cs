@@ -9,6 +9,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
     public float secondsToRevealHorizontalLine;
     public float secondsToRevealVerticalLine;
     public float secondsToPauseBeforeSceneTransition;
+    public float secondsToPauseOnDeath;
 
     private bool endingStarted = false;
     private bool deathStarted = false;
@@ -188,7 +189,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
                 endingTime = 0f;
                 finalPauseDone = true;
             }
-            else if (endingTime >= secondsToPauseBeforeSceneTransition && !coroutineInProgress)
+            else if (endingTime >= secondsToPauseOnDeath && !coroutineInProgress)
             {
                 SceneManager.LoadScene("Game");
             }
