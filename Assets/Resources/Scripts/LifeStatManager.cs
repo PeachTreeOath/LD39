@@ -25,7 +25,7 @@ public class LifeStatManager : Singleton<LifeStatManager> {
     private RectTransform bookBar;
     private RectTransform powerBar;
 
-    private float barHeight;
+    private float barHeight = 2;
     private float maxBarWidth;  //wealth and edu
     private float powerBarWidth;
 
@@ -103,7 +103,7 @@ public class LifeStatManager : Singleton<LifeStatManager> {
         bookBar.sizeDelta = new Vector2(maxBarWidth * totalBooks / maxBookLevel, barHeight);
 
         float remainingAge = 1 + maxAge - age;
-        powerBar.sizeDelta = new Vector2(powerBarWidth * remainingAge / maxAge, barHeight);
+        powerBar.sizeDelta = new Vector2(powerBarWidth * ((remainingAge-1) / maxAge), barHeight);
         //booksField.text = StatConstants.instance.BooksString(books);
         ageField.text = "" + age;
         maxAgeField.text = "" + maxAge;
