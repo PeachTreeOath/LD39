@@ -28,6 +28,13 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager> {
 
     PortraitSwapper portraitSwapper;
 
+    public void SkipTutorial(int levelToStartNext) {
+        LogManager.instance.Log("So we have an expert here - Skipping Tutorial...");
+        PermanentStatManager.instance.generation = levelToStartNext; //I think this is unused
+        PermanentStatManager.instance.currentLevel = levelToStartNext;
+        playEndingEffects();
+    }
+
     public void TransitionToNextLevel()
     {
         PermanentStatManager.instance.generation++;

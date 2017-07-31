@@ -100,6 +100,9 @@ public class BoardManager : Singleton<BoardManager> {
         }
 
         canvasGroup.alpha = 0.8f;
+        //enable button for skippin
+        canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
         canvasGroup.GetComponentInChildren<Text>().text = tutorial;
     }
 
