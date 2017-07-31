@@ -330,6 +330,11 @@ Prefab:
       propertyPath: levelLoader
       value: 
       objectReference: {fileID: 13100984}
+    - target: {fileID: 114410542767506160, guid: 030f38be99fa7314ba44dae89325567d,
+        type: 2}
+      propertyPath: levelList.Array.data[0]
+      value: TutorialLevel1.lvl
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 030f38be99fa7314ba44dae89325567d, type: 2}
   m_IsPrefabParent: 0
