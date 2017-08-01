@@ -29,12 +29,12 @@ public class LifeStatManager : Singleton<LifeStatManager>
     private RectTransform bookRBar;
     private RectTransform powerBar;
 
-    private float barHeight = 2;
+    private float barHeight = 15;
     private float maxBarWidth;  //wealth and edu
     private float maxBookBarWidth;
     private float powerBarWidth;
 
-    private float maxCashVal = 1600; //arbitrary but effects bar increment
+    private float maxCashVal = 600; //arbitrary but effects bar increment
     private int maxBookLevel = 9; //?
 
     public int startingWealth;
