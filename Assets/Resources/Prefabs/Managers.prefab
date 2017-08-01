@@ -240,6 +240,8 @@ MonoBehaviour:
   portraitChip70: {fileID: 0}
   portraitChip80: {fileID: 0}
   portraitChip90: {fileID: 0}
+  bookUnlit: {fileID: 0}
+  bookLit: {fileID: 0}
   girlDressSprites: []
   girlHairSprites: []
   portraitGirlDressSprites: []
