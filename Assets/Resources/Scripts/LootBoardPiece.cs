@@ -32,11 +32,13 @@ public class LootBoardPiece : BoardPiece {
         }
 
         float y = 0;
+        int layer = 3;
         for(int i = 0; i < size; i++) {
             GameObject dollar = Instantiate(ResourceLoader.instance.dollarBillFab);
             dollar.transform.SetParent(transform);
             dollar.transform.localPosition = new Vector2(0, y);
-
+            dollar.GetComponent<SpriteRenderer>().sortingOrder = layer;
+            layer++;
             y += dollarSpacing;
         }
         
