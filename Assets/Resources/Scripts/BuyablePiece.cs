@@ -66,7 +66,7 @@ public class BuyablePiece : BoardPiece {
         }
 
         cantBuy = LifeStatManager.instance.wealth < price;
-        if (spr == null)
+       /* if (spr == null)
         {
             spr = GetComponent<SpriteRenderer>();
         }
@@ -74,7 +74,7 @@ public class BuyablePiece : BoardPiece {
             spr.sprite = ResourceLoader.instance.bookUnlit;
         else
             spr.sprite = ResourceLoader.instance.bookLit;
-
+*/
         if(board != null) {
             board.UpdatePiece_Place(this, x, y);
         }
