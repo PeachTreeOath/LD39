@@ -108,19 +108,20 @@ MonoBehaviour:
   tileSize: 0
   levelLoader: {fileID: 0}
   levelList:
-  - TutorialLevel1.lvl
-  - TutorialLevel2.lvl
-  - TutorialLevel3.lvl
-  - ChroLevel1.lvl
-  - ChroLevel2.lvl
-  - ChroLevel3.lvl
-  - ChroLevel4.lvl
-  - ChroLevel5.lvl
+  - Chrolevel2-1.lvl
+  - Chrolevel3-1.lvl
+  - Chrolevel4-1.lvl
+  - Chrolevel5-1.lvl
+  - Chrolevel6-1.lvl
+  - Chrolevel8-1.lvl
+  - Chrolevel9-1.lvl
+  - Chrolevel10-1.lvl
   - ChroLevel6.lvl
   - ChroLevel7.lvl
   - ChroLevel8.lvl
   - ChroLevel9.lvl
   - ChroLevel10.lvl
+  - ChroLevel10-1.lvl
 --- !u!114 &114458622068339646
 MonoBehaviour:
   m_ObjectHideFlags: 1

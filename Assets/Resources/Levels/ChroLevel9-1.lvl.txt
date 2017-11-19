@@ -1,0 +1,92 @@
+#Help tips: Replace board underscores with 1 or more letters below
+#Note, some combinations cannot be stacked on the same tile
+#BARRIER_ORANGE = 'Z'
+#BARRIER_PURPLE = 'X'
+#BARRIER_GREEN = 'C'
+#STATIC_BARRIER = 'Q'
+#PLAYER = 'P'
+#BOOK = 'B'
+#MONEY = 'M'  (include one param [startingValue])
+#WAIFU = 'W'
+#HEALTH = 'H'
+#NOOP (ignored) = '_'
+#NOOP1  (ignored) = ' '
+#NOOP2  (tab ignored) = '	'
+#Parameters are applied in a bracket after certain letters: e.g. H[4] or W[1,2]
+#PARAM_START = '['
+#PARAM_END = ']'
+#FS_END (column separator) = ','
+#end of help
+
+boardType:	RELATIONSHIP
+fogSize:	0
+boardTitle:	 
+boardPos:	TOP_LEFT
+startdata:	
+#   0,	     1,	     2,	     3,	     4,	     5,	     6,	     7,	     8,	     9,	  
+   __,	   Q,	   Q,	   __,	   Q,	   __,	   __,	   __,	   __,	   __,	 #0
+   __,	   __,	   __,	   __,	   Q,	   __,	   Q,	   Q,	   __,	   Q,	 #1
+   __,	   Q,	   Q,	   __,	   __,	   __,	   Q,	   __,	   Q,	   __,	 #2
+   P,	   Q,	   Q,	   __,	   __,	   __,	   __,	   __,	   __,	   __,	 #3
+   __,	   __,	   C,	   __,	   Q,	   Q,	   __,	   Q,	   __,	   Q,	 #4
+   __,	   __,	   C,	   __,	   __,	   C,	   __,	   Q,	   __,	   __,	 #5
+   __,	   __,	   C,	   __,	   __,	   Q,	   __,	   __,	   __,	   __,	 #6
+   __,	   Q,	   Q,	   Q,	   __,	   __,	   __,	   __,	   __,	   __,	 #7
+   __,	   __,	   __,	   __,	   __,	   __,	   Q,	   Q,	   Q,	   Z,	 #8
+   __,	   __,	   __,	   __,	   __,	   __,	   Q,	   W,	   __,	   __,	 #9
+enddata:	
+
+boardType:	HEALTH
+fogSize:	0
+boardTitle:	 
+boardPos:	TOP_RIGHT
+startdata:	
+#   0,	     1,	     2,	     3,	     4,	     5,	     6,	     7,	     8,	     9,	  
+   __,	   __,	   Z,	   H,	   __,	   __,	   C,	   __,	   __,	   __,	 #0
+   __,	   H,	   Q,	   H,	   __,	   __,	   C,	   __,	   Q,	   __,	 #1
+   P,	   __,	   __,	   Q,	   __,	   Q,	   Q,	   Q,	   __,	   __,	 #2
+   __,	   __,	   __,	   __,	   __,	   __,	   Q,	   __,	   __,	   __,	 #3
+   __,	   Q,	   __,	   __,	   Q,	   H,	   C,	   H,	   Q,	   __,	 #4
+   Q,	   Q,	   H,	   __,	   Q,	   __,	   Q,	   __,	   Q,	   __,	 #5
+   Q,	   __,	   __,	   __,	   Q,	   __,	   Q,	   __,	   Q,	   __,	 #6
+   Q,	   __,	   __,	   __,	   __,	   __,	   C,	   __,	   Q,	   __,	 #7
+   Q,	   H,	   __,	   Q,	   __,	   __,	   C,	   __,	   __,	   __,	 #8
+   Q,	   Q,	   Q,	   Q,	   __,	   __,	   C,	   __,	   __,	   H,	 #9
+enddata:	
+
+boardType:	CASH
+fogSize:	0
+boardTitle:	 
+boardPos:	BOTTOM_LEFT
+startdata:	
+#   0,	     1,	     2,	     3,	     4,	     5,	     6,	     7,	     8,	     9,	  
+   Q,	   Q,	   __,	   __,	   Q,	   M[50],	   __,	   __,	   Q,	   Q,	 #0
+   Q,	   M,	   __,	   __,	   Q,	   __,	   Q,	   __,	   M,	   Q,	 #1
+   M,	   M[100],	   __,	   __,	   C,	   __,	   C,	   __,	   M[100],	   M,	 #2
+   __,	   __,	   Q,	   __,	   Q,	   __,	   Q,	   __,	   Q,	   __,	 #3
+   __,	   __,	   __,	   __,	   Q,	   __,	   Q,	   __,	   __,	   __,	 #4
+   __,	   __,	   __,	   M,	   __,	   P,	   __,	   M,	   __,	   __,	 #5
+   __,	   __,	   Q,	   __,	   Q,	   __,	   Q,	   __,	   Q,	   __,	 #6
+   M,	   M[100],	   __,	   __,	   Q,	   __,	   Q,	   __,	   M[100],	   M,	 #7
+   Q,	   M,	   __,	   __,	   C,	   __,	   C,	   __,	   M,	   Q,	 #8
+   Q,	   Q,	   __,	   __,	   Q,	   M[50],	   __,	   __,	   Q,	   Q,	 #9
+enddata:	
+
+boardType:	EDUCATION
+fogSize:	0
+boardTitle:	 
+boardPos:	BOTTOM_RIGHT
+startdata:	
+#   0,	     1,	     2,	     3,	     4,	     5,	     6,	     7,	     8,	     9,	  
+   __,	   __,	   __,	   __,	   __,	   __,	   __,	   __,	   __,	   B,	 #0
+   __,	   __,	   __,	   __,	   __,	   __,	   __,	   __,	   Q,	   __,	 #1
+   __,	   B,	   Q,	   Q,	   Q,	   __,	   Q,	   __,	   Q,	   __,	 #2
+   __,	   Q,	   Q,	   Q,	   __,	   __,	   Q,	   B,	   Q,	   __,	 #3
+   __,	   Q,	   P,	   __,	   __,	   __,	   Q,	   __,	   Q,	   __,	 #4
+   __,	   Q,	   Q,	   __,	   __,	   __,	   Q,	   __,	   Q,	   __,	 #5
+   C,	   C,	   Q,	   __,	   B,	   __,	   __,	   __,	   __,	   __,	 #6
+   B,	   __,	   __,	   Q,	   __,	   __,	   __,	   __,	   __,	   __,	 #7
+   __,	   __,	   __,	   __,	   Q,	   Q,	   C,	   Q,	   Q,	   __,	 #8
+   __,	   __,	   __,	   __,	   B,	   __,	   __,	   __,	   __,	   __,	 #9
+enddata:	
+
